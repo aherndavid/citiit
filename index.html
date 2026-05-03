@@ -64,30 +64,56 @@
   /* ── HERO ── */
   .hero {
     min-height: 100vh;
-    display: grid; grid-template-columns: 1fr 1fr;
-    padding-top: 60px;
     position: relative; overflow: hidden;
+    padding-top: 60px;
+    display: flex; flex-direction: column; justify-content: flex-end;
+  }
+  .hero-bg-img {
+    position: absolute; inset: 0; z-index: 0;
+    background: url('https://raw.githubusercontent.com/aherndavid/citiit/main/assets/desk.png') center center / cover no-repeat;
+  }
+  .hero-bg-img::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(to bottom, rgba(10,10,10,0.4) 0%, rgba(10,10,10,0.55) 50%, rgba(10,10,10,0.85) 100%);
+  }
+  .hero-watermark {
+    position: absolute; inset: 0; z-index: 1;
+    display: flex; align-items: center; justify-content: center;
+    pointer-events: none; overflow: hidden;
+  }
+  .hero-watermark span {
+    font-family: var(--bebas);
+    font-size: clamp(120px, 18vw, 280px);
+    letter-spacing: 0.08em; color: rgba(240,235,224,0.06);
+    white-space: nowrap; line-height: 1; user-select: none;
+  }
+  .hero-content {
+    position: relative; z-index: 2;
+    padding: 4rem 3rem 5rem;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: end;
+  }
+  .hero-right-content {
+    display: flex; flex-direction: column; justify-content: flex-end; padding-bottom: 4px;
   }
   .hero-left {
-    padding: 5rem 3rem 4rem;
-    display: flex; flex-direction: column; justify-content: flex-end;
-    position: relative; z-index: 2;
+    /* no longer used as a grid cell — kept for compatibility */
   }
   .hero-eyebrow {
     font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em;
-    text-transform: uppercase; color: var(--gray); margin-bottom: 1.5rem;
+    text-transform: uppercase; color: rgba(240,235,224,0.5); margin-bottom: 1.5rem;
     display: flex; align-items: center; gap: 12px;
   }
-  .hero-eyebrow::before { content: ''; width: 32px; height: 1px; background: var(--gray); }
+  .hero-eyebrow::before { content: ''; width: 32px; height: 1px; background: rgba(240,235,224,0.4); }
   .hero-title {
     font-family: var(--bebas); font-size: clamp(100px, 13vw, 180px);
-    line-height: 0.88; letter-spacing: 0.01em; color: var(--black);
-    margin-bottom: 2rem;
+    line-height: 0.88; letter-spacing: 0.01em; color: var(--cream);
+    margin-bottom: 0;
   }
   .hero-title span { color: var(--blue); }
   .hero-desc {
-    font-size: 14px; color: #555; line-height: 1.8; max-width: 360px;
-    margin-bottom: 2.5rem;
+    font-size: 14px; color: rgba(240,235,224,0.65); line-height: 1.8; max-width: 380px;
+    margin-bottom: 2rem;
   }
   .hero-cta {
     display: inline-flex; align-items: center; gap: 10px;
@@ -97,37 +123,8 @@
     padding: 14px 28px; transition: background 0.2s; align-self: flex-start;
   }
   .hero-cta:hover { background: var(--black); }
-
-  .hero-right {
-    background: var(--blue);
-    position: relative; overflow: hidden;
-    display: flex; align-items: center; justify-content: center;
-  }
-  .geo-stripe {
-    position: absolute; inset: 0;
-    background: repeating-linear-gradient(
-      90deg, transparent, transparent 12px,
-      rgba(240,235,224,0.06) 12px, rgba(240,235,224,0.06) 13px
-    );
-  }
-  .geo-circle {
-    position: absolute; width: 380px; height: 380px; border-radius: 50%;
-    background: var(--black); top: 50%; left: 50%; transform: translate(-50%,-50%);
-  }
-  .geo-rect {
-    position: absolute; width: 190px; height: 280px;
-    background: var(--cream); bottom: 0; right: 0;
-  }
-  .hero-logo-text { position: relative; z-index: 3; text-align: center; }
-  .hero-logo-text .big {
-    font-family: var(--bebas); font-size: clamp(90px, 12vw, 160px);
-    color: var(--cream); line-height: 1; letter-spacing: 0.04em; display: block;
-  }
-  .hero-logo-text .sub {
-    font-family: var(--mono); font-size: 11px; letter-spacing: 0.2em;
-    color: rgba(240,235,224,0.45); display: block; margin-top: 10px;
-    text-transform: uppercase;
-  }
+  .hero-right { display: none; }
+  .geo-stripe, .geo-circle, .geo-rect, .hero-logo-text { display: none; }
 
   /* ── DIVIDER ── */
   .divider {
@@ -491,10 +488,8 @@
   }
 
   @media (max-width: 900px) {
-    .hero { grid-template-columns: 1fr; min-height: auto; }
-    .hero-right { min-height: 50vw; }
-    .geo-circle { width: 260px; height: 260px; }
-    .geo-rect { width: 130px; height: 190px; }
+    .hero-content { grid-template-columns: 1fr; padding: 3rem 1.5rem 3rem; }
+    .hero-right-content { padding-bottom: 0; }
 
     .about { grid-template-columns: 1fr; }
     .about-left {
@@ -551,19 +546,16 @@
 
 <!-- HERO -->
 <section class="hero" id="home">
-  <div class="hero-left">
-    <span class="hero-eyebrow">Creative &amp; Digital Services</span>
-    <h1 class="hero-title">CITI<span>IT</span><br>LIMI<br>TED.</h1>
-    <p class="hero-desc">30+ years of technical mastery. A lifetime of creative instinct. Web, design, IT, audio — built for the tools of today.</p>
-    <a href="#services" class="hero-cta">Explore Services &#x2192;</a>
-  </div>
-  <div class="hero-right">
-    <div class="geo-stripe"></div>
-    <div class="geo-circle"></div>
-    <div class="geo-rect"></div>
-    <div class="hero-logo-text">
-      <span class="big">CITI<br>IT</span>
-      <span class="sub">Est. London &middot; UK</span>
+  <div class="hero-bg-img"></div>
+  <div class="hero-watermark"><span>CITIIT LIMITED</span></div>
+  <div class="hero-content">
+    <div>
+      <span class="hero-eyebrow">Creative &amp; Digital Services</span>
+      <h1 class="hero-title">CITI<span>IT</span><br>LIMI<br>TED.</h1>
+    </div>
+    <div class="hero-right-content">
+      <p class="hero-desc">30+ years of technical mastery. A lifetime of creative instinct. Web, design, IT, audio — built for the tools of today.</p>
+      <a href="#services" class="hero-cta">Explore Services &#x2192;</a>
     </div>
   </div>
 </section>

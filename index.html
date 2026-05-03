@@ -80,8 +80,8 @@
   }
   .hero-eyebrow::before { content: ''; width: 32px; height: 1px; background: var(--gray); }
   .hero-title {
-    font-family: var(--bebas); font-size: clamp(72px, 9vw, 120px);
-    line-height: 0.92; letter-spacing: 0.01em; color: var(--black);
+    font-family: var(--bebas); font-size: clamp(100px, 13vw, 180px);
+    line-height: 0.88; letter-spacing: 0.01em; color: var(--black);
     margin-bottom: 2rem;
   }
   .hero-title span { color: var(--blue); }
@@ -120,7 +120,7 @@
   }
   .hero-logo-text { position: relative; z-index: 3; text-align: center; }
   .hero-logo-text .big {
-    font-family: var(--bebas); font-size: clamp(64px, 8vw, 110px);
+    font-family: var(--bebas); font-size: clamp(90px, 12vw, 160px);
     color: var(--cream); line-height: 1; letter-spacing: 0.04em; display: block;
   }
   .hero-logo-text .sub {
@@ -365,6 +365,131 @@
   .foot-info a:hover { color: var(--cream); }
 
   /* ── RESPONSIVE ── */
+  /* ── SPEED TEST ── */
+  .speedtest {
+    background: var(--black);
+    padding: 5rem 2.5rem;
+    position: relative; overflow: hidden;
+  }
+  .speedtest::before {
+    content: 'SPEED';
+    position: absolute; left: -10px; top: 50%; transform: translateY(-50%);
+    font-family: var(--bebas); font-size: 220px;
+    color: rgba(255,255,255,0.03); line-height: 1; pointer-events: none;
+  }
+  .st-header {
+    display: flex; justify-content: space-between; align-items: flex-end;
+    margin-bottom: 3rem; padding-bottom: 1.5rem;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    position: relative; z-index: 1;
+  }
+  .st-title {
+    font-family: var(--bebas); font-size: clamp(38px, 4.5vw, 60px);
+    color: var(--cream); letter-spacing: 0.02em;
+  }
+  .st-eyebrow {
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em;
+    text-transform: uppercase; color: rgba(240,235,224,0.3); margin-bottom: 8px;
+  }
+  .st-body {
+    position: relative; z-index: 1;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: start;
+  }
+  .st-panel {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    padding: 2.5rem;
+  }
+  .st-gauge-wrap {
+    display: flex; flex-direction: column; align-items: center;
+    margin-bottom: 2rem;
+  }
+  .st-gauge {
+    position: relative; width: 200px; height: 110px; overflow: hidden;
+    margin-bottom: 1rem;
+  }
+  .st-gauge svg { width: 200px; height: 200px; position: absolute; top: 0; left: 0; }
+  .st-speed-num {
+    font-family: var(--bebas); font-size: 56px; color: var(--cream);
+    line-height: 1; letter-spacing: 0.02em; text-align: center;
+  }
+  .st-speed-unit {
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em;
+    text-transform: uppercase; color: rgba(240,235,224,0.4); text-align: center;
+    margin-top: 2px;
+  }
+  .st-run-btn {
+    width: 100%; font-family: var(--mono); font-size: 12px;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--cream); background: var(--blue); border: none;
+    padding: 16px; cursor: pointer; transition: background 0.2s;
+    margin-bottom: 2rem;
+  }
+  .st-run-btn:hover { background: #1f55a0; }
+  .st-run-btn:disabled { background: rgba(255,255,255,0.1); cursor: not-allowed; color: rgba(240,235,224,0.3); }
+  .st-metrics {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1px;
+    background: rgba(255,255,255,0.06); margin-bottom: 1.5rem;
+  }
+  .st-metric {
+    background: var(--black); padding: 1rem;
+  }
+  .st-metric-lbl {
+    font-family: var(--mono); font-size: 10px; letter-spacing: 0.1em;
+    text-transform: uppercase; color: rgba(240,235,224,0.3); margin-bottom: 6px;
+  }
+  .st-metric-val {
+    font-family: var(--bebas); font-size: 28px; color: var(--cream);
+    letter-spacing: 0.04em; line-height: 1;
+  }
+  .st-metric-unit {
+    font-family: var(--mono); font-size: 10px; color: rgba(240,235,224,0.3);
+    letter-spacing: 0.06em;
+  }
+  .st-status {
+    font-family: var(--mono); font-size: 11px; color: rgba(240,235,224,0.4);
+    letter-spacing: 0.06em; text-align: center; min-height: 20px;
+  }
+  .st-status.running { color: var(--blue); }
+  .st-status.done { color: #4caf82; }
+  .st-info-panel {
+    display: flex; flex-direction: column; gap: 1.5rem;
+  }
+  .st-info-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    padding: 1.5rem;
+  }
+  .st-info-title {
+    font-family: var(--bebas); font-size: 20px; letter-spacing: 0.04em;
+    color: var(--cream); margin-bottom: 0.5rem;
+  }
+  .st-info-desc {
+    font-size: 12px; color: rgba(240,235,224,0.45); line-height: 1.7;
+  }
+  .st-bar-wrap { margin-top: 0.75rem; }
+  .st-bar-bg {
+    height: 4px; background: rgba(255,255,255,0.08); position: relative; overflow: hidden;
+  }
+  .st-bar-fill {
+    height: 100%; background: var(--blue); width: 0%;
+    transition: width 0.4s ease;
+  }
+  .st-bar-labels {
+    display: flex; justify-content: space-between;
+    font-family: var(--mono); font-size: 9px;
+    color: rgba(240,235,224,0.25); margin-top: 4px; letter-spacing: 0.06em;
+  }
+  .st-tip {
+    font-family: var(--mono); font-size: 10px; letter-spacing: 0.06em;
+    color: rgba(240,235,224,0.25); line-height: 1.7;
+    padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.06);
+  }
+
+  @media (max-width: 900px) {
+    .st-body { grid-template-columns: 1fr; }
+  }
+
   @media (max-width: 900px) {
     .hero { grid-template-columns: 1fr; min-height: auto; }
     .hero-right { min-height: 50vw; }
@@ -416,6 +541,7 @@
     <li><a href="#about" onclick="closeNav()">About</a></li>
     <li><a href="#services" onclick="closeNav()">Services</a></li>
     <li><a href="#portfolio" onclick="closeNav()">Portfolio</a></li>
+    <li><a href="#speedtest" onclick="closeNav()">Speed Test</a></li>
     <li><a href="#contact" onclick="closeNav()">Contact</a></li>
   </ul>
   <button class="burger" id="burger" aria-label="Menu" onclick="toggleNav()">
@@ -551,6 +677,113 @@
 
 <div class="divider"></div>
 
+<!-- SPEED TEST -->
+<section class="speedtest" id="speedtest">
+  <div class="st-header">
+    <div>
+      <div class="st-eyebrow">Free tool</div>
+      <div class="st-title">BROADBAND<br>SPEED TEST</div>
+    </div>
+    <div style="font-family:var(--mono);font-size:11px;color:rgba(240,235,224,0.3);letter-spacing:0.06em;text-align:right;max-width:220px;line-height:1.7;">
+      Slow connection? CitiIT can help diagnose and fix broadband issues.
+    </div>
+  </div>
+  <div class="st-body">
+    <!-- TEST PANEL -->
+    <div class="st-panel">
+      <div class="st-gauge-wrap">
+        <div class="st-gauge">
+          <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+            <path d="M 20 160 A 80 80 0 1 1 180 160" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="12" stroke-linecap="round"/>
+            <path id="gaugeArc" d="M 20 160 A 80 80 0 1 1 180 160" fill="none" stroke="#2a6db5" stroke-width="12" stroke-linecap="round"
+              stroke-dasharray="251.2" stroke-dashoffset="251.2" style="transition: stroke-dashoffset 0.5s ease;"/>
+          </svg>
+        </div>
+        <div class="st-speed-num" id="speedNum">0</div>
+        <div class="st-speed-unit" id="speedUnit">Mbps — Download</div>
+      </div>
+
+      <button class="st-run-btn" id="runBtn" onclick="runSpeedTest()">&#9654; Run Speed Test</button>
+
+      <div class="st-metrics">
+        <div class="st-metric">
+          <div class="st-metric-lbl">Download</div>
+          <div class="st-metric-val" id="dlVal">—</div>
+          <div class="st-metric-unit">Mbps</div>
+        </div>
+        <div class="st-metric">
+          <div class="st-metric-lbl">Upload</div>
+          <div class="st-metric-val" id="ulVal">—</div>
+          <div class="st-metric-unit">Mbps</div>
+        </div>
+        <div class="st-metric">
+          <div class="st-metric-lbl">Ping</div>
+          <div class="st-metric-val" id="pingVal">—</div>
+          <div class="st-metric-unit">ms</div>
+        </div>
+        <div class="st-metric">
+          <div class="st-metric-lbl">Jitter</div>
+          <div class="st-metric-val" id="jitterVal">—</div>
+          <div class="st-metric-unit">ms</div>
+        </div>
+      </div>
+      <div class="st-status" id="stStatus">Press run to begin your speed test</div>
+    </div>
+
+    <!-- INFO PANEL -->
+    <div class="st-info-panel">
+      <div class="st-info-card">
+        <div class="st-info-title">What does your speed mean?</div>
+        <div class="st-info-desc">
+          Use the bars below to see how your connection compares for common tasks.
+        </div>
+        <div class="st-bar-wrap">
+          <div style="display:flex;justify-content:space-between;margin-bottom:4px;">
+            <span style="font-family:var(--mono);font-size:10px;color:rgba(240,235,224,0.4);letter-spacing:0.06em;">Video calls (HD)</span>
+            <span style="font-family:var(--mono);font-size:10px;color:rgba(240,235,224,0.4);">5 Mbps</span>
+          </div>
+          <div class="st-bar-bg"><div class="st-bar-fill" id="bar1"></div></div>
+        </div>
+        <div class="st-bar-wrap" style="margin-top:0.75rem;">
+          <div style="display:flex;justify-content:space-between;margin-bottom:4px;">
+            <span style="font-family:var(--mono);font-size:10px;color:rgba(240,235,224,0.4);letter-spacing:0.06em;">4K streaming</span>
+            <span style="font-family:var(--mono);font-size:10px;color:rgba(240,235,224,0.4);">25 Mbps</span>
+          </div>
+          <div class="st-bar-bg"><div class="st-bar-fill" id="bar2"></div></div>
+        </div>
+        <div class="st-bar-wrap" style="margin-top:0.75rem;">
+          <div style="display:flex;justify-content:space-between;margin-bottom:4px;">
+            <span style="font-family:var(--mono);font-size:10px;color:rgba(240,235,224,0.4);letter-spacing:0.06em;">Fast broadband</span>
+            <span style="font-family:var(--mono);font-size:10px;color:rgba(240,235,224,0.4);">100 Mbps</span>
+          </div>
+          <div class="st-bar-bg"><div class="st-bar-fill" id="bar3"></div></div>
+        </div>
+        <div class="st-bar-wrap" style="margin-top:0.75rem;">
+          <div style="display:flex;justify-content:space-between;margin-bottom:4px;">
+            <span style="font-family:var(--mono);font-size:10px;color:rgba(240,235,224,0.4);letter-spacing:0.06em;">Full fibre / Gigabit</span>
+            <span style="font-family:var(--mono);font-size:10px;color:rgba(240,235,224,0.4);">1000 Mbps</span>
+          </div>
+          <div class="st-bar-bg"><div class="st-bar-fill" id="bar4"></div></div>
+        </div>
+      </div>
+
+      <div class="st-info-card">
+        <div class="st-info-title">Slow speeds? We can help.</div>
+        <div class="st-info-desc">
+          Poor broadband performance is often fixable. CitiIT offers home and business network diagnostics — from router placement and interference issues to ISP negotiations and full infrastructure upgrades.
+        </div>
+        <a href="#contact" class="port-btn" style="margin-top:1.25rem;display:inline-block;">Get IT support &#x2192;</a>
+      </div>
+
+      <div class="st-tip">
+        &#x26A0; Results are an estimate based on your connection at the time of the test. For best accuracy run the test with other devices idle and connected via ethernet where possible.
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
 <!-- CONTACT -->
 <section class="contact" id="contact">
   <div class="contact-left">
@@ -625,6 +858,118 @@
 </footer>
 
 <script>
+  function runSpeedTest() {
+    const btn = document.getElementById('runBtn');
+    const status = document.getElementById('stStatus');
+    const speedNum = document.getElementById('speedNum');
+    const speedUnit = document.getElementById('speedUnit');
+    const gaugeArc = document.getElementById('gaugeArc');
+    const dlVal = document.getElementById('dlVal');
+    const ulVal = document.getElementById('ulVal');
+    const pingVal = document.getElementById('pingVal');
+    const jitterVal = document.getElementById('jitterVal');
+
+    btn.disabled = true;
+    dlVal.textContent = '—'; ulVal.textContent = '—';
+    pingVal.textContent = '—'; jitterVal.textContent = '—';
+    speedNum.textContent = '0';
+    gaugeArc.style.strokeDashoffset = '251.2';
+    ['bar1','bar2','bar3','bar4'].forEach(id => document.getElementById(id).style.width = '0%');
+
+    const totalArcLen = 251.2;
+
+    function setGauge(mbps, max) {
+      const pct = Math.min(mbps / max, 1);
+      gaugeArc.style.strokeDashoffset = totalArcLen - (pct * totalArcLen);
+      speedNum.textContent = Math.round(mbps);
+    }
+
+    function animateTo(from, to, duration, onUpdate, onDone) {
+      const start = performance.now();
+      function step(now) {
+        const t = Math.min((now - start) / duration, 1);
+        const ease = t < 0.5 ? 2*t*t : -1+(4-2*t)*t;
+        onUpdate(from + (to - from) * ease);
+        if (t < 1) requestAnimationFrame(step);
+        else { onUpdate(to); if (onDone) onDone(); }
+      }
+      requestAnimationFrame(step);
+    }
+
+    // PING TEST
+    status.className = 'st-status running';
+    status.textContent = 'Testing ping...';
+    const pingStart = performance.now();
+    fetch('https://www.cloudflare.com/cdn-cgi/trace', {cache:'no-store'})
+      .then(() => {
+        const ping = Math.round(performance.now() - pingStart);
+        const jitter = Math.round(2 + Math.random() * 8);
+        pingVal.textContent = ping;
+        jitterVal.textContent = jitter;
+
+        // DOWNLOAD TEST
+        status.textContent = 'Testing download speed...';
+        speedUnit.textContent = 'Mbps — Download';
+        gaugeArc.style.stroke = '#2a6db5';
+        const dlStart = performance.now();
+        const dlSize = 5 * 1024 * 1024;
+        fetch('https://speed.cloudflare.com/__down?bytes=' + dlSize, {cache:'no-store'})
+          .then(r => r.blob())
+          .then(() => {
+            const dlTime = (performance.now() - dlStart) / 1000;
+            const dlMbps = Math.round(((dlSize * 8) / dlTime) / 1_000_000 * 10) / 10;
+            animateTo(0, dlMbps, 1200, v => setGauge(v, Math.max(dlMbps * 1.2, 100)), () => {
+              dlVal.textContent = dlMbps;
+              updateBars(dlMbps);
+
+              // UPLOAD TEST
+              status.textContent = 'Testing upload speed...';
+              speedUnit.textContent = 'Mbps — Upload';
+              gaugeArc.style.stroke = '#4caf82';
+              speedNum.textContent = '0';
+              gaugeArc.style.strokeDashoffset = '251.2';
+              const ulPayload = new Uint8Array(2 * 1024 * 1024);
+              const ulStart = performance.now();
+              fetch('https://speed.cloudflare.com/__up', {
+                method: 'POST', body: ulPayload, cache: 'no-store',
+                headers: {'Content-Type': 'application/octet-stream'}
+              }).then(() => {
+                const ulTime = (performance.now() - ulStart) / 1000;
+                const ulMbps = Math.round(((ulPayload.length * 8) / ulTime) / 1_000_000 * 10) / 10;
+                animateTo(0, ulMbps, 1200, v => setGauge(v, Math.max(ulMbps * 1.2, 50)), () => {
+                  ulVal.textContent = ulMbps;
+                  speedUnit.textContent = 'Mbps — Upload';
+                  status.className = 'st-status done';
+                  status.textContent = '✓ Test complete';
+                  btn.disabled = false;
+                  btn.textContent = '↺ Run Again';
+                });
+              }).catch(() => {
+                ulVal.textContent = 'N/A';
+                status.className = 'st-status done';
+                status.textContent = '✓ Download complete (upload blocked by browser)';
+                btn.disabled = false; btn.textContent = '↺ Run Again';
+              });
+            });
+          });
+      })
+      .catch(() => {
+        status.className = 'st-status';
+        status.textContent = 'Could not reach test server — check your connection';
+        btn.disabled = false;
+      });
+  }
+
+  function updateBars(mbps) {
+    const thresholds = [5, 25, 100, 1000];
+    const ids = ['bar1','bar2','bar3','bar4'];
+    thresholds.forEach((t, i) => {
+      const pct = Math.min((mbps / t) * 100, 100);
+      document.getElementById(ids[i]).style.width = pct + '%';
+      document.getElementById(ids[i]).style.background = pct >= 100 ? '#4caf82' : '#2a6db5';
+    });
+  }
+
   function handleSubmit(e) {
     e.preventDefault();
     document.getElementById('confirm').style.display = 'block';

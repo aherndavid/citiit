@@ -9,7 +9,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>CitiIT Limited — Creative &amp; Digital Services</title>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Mono:wght@400;700&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Mono:wght@400;700&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=Caveat:wght@400;600&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -66,8 +66,8 @@
   }
 
   /* ── HERO (desk video) ── */
-  .hero { padding-top: 60px; }
-  .hero-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: top center; z-index: 0; }
+  .hero { padding-top: 0; }
+  .hero-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 15%; z-index: 0; }
   .hero-watermark {
     position: absolute; inset: 0; z-index: 2;
     display: flex; align-items: center; justify-content: center;
@@ -80,13 +80,14 @@
   .hero-eyebrow::before { content: ''; width: 32px; height: 1px; background: rgba(240,235,224,0.4); }
   .hero-title { font-family: var(--bebas); font-size: clamp(100px, 13vw, 180px); line-height: 0.88; letter-spacing: 0.01em; color: var(--cream); }
   .hero-title span { color: var(--blue); }
-  .hero-desc { font-size: 20px; color: #ffffff; line-height: 1.7; max-width: 440px; margin-bottom: 1.5rem; font-style: italic; font-weight: 300; }
+  .hero-desc { font-family: 'Caveat', cursive; font-size: 28px; color: #ffffff; line-height: 1.6; max-width: 440px; margin-bottom: 1.5rem; font-weight: 400; }
   .hero-signature { width: 320px; max-width: 100%; display: block; margin-bottom: 2rem; filter: brightness(0) invert(1); }
   .hero-cta { display: inline-flex; align-items: center; gap: 10px; background: var(--blue); color: var(--white); font-family: var(--mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; text-decoration: none; padding: 14px 28px; transition: background 0.2s; align-self: flex-start; }
   .hero-cta:hover { background: var(--black); }
 
   /* ── VIDEO BACKGROUNDS ── */
-  .bg-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center top; z-index: 0; }
+  .bg-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; z-index: 0; }
+  .hero .bg-video { top: -80px; height: calc(100% + 80px); object-position: center top; }
 
   /* ── IMAGE ROTATION LAYERS ── */
   .img-layer { position: absolute; inset: 0; background-size: cover; background-position: center; opacity: 0; transition: opacity 1.5s ease; z-index: 0; }
@@ -265,7 +266,7 @@
       <h1 class="hero-title">CITI<span>IT</span><br>LIMI<br>TED.</h1>
     </div>
     <div class="hero-right-content">
-      <p class="hero-desc">Constantly moving with technology, using cutting edge techniques to bridge that gap between Tech and Customer.</p>
+      <p class="hero-desc">"Constantly moving with technology, using cutting edge techniques to bridge that gap between Tech and Customer."</p>
       <img src="https://raw.githubusercontent.com/aherndavid/citiit/main/assets/signature.png" alt="David's signature" class="hero-signature">
       <a href="#services" class="hero-cta">Explore Services &#x2192;</a>
     </div>

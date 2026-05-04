@@ -131,6 +131,32 @@
   .hero-right { display: none; }
   .geo-stripe, .geo-circle, .geo-rect, .hero-logo-text { display: none; }
 
+  /* ── BRICK WALL SECTION ── */
+  .brick-wall {
+    min-height: 100vh;
+    position: relative; overflow: hidden;
+    display: grid; grid-template-columns: 220px 1fr;
+  }
+  .brick-wall-bg {
+    position: absolute; inset: 0; z-index: 0;
+    background: url('https://raw.githubusercontent.com/aherndavid/citiit/main/assets/brick-wall.png') center center / cover no-repeat;
+    filter: grayscale(100%);
+  }
+  .brick-wall-bg::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: rgba(10,10,10,0.62);
+  }
+  .brick-wall .about-left,
+  .brick-wall .about-right {
+    position: relative; z-index: 2;
+  }
+  .brick-wall .about-watermark { color: rgba(255,255,255,0.05); }
+  .brick-wall .stat-num { color: var(--blue); }
+  .brick-wall .stat-lbl { color: rgba(255,255,255,0.3); }
+  .brick-wall .about-heading { color: var(--cream); }
+  .brick-wall .about-body p { color: rgba(240,235,224,0.65); }
+
   /* ── DIVIDER ── */
   .divider {
     height: 6px;
@@ -567,8 +593,9 @@
 
 <div class="divider"></div>
 
-<!-- ABOUT -->
-<section class="about" id="about">
+<!-- BRICK WALL / ABOUT -->
+<section class="brick-wall" id="about">
+  <div class="brick-wall-bg"></div>
   <div class="about-left">
     <div class="about-watermark">ABOUT</div>
     <div class="about-stats">

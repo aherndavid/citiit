@@ -24,7 +24,7 @@
     --body: 'DM Sans', sans-serif;
   }
 
-  html { scroll-behavior: smooth; }
+  html { scroll-behavior: smooth; font-size: 120%; }
 
   body {
     font-family: var(--body);
@@ -327,52 +327,68 @@
   .about-body p:last-child { margin-bottom: 0; }
 
   /* ── SERVICES ── */
-  .services { background: var(--cream); padding: 5rem 2.5rem; }
+  .services {
+    background: transparent;
+    padding: 5rem 2.5rem;
+    position: relative; overflow: hidden;
+  }
+  .services-video {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%;
+    object-fit: cover;
+    filter: grayscale(100%);
+    z-index: 0;
+  }
+  .services::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: rgba(10,10,10,0.65);
+    z-index: 1;
+    pointer-events: none;
+  }
   .services-header {
+    position: relative; z-index: 2;
     display: grid; grid-template-columns: auto 1fr; gap: 2.5rem; align-items: end;
     margin-bottom: 4rem; padding-bottom: 1.5rem;
-    border-bottom: 1px solid rgba(0,0,0,0.14);
+    border-bottom: 1px solid rgba(255,255,255,0.15);
   }
   .services-num {
     font-family: var(--bebas); font-size: 110px;
-    color: rgba(0,0,0,0.06); line-height: 1; letter-spacing: -2px;
+    color: rgba(255,255,255,0.06); line-height: 1; letter-spacing: -2px;
   }
   .services-eyebrow {
-    font-family: var(--mono); font-size: 11px; color: var(--gray);
+    font-family: var(--mono); font-size: 11px; color: rgba(255,255,255,0.45);
     letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 8px;
   }
   .services-title {
     font-family: var(--bebas); font-size: clamp(38px, 4.5vw, 60px);
-    color: var(--black); letter-spacing: 0.02em; line-height: 1;
+    color: var(--cream); letter-spacing: 0.02em; line-height: 1;
   }
   .services-title span { color: var(--blue); }
-
   .services-grid {
+    position: relative; z-index: 2;
     display: grid; grid-template-columns: repeat(4, 1fr); gap: 0;
-    border-top: 1px solid rgba(0,0,0,0.12);
-    border-left: 1px solid rgba(0,0,0,0.12);
+    border-top: 1px solid rgba(255,255,255,0.12);
+    border-left: 1px solid rgba(255,255,255,0.12);
   }
   .svc {
     padding: 2rem 1.5rem;
-    border-right: 1px solid rgba(0,0,0,0.12);
-    border-bottom: 1px solid rgba(0,0,0,0.12);
+    border-right: 1px solid rgba(255,255,255,0.12);
+    border-bottom: 1px solid rgba(255,255,255,0.12);
     transition: background 0.25s;
     cursor: default;
   }
-  .svc:hover { background: var(--blue); }
-  .svc:hover .svc-n,
-  .svc:hover .svc-title,
-  .svc:hover .svc-desc { color: var(--cream); }
+  .svc:hover { background: rgba(42,109,181,0.4); }
   .svc-n {
     font-family: var(--mono); font-size: 10px; letter-spacing: 0.1em;
-    color: var(--gray); margin-bottom: 1.25rem; transition: color 0.25s;
+    color: rgba(255,255,255,0.35); margin-bottom: 1.25rem; transition: color 0.25s;
   }
   .svc-title {
     font-family: var(--bebas); font-size: 21px; letter-spacing: 0.04em;
-    color: var(--black); margin-bottom: 0.75rem; line-height: 1.1;
+    color: var(--cream); margin-bottom: 0.75rem; line-height: 1.1;
     transition: color 0.25s;
   }
-  .svc-desc { font-size: 12px; color: #666; line-height: 1.75; transition: color 0.25s; }
+  .svc-desc { font-size: 12px; color: rgba(255,255,255,0.55); line-height: 1.75; transition: color 0.25s; }
 
   /* ── PORTFOLIO ── */
   .portfolio {
@@ -827,17 +843,11 @@
 
 <div class="divider"></div>
 
-<!-- TUBE-02 VIDEO -->
-<section class="video-section">
-  <video autoplay muted loop playsinline class="vid-layer active">
+<!-- SERVICES with tube-02 video background -->
+<section class="services" id="services">
+  <video autoplay muted loop playsinline class="services-video">
     <source src="https://raw.githubusercontent.com/aherndavid/citiit/main/assets/tube-02.mp4" type="video/mp4">
   </video>
-</section>
-
-<div class="divider"></div>
-
-<!-- SERVICES -->
-<section class="services" id="services">
   <div class="services-header">
     <div class="services-num">08</div>
     <div>

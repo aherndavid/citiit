@@ -96,15 +96,15 @@
   .section-overlay-content { position: relative; z-index: 2; padding: 6rem 2.5rem; min-height: 100vh; display: flex; flex-direction: column; justify-content: center; }
   .overlay-header { display: grid; grid-template-columns: auto 1fr; gap: 2.5rem; align-items: end; margin-bottom: 4rem; padding-bottom: 1.5rem; border-bottom: 1px solid rgba(255,255,255,0.15); }
   .overlay-num { font-family: var(--bebas); font-size: 110px; color: rgba(255,255,255,0.06); line-height: 1; letter-spacing: -2px; }
-  .overlay-eyebrow { font-family: var(--mono); font-size: 11px; color: rgba(255,255,255,0.45); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 8px; }
-  .overlay-title { font-family: var(--bebas); font-size: clamp(38px, 4.5vw, 60px); color: var(--cream); letter-spacing: 0.02em; line-height: 1; }
+  .overlay-eyebrow { font-family: var(--mono); font-size: 13px; color: rgba(255,255,255,0.6); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 10px; }
+  .overlay-title { font-family: var(--bebas); font-size: clamp(52px, 6vw, 80px); color: var(--cream); letter-spacing: 0.02em; line-height: 1; }
   .overlay-title span { color: var(--blue); }
   .overlay-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; border-top: 1px solid rgba(255,255,255,0.12); border-left: 1px solid rgba(255,255,255,0.12); }
   .overlay-svc { padding: 2rem 1.5rem; border-right: 1px solid rgba(255,255,255,0.12); border-bottom: 1px solid rgba(255,255,255,0.12); transition: background 0.25s; }
   .overlay-svc:hover { background: rgba(42,109,181,0.4); }
-  .overlay-svc-n { font-family: var(--mono); font-size: 10px; letter-spacing: 0.1em; color: rgba(255,255,255,0.35); margin-bottom: 1.25rem; }
-  .overlay-svc-title { font-family: var(--bebas); font-size: 21px; letter-spacing: 0.04em; color: var(--cream); margin-bottom: 0.75rem; line-height: 1.1; }
-  .overlay-svc-desc { font-size: 12px; color: rgba(255,255,255,0.55); line-height: 1.75; }
+  .overlay-svc-n { font-family: var(--mono); font-size: 12px; letter-spacing: 0.1em; color: rgba(255,255,255,0.45); margin-bottom: 1.25rem; }
+  .overlay-svc-title { font-family: var(--bebas); font-size: 30px; letter-spacing: 0.04em; color: var(--cream); margin-bottom: 0.75rem; line-height: 1.1; }
+  .overlay-svc-desc { font-size: 15px; color: rgba(255,255,255,0.75); line-height: 1.75; }
 
   /* ── ABOUT OVERLAY (inside tube section) ── */
   .about-overlay-grid { display: grid; grid-template-columns: 220px 1fr; gap: 0; position: relative; z-index: 2; width: 100%; }
@@ -116,7 +116,7 @@
   .about-right-col { padding: 0 0 0 4rem; display: flex; flex-direction: column; justify-content: center; }
   .about-heading { font-family: var(--bebas); font-size: clamp(38px, 4.5vw, 60px); color: var(--cream); line-height: 1.05; letter-spacing: 0.02em; margin-bottom: 2rem; }
   .about-heading span { color: var(--blue); }
-  .about-body p { font-size: 17px; color: rgba(240,235,224,0.58); line-height: 1.85; margin-bottom: 1.25rem; }
+  .about-body p { font-size: 19px; color: rgba(240,235,224,0.68); line-height: 1.85; margin-bottom: 1.25rem; }
   .about-body p:last-child { margin-bottom: 0; }
 
   /* ── PORTFOLIO OVERLAY (inside covent/brick section) ── */
@@ -127,10 +127,10 @@
   .port-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: rgba(0,0,0,0.25); }
   .port-card { background: rgba(10,10,10,0.6); border: 1px solid rgba(255,255,255,0.1); padding: 2rem; transition: background 0.2s; }
   .port-card:hover { background: rgba(42,109,181,0.35); }
-  .port-tag { font-family: var(--mono); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(240,235,224,0.38); margin-bottom: 0.75rem; }
-  .port-name { font-family: var(--bebas); font-size: 26px; letter-spacing: 0.04em; color: var(--cream); margin-bottom: 0.5rem; }
-  .port-desc { font-size: 12px; color: rgba(240,235,224,0.52); line-height: 1.75; margin-bottom: 1.5rem; }
-  .port-btn { font-family: var(--mono); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--cream); text-decoration: none; border-bottom: 1px solid rgba(240,235,224,0.3); padding-bottom: 2px; transition: border-color 0.2s; }
+  .port-tag { font-family: var(--mono); font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(240,235,224,0.5); margin-bottom: 0.75rem; }
+  .port-name { font-family: var(--bebas); font-size: 34px; letter-spacing: 0.04em; color: var(--cream); margin-bottom: 0.5rem; }
+  .port-desc { font-size: 15px; color: rgba(240,235,224,0.65); line-height: 1.75; margin-bottom: 1.5rem; }
+  .port-btn { font-family: var(--mono); font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--cream); text-decoration: none; border-bottom: 1px solid rgba(240,235,224,0.3); padding-bottom: 2px; transition: border-color 0.2s; }
   .port-btn:hover { border-color: var(--cream); }
 
   /* ── SPEED TEST ── */
@@ -227,8 +227,8 @@
     .overlay-header { grid-template-columns: 1fr; }
     .overlay-num { display: none; }
     .overlay-svc { padding: 1.25rem 1rem; }
-    .overlay-svc-title { font-size: 18px; }
-    .overlay-svc-desc { font-size: 13px; line-height: 1.6; }
+    .overlay-svc-title { font-size: 24px; }
+    .overlay-svc-desc { font-size: 14px; line-height: 1.6; }
     .port-grid { grid-template-columns: 1fr; }
     .port-grid .port-card:last-child { grid-column: auto; }
     footer { flex-direction: column; text-align: center; }
@@ -298,6 +298,7 @@
 <section class="fullscreen-section" id="services">
   <div class="img-layer active" style="background-image:url('https://raw.githubusercontent.com/aherndavid/citiit/main/assets/phone-boxes.png');" data-group="services"></div>
   <div class="img-layer" style="background-image:url('https://raw.githubusercontent.com/aherndavid/citiit/main/assets/covent-garden-01.JPG');" data-group="services"></div>
+  <div class="img-layer" style="background-image:url('https://raw.githubusercontent.com/aherndavid/citiit/main/assets/taxi.png');" data-group="services"></div>
   <div class="section-overlay-content">
     <div class="overlay-header">
       <div class="overlay-num">08</div>
@@ -354,6 +355,7 @@
 <section class="fullscreen-section" id="portfolio">
   <div class="img-layer active" style="background-image:url('https://raw.githubusercontent.com/aherndavid/citiit/main/assets/covent-garden-01.JPG');" data-group="portfolio"></div>
   <div class="img-layer" style="background-image:url('https://raw.githubusercontent.com/aherndavid/citiit/main/assets/brick-wall.png');" data-group="portfolio"></div>
+  <div class="img-layer" style="background-image:url('https://raw.githubusercontent.com/aherndavid/citiit/main/assets/taxi.png');" data-group="portfolio"></div>
   <div class="section-overlay-content" style="justify-content:center;">
     <div style="position:relative; z-index:2; width:100%;">
       <div class="port-header">
@@ -513,11 +515,12 @@
     v.addEventListener('loadedmetadata', function() { v.playbackRate = 0.65; });
   });
 
-  // ── Image rotator (generic) ──
-  function startRotator(selector, interval) {
-    var layers = document.querySelectorAll(selector);
-    if (!layers.length) return;
+  // ── Image rotator (robust, handles any number of layers) ──
+  function startRotator(layers, interval) {
+    if (!layers || layers.length < 2) return;
     var current = 0;
+    // ensure only first is active at start
+    layers.forEach(function(l, i) { l.classList.toggle('active', i === 0); });
     setInterval(function() {
       layers[current].classList.remove('active');
       current = (current + 1) % layers.length;
@@ -525,10 +528,10 @@
     }, interval);
   }
 
-  // Services section: phone-boxes / covent-garden (10s)
-  startRotator('#services .img-layer', 10000);
-  // Portfolio section: covent-garden / brick-wall (12s)
-  startRotator('#portfolio .img-layer', 12000);
+  // Services section: phone-boxes → covent-garden → taxi (10s)
+  startRotator(Array.from(document.querySelectorAll('#services .img-layer')), 10000);
+  // Portfolio section: covent-garden → brick-wall (12s)
+  startRotator(Array.from(document.querySelectorAll('#portfolio .img-layer')), 12000);
 
   // ── Speed test ──
   function runSpeedTest() {

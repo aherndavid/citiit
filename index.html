@@ -8,7 +8,7 @@
 <link rel="manifest" href="/site.webmanifest">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CitiIT Limited — Creative & Digital Services</title>
+<title>CitiIT Limited — Creative &amp; Digital Services</title>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Mono:wght@400;700&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -24,7 +24,7 @@
     --body: 'DM Sans', sans-serif;
   }
 
-  html { scroll-behavior: smooth; font-size: 120%; }
+  html { scroll-behavior: smooth; font-size: 172.8%; }
 
   body {
     font-family: var(--body);
@@ -41,677 +41,196 @@
     padding: 1rem 2.5rem;
     background: var(--black);
   }
-  .nav-brand {
-    font-family: var(--bebas); font-size: 22px; letter-spacing: 0.1em;
-    color: var(--cream); text-decoration: none;
-  }
+  .nav-brand { font-family: var(--bebas); font-size: 22px; letter-spacing: 0.1em; color: var(--cream); text-decoration: none; }
   .nav-links { display: flex; gap: 2rem; list-style: none; }
-  .nav-links a {
-    font-family: var(--mono); font-size: 11px; color: rgba(240,235,224,0.45);
-    text-decoration: none; letter-spacing: 0.08em; text-transform: uppercase;
-    transition: color 0.2s;
-  }
+  .nav-links a { font-family: var(--mono); font-size: 11px; color: rgba(240,235,224,0.45); text-decoration: none; letter-spacing: 0.08em; text-transform: uppercase; transition: color 0.2s; }
   .nav-links a:hover { color: var(--cream); }
-
-  /* hamburger — mobile only */
-  .burger {
-    display: none; flex-direction: column; gap: 5px;
-    background: none; border: none; cursor: pointer; padding: 4px;
-  }
-  .burger span {
-    display: block; width: 24px; height: 1.5px; background: var(--cream);
-    transition: transform 0.3s, opacity 0.3s;
-  }
+  .burger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 4px; }
+  .burger span { display: block; width: 24px; height: 1.5px; background: var(--cream); transition: transform 0.3s, opacity 0.3s; }
   .burger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
   .burger.open span:nth-child(2) { opacity: 0; }
   .burger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
 
-  /* ── HERO ── */
-  .hero {
+  /* ── SHARED FULLSCREEN SECTION ── */
+  .fullscreen-section {
     min-height: 100vh;
     position: relative; overflow: hidden;
-    padding-top: 60px;
     display: flex; flex-direction: column; justify-content: flex-end;
   }
-  .hero-bg-img {
-    position: absolute; inset: 0; z-index: 0;
-    background: url('https://raw.githubusercontent.com/aherndavid/citiit/main/assets/desk.png') center center / cover no-repeat;
-  }
-  .hero-bg-img::after {
+  .fullscreen-section::after {
     content: '';
     position: absolute; inset: 0;
-    background: linear-gradient(to bottom, rgba(10,10,10,0.4) 0%, rgba(10,10,10,0.55) 50%, rgba(10,10,10,0.85) 100%);
+    background: rgba(10,10,10,0.52);
+    pointer-events: none;
+    z-index: 1;
   }
+
+  /* ── HERO (desk video) ── */
+  .hero { padding-top: 60px; }
+  .hero-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; }
   .hero-watermark {
-    position: absolute; inset: 0; z-index: 1;
+    position: absolute; inset: 0; z-index: 2;
     display: flex; align-items: center; justify-content: center;
     pointer-events: none; overflow: hidden;
   }
-  .hero-watermark span {
-    font-family: var(--bebas);
-    font-size: clamp(120px, 18vw, 280px);
-    letter-spacing: 0.08em; color: rgba(240,235,224,0.06);
-    white-space: nowrap; line-height: 1; user-select: none;
-  }
-  .hero-content {
-    position: relative; z-index: 2;
-    padding: 4rem 3rem 5rem;
-    display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: end;
-  }
-  .hero-right-content {
-    display: flex; flex-direction: column; justify-content: flex-end; padding-bottom: 4px;
-  }
-  .hero-left {
-    /* no longer used as a grid cell — kept for compatibility */
-  }
-  .hero-eyebrow {
-    font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em;
-    text-transform: uppercase; color: rgba(240,235,224,0.5); margin-bottom: 1.5rem;
-    display: flex; align-items: center; gap: 12px;
-  }
+  .hero-watermark span { font-family: var(--bebas); font-size: clamp(120px, 18vw, 280px); letter-spacing: 0.08em; color: rgba(240,235,224,0.06); white-space: nowrap; line-height: 1; user-select: none; }
+  .hero-content { position: relative; z-index: 3; padding: 4rem 3rem 5rem; display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: end; }
+  .hero-right-content { display: flex; flex-direction: column; justify-content: flex-end; padding-bottom: 4px; }
+  .hero-eyebrow { font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(240,235,224,0.5); margin-bottom: 1.5rem; display: flex; align-items: center; gap: 12px; }
   .hero-eyebrow::before { content: ''; width: 32px; height: 1px; background: rgba(240,235,224,0.4); }
-  .hero-title {
-    font-family: var(--bebas); font-size: clamp(100px, 13vw, 180px);
-    line-height: 0.88; letter-spacing: 0.01em; color: var(--cream);
-    margin-bottom: 0;
-  }
+  .hero-title { font-family: var(--bebas); font-size: clamp(100px, 13vw, 180px); line-height: 0.88; letter-spacing: 0.01em; color: var(--cream); }
   .hero-title span { color: var(--blue); }
-  .hero-desc {
-    font-size: 20px; color: #ffffff; line-height: 1.7; max-width: 440px;
-    margin-bottom: 1.5rem; font-style: italic; font-weight: 300;
-  }
-  .hero-signature {
-    width: 320px; max-width: 100%;
-    display: block;
-    margin-bottom: 2rem;
-    filter: brightness(0) invert(1);
-  }
-  .hero-cta {
-    display: inline-flex; align-items: center; gap: 10px;
-    background: var(--blue); color: var(--white);
-    font-family: var(--mono); font-size: 11px; letter-spacing: 0.12em;
-    text-transform: uppercase; text-decoration: none;
-    padding: 14px 28px; transition: background 0.2s; align-self: flex-start;
-  }
+  .hero-desc { font-size: 20px; color: #ffffff; line-height: 1.7; max-width: 440px; margin-bottom: 1.5rem; font-style: italic; font-weight: 300; }
+  .hero-signature { width: 320px; max-width: 100%; display: block; margin-bottom: 2rem; filter: brightness(0) invert(1); }
+  .hero-cta { display: inline-flex; align-items: center; gap: 10px; background: var(--blue); color: var(--white); font-family: var(--mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; text-decoration: none; padding: 14px 28px; transition: background 0.2s; align-self: flex-start; }
   .hero-cta:hover { background: var(--black); }
-  .hero-right { display: none; }
-  .geo-stripe, .geo-circle, .geo-rect, .hero-logo-text { display: none; }
 
-  /* ── OVERLAY CONTENT (video + image sections) ── */
-  .section-overlay-content {
-    position: relative; z-index: 2;
-    padding: 6rem 2.5rem;
-    min-height: 100vh;
-    display: flex; flex-direction: column; justify-content: center;
-  }
-  .overlay-header {
-    display: grid; grid-template-columns: auto 1fr; gap: 2.5rem; align-items: end;
-    margin-bottom: 4rem; padding-bottom: 1.5rem;
-    border-bottom: 1px solid rgba(255,255,255,0.15);
-  }
-  .overlay-num {
-    font-family: var(--bebas); font-size: 110px;
-    color: rgba(255,255,255,0.06); line-height: 1; letter-spacing: -2px;
-  }
-  .overlay-eyebrow {
-    font-family: var(--mono); font-size: 11px; color: rgba(255,255,255,0.45);
-    letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 8px;
-  }
-  .overlay-title {
-    font-family: var(--bebas); font-size: clamp(38px, 4.5vw, 60px);
-    color: var(--cream); letter-spacing: 0.02em; line-height: 1;
-  }
+  /* ── VIDEO BACKGROUNDS ── */
+  .bg-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; }
+
+  /* ── IMAGE ROTATION LAYERS ── */
+  .img-layer { position: absolute; inset: 0; background-size: cover; background-position: center; opacity: 0; transition: opacity 1.5s ease; z-index: 0; }
+  .img-layer.active { opacity: 1; }
+
+  /* ── SHARED OVERLAY TEXT ── */
+  .section-overlay-content { position: relative; z-index: 2; padding: 6rem 2.5rem; min-height: 100vh; display: flex; flex-direction: column; justify-content: center; }
+  .overlay-header { display: grid; grid-template-columns: auto 1fr; gap: 2.5rem; align-items: end; margin-bottom: 4rem; padding-bottom: 1.5rem; border-bottom: 1px solid rgba(255,255,255,0.15); }
+  .overlay-num { font-family: var(--bebas); font-size: 110px; color: rgba(255,255,255,0.06); line-height: 1; letter-spacing: -2px; }
+  .overlay-eyebrow { font-family: var(--mono); font-size: 11px; color: rgba(255,255,255,0.45); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 8px; }
+  .overlay-title { font-family: var(--bebas); font-size: clamp(38px, 4.5vw, 60px); color: var(--cream); letter-spacing: 0.02em; line-height: 1; }
   .overlay-title span { color: var(--blue); }
-  .overlay-grid {
-    display: grid; grid-template-columns: repeat(4, 1fr); gap: 0;
-    border-top: 1px solid rgba(255,255,255,0.12);
-    border-left: 1px solid rgba(255,255,255,0.12);
-  }
-  .overlay-svc {
-    padding: 2rem 1.5rem;
-    border-right: 1px solid rgba(255,255,255,0.12);
-    border-bottom: 1px solid rgba(255,255,255,0.12);
-    transition: background 0.25s;
-  }
+  .overlay-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; border-top: 1px solid rgba(255,255,255,0.12); border-left: 1px solid rgba(255,255,255,0.12); }
+  .overlay-svc { padding: 2rem 1.5rem; border-right: 1px solid rgba(255,255,255,0.12); border-bottom: 1px solid rgba(255,255,255,0.12); transition: background 0.25s; }
   .overlay-svc:hover { background: rgba(42,109,181,0.4); }
-  .overlay-svc-n {
-    font-family: var(--mono); font-size: 10px; letter-spacing: 0.1em;
-    color: rgba(255,255,255,0.35); margin-bottom: 1.25rem;
-  }
-  .overlay-svc-title {
-    font-family: var(--bebas); font-size: 21px; letter-spacing: 0.04em;
-    color: var(--cream); margin-bottom: 0.75rem; line-height: 1.1;
-  }
+  .overlay-svc-n { font-family: var(--mono); font-size: 10px; letter-spacing: 0.1em; color: rgba(255,255,255,0.35); margin-bottom: 1.25rem; }
+  .overlay-svc-title { font-family: var(--bebas); font-size: 21px; letter-spacing: 0.04em; color: var(--cream); margin-bottom: 0.75rem; line-height: 1.1; }
   .overlay-svc-desc { font-size: 12px; color: rgba(255,255,255,0.55); line-height: 1.75; }
 
-  /* ── IMAGE ROTATION SECTION ── */
-  .img-rotation-section {
-    min-height: 100vh;
-    position: relative; overflow: hidden;
-  }
-  .img-layer {
-    position: absolute; inset: 0;
-    background-size: cover;
-    background-position: center center;
-    filter: grayscale(100%);
-    opacity: 0;
-    transition: opacity 1.5s ease;
-  }
-  .img-layer.active { opacity: 1; }
-  .img-rotation-section::after {
-    content: '';
-    position: absolute; inset: 0;
-    background: rgba(10,10,10,0.4);
-    pointer-events: none;
-    z-index: 1;
-  }
-
-  /* ── ROOFTOP VIDEO SECTION ── */
-  .rooftop-section {
-    min-height: 100vh;
-    position: relative; overflow: hidden;
-    display: grid; grid-template-columns: 220px 1fr;
-  }
-  .rooftop-video {
-    position: absolute; inset: 0;
-    width: 100%; height: 100%;
-    object-fit: cover;
-    filter: grayscale(100%);
-    z-index: 0;
-  }
-  .rooftop-section::before {
-    content: '';
-    position: absolute; inset: 0;
-    background: rgba(10,10,10,0.62);
-    z-index: 1;
-    pointer-events: none;
-  }
-  .rooftop-section .about-left,
-  .rooftop-section .about-right {
-    position: relative; z-index: 2;
-  }
-  .rooftop-section .about-watermark { color: rgba(255,255,255,0.05); }
-  .rooftop-section .stat-num { color: var(--blue); }
-  .rooftop-section .stat-lbl { color: rgba(255,255,255,0.3); }
-  .rooftop-section .about-heading { color: var(--cream); }
-  .rooftop-section .about-body p { color: rgba(240,235,224,0.65); }
-
-  /* ── BRICK WALL SECTION ── */
-  .brick-wall {
-    min-height: 100vh;
-    position: relative; overflow: hidden;
-  }
-  .brick-wall-bg {
-    position: absolute; inset: 0; z-index: 0;
-    background: url('https://raw.githubusercontent.com/aherndavid/citiit/main/assets/brick-wall.png') center center / cover no-repeat;
-    filter: grayscale(100%);
-  }
-  .brick-wall-bg::after {
-    content: '';
-    position: absolute; inset: 0;
-    background: rgba(10,10,10,0.5);
-  }
-
-  /* ── VIDEO SECTION ── */
-  .video-section {
-    min-height: 100vh;
-    position: relative; overflow: hidden;
-  }
-  .vid-layer {
-    position: absolute; inset: 0;
-    width: 100%; height: 100%;
-    object-fit: cover;
-    filter: grayscale(100%);
-    opacity: 0;
-    transition: opacity 1.5s ease;
-  }
-  .vid-layer.active {
-    opacity: 1;
-  }
-  .video-section::after {
-    content: '';
-    position: absolute; inset: 0;
-    background: rgba(10,10,10,0.4);
-    pointer-events: none;
-    z-index: 1;
-  }
-
-  /* ── DIVIDER ── */
-  .divider {
-    height: 6px;
-    background: repeating-linear-gradient(
-      90deg, var(--blue) 0, var(--blue) 40px, var(--black) 40px, var(--black) 80px
-    );
-  }
-
-  /* ── ABOUT ── */
-  .about {
-    background: var(--black);
-    display: grid; grid-template-columns: 220px 1fr;
-    min-height: 80vh;
-  }
-  .about-left {
-    padding: 5rem 2rem;
-    border-right: 1px solid rgba(255,255,255,0.07);
-    display: flex; flex-direction: column; justify-content: space-between;
-  }
-  .about-watermark {
-    font-family: var(--bebas); font-size: 72px;
-    color: rgba(255,255,255,0.05); line-height: 1; letter-spacing: 0.02em;
-    writing-mode: vertical-rl; text-orientation: mixed;
-    transform: rotate(180deg); align-self: flex-start;
-  }
+  /* ── ABOUT OVERLAY (inside tube section) ── */
+  .about-overlay-grid { display: grid; grid-template-columns: 220px 1fr; gap: 0; position: relative; z-index: 2; width: 100%; }
+  .about-left-col { padding: 0 2rem 0 0; border-right: 1px solid rgba(255,255,255,0.12); display: flex; flex-direction: column; justify-content: space-between; min-height: 480px; }
+  .about-watermark-vert { font-family: var(--bebas); font-size: 72px; color: rgba(255,255,255,0.05); line-height: 1; letter-spacing: 0.02em; writing-mode: vertical-rl; transform: rotate(180deg); }
   .about-stats { display: flex; flex-direction: column; gap: 2.5rem; }
-  .stat-num {
-    font-family: var(--bebas); font-size: 54px; color: var(--blue);
-    line-height: 1; letter-spacing: 0.02em;
-  }
-  .stat-lbl {
-    font-family: var(--mono); font-size: 10px; color: rgba(255,255,255,0.3);
-    letter-spacing: 0.1em; text-transform: uppercase; margin-top: 4px;
-  }
-  .about-right {
-    padding: 5rem 4rem;
-    display: flex; flex-direction: column; justify-content: center;
-  }
-  .about-heading {
-    font-family: var(--bebas); font-size: clamp(38px, 4.5vw, 60px);
-    color: var(--cream); line-height: 1.05; letter-spacing: 0.02em;
-    margin-bottom: 2rem;
-  }
+  .stat-num { font-family: var(--bebas); font-size: 54px; color: var(--blue); line-height: 1; letter-spacing: 0.02em; }
+  .stat-lbl { font-family: var(--mono); font-size: 10px; color: rgba(255,255,255,0.3); letter-spacing: 0.1em; text-transform: uppercase; margin-top: 4px; }
+  .about-right-col { padding: 0 0 0 4rem; display: flex; flex-direction: column; justify-content: center; }
+  .about-heading { font-family: var(--bebas); font-size: clamp(38px, 4.5vw, 60px); color: var(--cream); line-height: 1.05; letter-spacing: 0.02em; margin-bottom: 2rem; }
   .about-heading span { color: var(--blue); }
-  .about-body p {
-    font-size: 17px; color: rgba(240,235,224,0.58); line-height: 1.85;
-    margin-bottom: 1.25rem;
-  }
+  .about-body p { font-size: 17px; color: rgba(240,235,224,0.58); line-height: 1.85; margin-bottom: 1.25rem; }
   .about-body p:last-child { margin-bottom: 0; }
 
-  /* ── SERVICES ── */
-  .services {
-    background: transparent;
-    padding: 5rem 2.5rem;
-    position: relative; overflow: hidden;
-  }
-  .services-video {
-    position: absolute; inset: 0;
-    width: 100%; height: 100%;
-    object-fit: cover;
-    filter: grayscale(100%);
-    z-index: 0;
-  }
-  .services::before {
-    content: '';
-    position: absolute; inset: 0;
-    background: rgba(10,10,10,0.65);
-    z-index: 1;
-    pointer-events: none;
-  }
-  .services-header {
-    position: relative; z-index: 2;
-    display: grid; grid-template-columns: auto 1fr; gap: 2.5rem; align-items: end;
-    margin-bottom: 4rem; padding-bottom: 1.5rem;
-    border-bottom: 1px solid rgba(255,255,255,0.15);
-  }
-  .services-num {
-    font-family: var(--bebas); font-size: 110px;
-    color: rgba(255,255,255,0.06); line-height: 1; letter-spacing: -2px;
-  }
-  .services-eyebrow {
-    font-family: var(--mono); font-size: 11px; color: rgba(255,255,255,0.45);
-    letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 8px;
-  }
-  .services-title {
-    font-family: var(--bebas); font-size: clamp(38px, 4.5vw, 60px);
-    color: var(--cream); letter-spacing: 0.02em; line-height: 1;
-  }
-  .services-title span { color: var(--blue); }
-  .services-grid {
-    position: relative; z-index: 2;
-    display: grid; grid-template-columns: repeat(4, 1fr); gap: 0;
-    border-top: 1px solid rgba(255,255,255,0.12);
-    border-left: 1px solid rgba(255,255,255,0.12);
-  }
-  .svc {
-    padding: 2rem 1.5rem;
-    border-right: 1px solid rgba(255,255,255,0.12);
-    border-bottom: 1px solid rgba(255,255,255,0.12);
-    transition: background 0.25s;
-    cursor: default;
-  }
-  .svc:hover { background: rgba(42,109,181,0.4); }
-  .svc-n {
-    font-family: var(--mono); font-size: 10px; letter-spacing: 0.1em;
-    color: rgba(255,255,255,0.35); margin-bottom: 1.25rem; transition: color 0.25s;
-  }
-  .svc-title {
-    font-family: var(--bebas); font-size: 21px; letter-spacing: 0.04em;
-    color: var(--cream); margin-bottom: 0.75rem; line-height: 1.1;
-    transition: color 0.25s;
-  }
-  .svc-desc { font-size: 12px; color: rgba(255,255,255,0.55); line-height: 1.75; transition: color 0.25s; }
-
-  /* ── PORTFOLIO ── */
-  .portfolio {
-    background: var(--blue);
-    padding: 5rem 2.5rem;
-    position: relative; overflow: hidden;
-  }
-  .portfolio::before {
-    content: 'WORK';
-    position: absolute; right: -10px; top: 50%; transform: translateY(-50%);
-    font-family: var(--bebas); font-size: 220px;
-    color: rgba(0,0,0,0.1); line-height: 1; pointer-events: none;
-  }
-  .port-header {
-    display: flex; justify-content: space-between; align-items: flex-end;
-    margin-bottom: 3rem; position: relative; z-index: 1;
-  }
-  .port-title {
-    font-family: var(--bebas); font-size: clamp(38px, 4.5vw, 60px);
-    color: var(--cream); letter-spacing: 0.02em;
-  }
-  .port-link {
-    font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em;
-    text-transform: uppercase; color: var(--cream); text-decoration: none;
-    border-bottom: 1px solid rgba(240,235,224,0.35); padding-bottom: 2px;
-    transition: border-color 0.2s;
-  }
+  /* ── PORTFOLIO OVERLAY (inside covent/brick section) ── */
+  .port-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 3rem; border-bottom: 1px solid rgba(255,255,255,0.15); padding-bottom: 1.5rem; }
+  .port-title { font-family: var(--bebas); font-size: clamp(38px, 4.5vw, 60px); color: var(--cream); letter-spacing: 0.02em; }
+  .port-link { font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--cream); text-decoration: none; border-bottom: 1px solid rgba(240,235,224,0.35); padding-bottom: 2px; transition: border-color 0.2s; }
   .port-link:hover { border-color: var(--cream); }
-  .port-grid {
-    display: grid; grid-template-columns: repeat(3, 1fr);
-    gap: 1px; background: rgba(0,0,0,0.18); position: relative; z-index: 1;
-  }
-  .port-card {
-    background: rgba(240,235,224,0.06);
-    padding: 2rem; transition: background 0.2s;
-  }
-  .port-card:hover { background: rgba(240,235,224,0.12); }
-  .port-tag {
-    font-family: var(--mono); font-size: 10px; letter-spacing: 0.1em;
-    text-transform: uppercase; color: rgba(240,235,224,0.38); margin-bottom: 0.75rem;
-  }
-  .port-name {
-    font-family: var(--bebas); font-size: 26px; letter-spacing: 0.04em;
-    color: var(--cream); margin-bottom: 0.5rem;
-  }
-  .port-desc {
-    font-size: 12px; color: rgba(240,235,224,0.52); line-height: 1.75; margin-bottom: 1.5rem;
-  }
-  .port-btn {
-    font-family: var(--mono); font-size: 10px; letter-spacing: 0.1em;
-    text-transform: uppercase; color: var(--cream); text-decoration: none;
-    border: 1px solid rgba(240,235,224,0.3); padding: 8px 16px;
-    display: inline-block; transition: background 0.2s, color 0.2s, border-color 0.2s;
-  }
-  .port-btn:hover { background: var(--cream); color: var(--blue); border-color: var(--cream); }
+  .port-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: rgba(0,0,0,0.25); }
+  .port-card { background: rgba(10,10,10,0.6); border: 1px solid rgba(255,255,255,0.1); padding: 2rem; transition: background 0.2s; }
+  .port-card:hover { background: rgba(42,109,181,0.35); }
+  .port-tag { font-family: var(--mono); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(240,235,224,0.38); margin-bottom: 0.75rem; }
+  .port-name { font-family: var(--bebas); font-size: 26px; letter-spacing: 0.04em; color: var(--cream); margin-bottom: 0.5rem; }
+  .port-desc { font-size: 12px; color: rgba(240,235,224,0.52); line-height: 1.75; margin-bottom: 1.5rem; }
+  .port-btn { font-family: var(--mono); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--cream); text-decoration: none; border-bottom: 1px solid rgba(240,235,224,0.3); padding-bottom: 2px; transition: border-color 0.2s; }
+  .port-btn:hover { border-color: var(--cream); }
+
+  /* ── SPEED TEST ── */
+  .speedtest { background: var(--black); padding: 5rem 2.5rem; position: relative; overflow: hidden; }
+  .speedtest::before { content: 'SPEED'; position: absolute; left: -10px; top: 50%; transform: translateY(-50%); font-family: var(--bebas); font-size: 220px; color: rgba(255,255,255,0.03); line-height: 1; pointer-events: none; }
+  .st-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 3rem; padding-bottom: 1.5rem; border-bottom: 1px solid rgba(255,255,255,0.08); position: relative; z-index: 1; }
+  .st-title { font-family: var(--bebas); font-size: clamp(38px, 4.5vw, 60px); color: var(--cream); letter-spacing: 0.02em; }
+  .st-eyebrow { font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(240,235,224,0.3); margin-bottom: 8px; }
+  .st-body { position: relative; z-index: 1; display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: start; }
+  .st-panel { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); padding: 2.5rem; }
+  .st-gauge-wrap { display: flex; flex-direction: column; align-items: center; margin-bottom: 2rem; }
+  .st-gauge { position: relative; width: 200px; height: 110px; overflow: hidden; margin-bottom: 1rem; }
+  .st-gauge svg { width: 200px; height: 200px; position: absolute; top: 0; left: 0; }
+  .st-speed-num { font-family: var(--bebas); font-size: 56px; color: var(--cream); line-height: 1; letter-spacing: 0.02em; text-align: center; }
+  .st-speed-unit { font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(240,235,224,0.4); text-align: center; margin-top: 2px; }
+  .st-run-btn { width: 100%; font-family: var(--mono); font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--cream); background: var(--blue); border: none; padding: 16px; cursor: pointer; transition: background 0.2s; margin-bottom: 2rem; }
+  .st-run-btn:hover { background: #1f55a0; }
+  .st-run-btn:disabled { background: rgba(255,255,255,0.1); cursor: not-allowed; color: rgba(240,235,224,0.3); }
+  .st-metrics { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: rgba(255,255,255,0.06); margin-bottom: 1.5rem; }
+  .st-metric { background: var(--black); padding: 1rem; }
+  .st-metric-lbl { font-family: var(--mono); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(240,235,224,0.3); margin-bottom: 6px; }
+  .st-metric-val { font-family: var(--bebas); font-size: 28px; color: var(--cream); letter-spacing: 0.04em; line-height: 1; }
+  .st-metric-unit { font-family: var(--mono); font-size: 10px; color: rgba(240,235,224,0.3); letter-spacing: 0.06em; }
+  .st-status { font-family: var(--mono); font-size: 11px; color: rgba(240,235,224,0.4); letter-spacing: 0.06em; text-align: center; min-height: 20px; }
+  .st-status.running { color: var(--blue); }
+  .st-status.done { color: #4caf82; }
+  .st-info-panel { display: flex; flex-direction: column; gap: 1.5rem; }
+  .st-info-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); padding: 1.5rem; }
+  .st-info-title { font-family: var(--bebas); font-size: 20px; letter-spacing: 0.04em; color: var(--cream); margin-bottom: 0.5rem; }
+  .st-info-desc { font-size: 12px; color: rgba(240,235,224,0.45); line-height: 1.7; }
+  .st-bar-wrap { margin-top: 0.75rem; }
+  .st-bar-bg { height: 4px; background: rgba(255,255,255,0.08); position: relative; overflow: hidden; }
+  .st-bar-fill { height: 100%; background: var(--blue); width: 0%; transition: width 0.4s ease; }
+  .st-tip { font-family: var(--mono); font-size: 10px; letter-spacing: 0.06em; color: rgba(240,235,224,0.25); line-height: 1.7; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.06); }
 
   /* ── CONTACT ── */
-  .contact {
-    background: var(--cream);
-    display: grid; grid-template-columns: 1fr 1fr; min-height: 70vh;
-  }
-  .contact-left {
-    background: var(--black); padding: 5rem 3rem;
-    display: flex; flex-direction: column; justify-content: space-between;
-  }
-  .contact-heading {
-    font-family: var(--bebas); font-size: clamp(48px, 5.5vw, 76px);
-    color: var(--cream); line-height: 0.95; letter-spacing: 0.02em;
-  }
+  .contact { display: grid; grid-template-columns: 1fr 1fr; min-height: 60vh; }
+  .contact-left { background: var(--black); padding: 5rem 3rem; display: flex; flex-direction: column; justify-content: space-between; min-height: 500px; }
+  .contact-eyebrow { font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(240,235,224,0.35); margin-bottom: 1.5rem; }
+  .contact-heading { font-family: var(--bebas); font-size: clamp(50px, 8vw, 100px); color: var(--cream); line-height: 0.9; letter-spacing: 0.01em; }
   .contact-heading span { color: var(--blue); }
-  .contact-eyebrow {
-    font-family: var(--mono); font-size: 10px; letter-spacing: 0.12em;
-    text-transform: uppercase; color: rgba(240,235,224,0.3); margin-bottom: 1rem;
-  }
   .contact-info { display: flex; flex-direction: column; gap: 1.25rem; }
-  .ci-row { display: flex; flex-direction: column; gap: 3px; }
-  .ci-lbl {
-    font-family: var(--mono); font-size: 10px; letter-spacing: 0.1em;
-    text-transform: uppercase; color: rgba(240,235,224,0.28);
-  }
-  .ci-val { font-size: 14px; color: var(--cream); }
-  .ci-val a { color: var(--cream); text-decoration: none; transition: color 0.2s; }
-  .ci-val a:hover { color: var(--blue); }
-
-  .contact-right {
-    padding: 5rem 3rem;
-    display: flex; flex-direction: column; justify-content: center;
-  }
-  .form-title {
-    font-family: var(--bebas); font-size: 32px; letter-spacing: 0.04em;
-    color: var(--black); margin-bottom: 2rem;
-  }
+  .ci-row { display: flex; flex-direction: column; gap: 2px; }
+  .ci-lbl { font-family: var(--mono); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(240,235,224,0.25); }
+  .ci-val { font-size: 15px; color: rgba(240,235,224,0.7); }
+  .ci-val a { color: rgba(240,235,224,0.7); text-decoration: none; border-bottom: 1px solid rgba(240,235,224,0.2); transition: color 0.2s; }
+  .ci-val a:hover { color: var(--cream); }
+  .contact-right { background: var(--cream); padding: 5rem 3rem; display: flex; flex-direction: column; justify-content: center; }
+  .form-title { font-family: var(--bebas); font-size: 32px; letter-spacing: 0.04em; color: var(--black); margin-bottom: 2rem; }
   form { display: flex; flex-direction: column; gap: 1.25rem; }
   .fg { display: flex; flex-direction: column; gap: 6px; }
-  .fg label {
-    font-family: var(--mono); font-size: 10px; letter-spacing: 0.1em;
-    text-transform: uppercase; color: var(--gray);
-  }
-  .fg input, .fg textarea, .fg select {
-    font-family: var(--body); font-size: 13px; color: var(--black);
-    background: transparent; border: none;
-    border-bottom: 1px solid rgba(0,0,0,0.18);
-    padding: 10px 0; outline: none; transition: border-color 0.2s;
-    -webkit-appearance: none; appearance: none; border-radius: 0; width: 100%;
-  }
+  .fg label { font-family: var(--mono); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gray); }
+  .fg input, .fg textarea, .fg select { font-family: var(--body); font-size: 13px; color: var(--black); background: transparent; border: none; border-bottom: 1px solid rgba(0,0,0,0.18); padding: 10px 0; outline: none; transition: border-color 0.2s; -webkit-appearance: none; appearance: none; border-radius: 0; width: 100%; }
   .fg input:focus, .fg textarea:focus, .fg select:focus { border-color: var(--blue); }
   .fg textarea { resize: vertical; min-height: 100px; }
-  .form-submit {
-    font-family: var(--mono); font-size: 11px; letter-spacing: 0.12em;
-    text-transform: uppercase; color: var(--cream);
-    background: var(--black); border: none;
-    padding: 14px 28px; cursor: pointer; align-self: flex-start;
-    transition: background 0.2s; margin-top: 0.5rem;
-  }
+  .form-submit { font-family: var(--mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--cream); background: var(--black); border: none; padding: 14px 28px; cursor: pointer; align-self: flex-start; transition: background 0.2s; margin-top: 0.5rem; }
   .form-submit:hover { background: var(--blue); }
-  #confirm {
-    font-size: 12px; color: var(--blue); display: none;
-    margin-top: 0.5rem; font-family: var(--mono); letter-spacing: 0.06em;
-  }
+  #confirm { font-size: 12px; color: var(--blue); display: none; margin-top: 0.5rem; font-family: var(--mono); letter-spacing: 0.06em; }
+
+  /* ── DIVIDER ── */
+  .divider { height: 6px; background: repeating-linear-gradient(90deg, var(--blue) 0, var(--blue) 40px, var(--black) 40px, var(--black) 80px); }
 
   /* ── FOOTER ── */
-  footer {
-    background: var(--black); padding: 2rem 2.5rem;
-    display: flex; justify-content: space-between; align-items: center;
-    flex-wrap: wrap; gap: 1rem;
-  }
-  .foot-brand {
-    font-family: var(--bebas); font-size: 18px;
-    letter-spacing: 0.1em; color: var(--cream);
-  }
-  .foot-info {
-    font-family: var(--mono); font-size: 10px;
-    color: rgba(255,255,255,0.22); letter-spacing: 0.06em;
-    text-align: right; line-height: 1.9;
-  }
+  footer { background: var(--black); padding: 2rem 2.5rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+  .foot-brand { font-family: var(--bebas); font-size: 18px; letter-spacing: 0.1em; color: var(--cream); }
+  .foot-info { font-family: var(--mono); font-size: 10px; color: rgba(255,255,255,0.22); letter-spacing: 0.06em; text-align: right; line-height: 1.9; }
   .foot-info a { color: rgba(255,255,255,0.22); text-decoration: none; transition: color 0.2s; }
   .foot-info a:hover { color: var(--cream); }
 
   /* ── RESPONSIVE ── */
-  /* ── SPEED TEST ── */
-  .speedtest {
-    background: var(--black);
-    padding: 5rem 2.5rem;
-    position: relative; overflow: hidden;
-  }
-  .speedtest::before {
-    content: 'SPEED';
-    position: absolute; left: -10px; top: 50%; transform: translateY(-50%);
-    font-family: var(--bebas); font-size: 220px;
-    color: rgba(255,255,255,0.03); line-height: 1; pointer-events: none;
-  }
-  .st-header {
-    display: flex; justify-content: space-between; align-items: flex-end;
-    margin-bottom: 3rem; padding-bottom: 1.5rem;
-    border-bottom: 1px solid rgba(255,255,255,0.08);
-    position: relative; z-index: 1;
-  }
-  .st-title {
-    font-family: var(--bebas); font-size: clamp(38px, 4.5vw, 60px);
-    color: var(--cream); letter-spacing: 0.02em;
-  }
-  .st-eyebrow {
-    font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em;
-    text-transform: uppercase; color: rgba(240,235,224,0.3); margin-bottom: 8px;
-  }
-  .st-body {
-    position: relative; z-index: 1;
-    display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: start;
-  }
-  .st-panel {
-    background: rgba(255,255,255,0.04);
-    border: 1px solid rgba(255,255,255,0.08);
-    padding: 2.5rem;
-  }
-  .st-gauge-wrap {
-    display: flex; flex-direction: column; align-items: center;
-    margin-bottom: 2rem;
-  }
-  .st-gauge {
-    position: relative; width: 200px; height: 110px; overflow: hidden;
-    margin-bottom: 1rem;
-  }
-  .st-gauge svg { width: 200px; height: 200px; position: absolute; top: 0; left: 0; }
-  .st-speed-num {
-    font-family: var(--bebas); font-size: 56px; color: var(--cream);
-    line-height: 1; letter-spacing: 0.02em; text-align: center;
-  }
-  .st-speed-unit {
-    font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em;
-    text-transform: uppercase; color: rgba(240,235,224,0.4); text-align: center;
-    margin-top: 2px;
-  }
-  .st-run-btn {
-    width: 100%; font-family: var(--mono); font-size: 12px;
-    letter-spacing: 0.12em; text-transform: uppercase;
-    color: var(--cream); background: var(--blue); border: none;
-    padding: 16px; cursor: pointer; transition: background 0.2s;
-    margin-bottom: 2rem;
-  }
-  .st-run-btn:hover { background: #1f55a0; }
-  .st-run-btn:disabled { background: rgba(255,255,255,0.1); cursor: not-allowed; color: rgba(240,235,224,0.3); }
-  .st-metrics {
-    display: grid; grid-template-columns: 1fr 1fr; gap: 1px;
-    background: rgba(255,255,255,0.06); margin-bottom: 1.5rem;
-  }
-  .st-metric {
-    background: var(--black); padding: 1rem;
-  }
-  .st-metric-lbl {
-    font-family: var(--mono); font-size: 10px; letter-spacing: 0.1em;
-    text-transform: uppercase; color: rgba(240,235,224,0.3); margin-bottom: 6px;
-  }
-  .st-metric-val {
-    font-family: var(--bebas); font-size: 28px; color: var(--cream);
-    letter-spacing: 0.04em; line-height: 1;
-  }
-  .st-metric-unit {
-    font-family: var(--mono); font-size: 10px; color: rgba(240,235,224,0.3);
-    letter-spacing: 0.06em;
-  }
-  .st-status {
-    font-family: var(--mono); font-size: 11px; color: rgba(240,235,224,0.4);
-    letter-spacing: 0.06em; text-align: center; min-height: 20px;
-  }
-  .st-status.running { color: var(--blue); }
-  .st-status.done { color: #4caf82; }
-  .st-info-panel {
-    display: flex; flex-direction: column; gap: 1.5rem;
-  }
-  .st-info-card {
-    background: rgba(255,255,255,0.04);
-    border: 1px solid rgba(255,255,255,0.08);
-    padding: 1.5rem;
-  }
-  .st-info-title {
-    font-family: var(--bebas); font-size: 20px; letter-spacing: 0.04em;
-    color: var(--cream); margin-bottom: 0.5rem;
-  }
-  .st-info-desc {
-    font-size: 12px; color: rgba(240,235,224,0.45); line-height: 1.7;
-  }
-  .st-bar-wrap { margin-top: 0.75rem; }
-  .st-bar-bg {
-    height: 4px; background: rgba(255,255,255,0.08); position: relative; overflow: hidden;
-  }
-  .st-bar-fill {
-    height: 100%; background: var(--blue); width: 0%;
-    transition: width 0.4s ease;
-  }
-  .st-bar-labels {
-    display: flex; justify-content: space-between;
-    font-family: var(--mono); font-size: 9px;
-    color: rgba(240,235,224,0.25); margin-top: 4px; letter-spacing: 0.06em;
-  }
-  .st-tip {
-    font-family: var(--mono); font-size: 10px; letter-spacing: 0.06em;
-    color: rgba(240,235,224,0.25); line-height: 1.7;
-    padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.06);
-  }
-
-  @media (max-width: 900px) {
-    .st-body { grid-template-columns: 1fr; }
-  }
-
   @media (max-width: 900px) {
     .hero-content { grid-template-columns: 1fr; padding: 3rem 1.5rem 3rem; }
     .hero-right-content { padding-bottom: 0; }
-
-    .about { grid-template-columns: 1fr; }
-    .about-left {
-      flex-direction: row; padding: 2.5rem 2rem;
-      border-right: none; border-bottom: 1px solid rgba(255,255,255,0.07);
-      align-items: center; flex-wrap: wrap; gap: 2rem;
-    }
-    .about-watermark { writing-mode: horizontal-tb; transform: none; font-size: 40px; }
+    .about-overlay-grid { grid-template-columns: 1fr; }
+    .about-left-col { flex-direction: row; padding: 0 0 2rem 0; border-right: none; border-bottom: 1px solid rgba(255,255,255,0.1); min-height: auto; align-items: center; flex-wrap: wrap; gap: 2rem; }
+    .about-watermark-vert { writing-mode: horizontal-tb; transform: none; font-size: 40px; }
     .about-stats { flex-direction: row; gap: 2rem; }
-    .about-right { padding: 3rem 2rem; }
-
-    /* Rooftop section mobile */
-    .rooftop-section { grid-template-columns: 1fr; display: flex; flex-direction: column; }
-    .rooftop-section .about-left {
-      flex-direction: row; padding: 2.5rem 2rem;
-      border-right: none; border-bottom: 1px solid rgba(255,255,255,0.07);
-      align-items: center; flex-wrap: wrap; gap: 2rem;
-    }
-    .rooftop-section .about-watermark { writing-mode: horizontal-tb; transform: none; font-size: 40px; }
-    .rooftop-section .about-stats { flex-direction: row; gap: 2rem; }
-    .rooftop-section .about-right { padding: 3rem 2rem; }
-    .rooftop-section .about-heading { font-size: clamp(32px, 8vw, 48px); }
-    .rooftop-section .about-body p { font-size: 15px; }
-
-    /* Overlay grid — 2 columns on tablet */
+    .about-right-col { padding: 2rem 0 0 0; }
     .overlay-grid { grid-template-columns: repeat(2, 1fr) !important; }
     .section-overlay-content { padding: 4rem 1.5rem; }
     .overlay-num { font-size: 64px; }
-
-    .services-grid { grid-template-columns: repeat(2, 1fr); }
     .port-grid { grid-template-columns: 1fr 1fr; }
     .port-grid .port-card:last-child { grid-column: 1 / -1; }
     .contact { grid-template-columns: 1fr; }
     .contact-left { min-height: auto; padding: 3rem 2rem; }
     .contact-right { padding: 3rem 2rem; }
+    .st-body { grid-template-columns: 1fr; }
     .nav-links { display: none; position: absolute; top: 60px; left: 0; right: 0; background: var(--black); flex-direction: column; padding: 1.5rem 2.5rem; gap: 1.25rem; border-top: 1px solid rgba(255,255,255,0.08); }
     .nav-links.open { display: flex; }
     .burger { display: flex; }
   }
-
   @media (max-width: 600px) {
-    /* Force single column on small phones */
     .overlay-grid { grid-template-columns: 1fr !important; }
     .overlay-header { grid-template-columns: 1fr; }
     .overlay-num { display: none; }
     .overlay-svc { padding: 1.25rem 1rem; }
     .overlay-svc-title { font-size: 18px; }
     .overlay-svc-desc { font-size: 13px; line-height: 1.6; }
-
-    .services-grid { grid-template-columns: 1fr; }
     .port-grid { grid-template-columns: 1fr; }
     .port-grid .port-card:last-child { grid-column: auto; }
-    .services-header { grid-template-columns: 1fr; }
-    .services-num { font-size: 64px; }
-    .about-stats { flex-wrap: wrap; }
-    .rooftop-section .about-stats { flex-wrap: wrap; }
     footer { flex-direction: column; text-align: center; }
     .foot-info { text-align: center; }
   }
@@ -734,9 +253,11 @@
   </button>
 </nav>
 
-<!-- HERO -->
-<section class="hero" id="home">
-  <div class="hero-bg-img"></div>
+<!-- ① HERO — DESK VIDEO -->
+<section class="fullscreen-section hero" id="home">
+  <video autoplay muted loop playsinline class="bg-video" id="deskVideo">
+    <source src="https://raw.githubusercontent.com/aherndavid/citiit/main/assets/desk.mp4" type="video/mp4">
+  </video>
   <div class="hero-watermark"><span>CITIIT LIMITED</span></div>
   <div class="hero-content">
     <div>
@@ -753,178 +274,112 @@
 
 <div class="divider"></div>
 
-<!-- VIDEO SECTION -->
-<section class="video-section" id="services">
-  <video id="bgVideo1" autoplay muted loop playsinline class="vid-layer active">
-    <source src="https://raw.githubusercontent.com/aherndavid/citiit/main/assets/IMG_0065.MOV" type="video/mp4">
+<!-- ② SIGN VIDEO -->
+<section class="fullscreen-section" id="sign">
+  <video autoplay muted loop playsinline class="bg-video" id="signVideo">
+    <source src="https://raw.githubusercontent.com/aherndavid/citiit/main/assets/sign.mp4" type="video/mp4">
   </video>
-  <video id="bgVideo2" muted loop playsinline class="vid-layer">
+  <div class="section-overlay-content" style="justify-content:flex-end; padding-bottom:5rem;">
+    <div style="max-width:520px;">
+      <div class="overlay-eyebrow">London — Est. 2024</div>
+      <div style="font-family:var(--bebas); font-size:clamp(52px,7vw,96px); color:var(--cream); line-height:0.9; letter-spacing:0.01em; margin-bottom:1.5rem;">
+        WHERE<br>TECH<br><span style="color:var(--blue);">MEETS</span><br>CRAFT.
+      </div>
+      <p style="font-size:15px; color:rgba(240,235,224,0.6); line-height:1.8; font-family:var(--body); font-style:italic;">
+        CitiIT Limited — bridging creative and technical disciplines for individuals and businesses who demand more than the ordinary.
+      </p>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ③ PHONE BOXES + COVENT GARDEN (rotating) — SERVICES -->
+<section class="fullscreen-section" id="services">
+  <div class="img-layer active" style="background-image:url('https://raw.githubusercontent.com/aherndavid/citiit/main/assets/phone-boxes.png');" data-group="services"></div>
+  <div class="img-layer" style="background-image:url('https://raw.githubusercontent.com/aherndavid/citiit/main/assets/covent-garden-01.JPG');" data-group="services"></div>
+  <div class="section-overlay-content">
+    <div class="overlay-header">
+      <div class="overlay-num">08</div>
+      <div>
+        <div class="overlay-eyebrow">What I offer</div>
+        <div class="overlay-title">SERVICES<br><span>AVAILABLE</span></div>
+      </div>
+    </div>
+    <div class="overlay-grid">
+      <div class="overlay-svc"><div class="overlay-svc-n">01</div><div class="overlay-svc-title">Web Design &amp; Development</div><div class="overlay-svc-desc">Purposeful websites built with modern techniques — from concept through to launch, designed to work and built to last.</div></div>
+      <div class="overlay-svc"><div class="overlay-svc-n">02</div><div class="overlay-svc-title">Graphic Design</div><div class="overlay-svc-desc">Visual communication with clarity and intention. Print, digital, and everything in between — crafted with a designer's eye.</div></div>
+      <div class="overlay-svc"><div class="overlay-svc-n">03</div><div class="overlay-svc-title">Branding &amp; Identity</div><div class="overlay-svc-desc">Brand systems that hold together across every touchpoint. Logo design, visual language, and the story behind it.</div></div>
+      <div class="overlay-svc"><div class="overlay-svc-n">04</div><div class="overlay-svc-title">IT Support &amp; Maintenance</div><div class="overlay-svc-desc">Dependable IT support underpinned by decades of hands-on experience — from everyday troubleshooting to infrastructure oversight.</div></div>
+      <div class="overlay-svc"><div class="overlay-svc-n">05</div><div class="overlay-svc-title">IT Consultancy</div><div class="overlay-svc-desc">Strategic guidance bridging technical complexity and real-world decision-making for individuals and businesses.</div></div>
+      <div class="overlay-svc"><div class="overlay-svc-n">06</div><div class="overlay-svc-title">Social Media &amp; Digital Marketing</div><div class="overlay-svc-desc">Considered digital presence — content strategy, platform management, and campaigns that connect with the right audience.</div></div>
+      <div class="overlay-svc"><div class="overlay-svc-n">07</div><div class="overlay-svc-title">Audio Production</div><div class="overlay-svc-desc">Original music production and recording using hardware synthesisers, drum machines and keys. Two releases on iTunes.</div></div>
+      <div class="overlay-svc"><div class="overlay-svc-n">08</div><div class="overlay-svc-title">Home Audio Consultancy</div><div class="overlay-svc-desc">Expert guidance on building or refining your home studio or listening setup — equipment, acoustics, and workflow.</div></div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ④ TUBE VIDEO — ABOUT -->
+<section class="fullscreen-section" id="about">
+  <video autoplay muted loop playsinline class="bg-video" id="tubeVideo">
     <source src="https://raw.githubusercontent.com/aherndavid/citiit/main/assets/tube.mp4" type="video/mp4">
   </video>
-  <div class="section-overlay-content">
-    <div class="overlay-header">
-      <div class="overlay-num">08</div>
-      <div>
-        <div class="overlay-eyebrow">What I offer</div>
-        <div class="overlay-title">SERVICES<br><span>AVAILABLE</span></div>
+  <div class="section-overlay-content" style="justify-content:center;">
+    <div class="about-overlay-grid">
+      <div class="about-left-col">
+        <div class="about-watermark-vert">ABOUT</div>
+        <div class="about-stats">
+          <div><div class="stat-num">30+</div><div class="stat-lbl">Years in IT</div></div>
+          <div><div class="stat-num">2</div><div class="stat-lbl">iTunes releases</div></div>
+          <div><div class="stat-num">VIP</div><div class="stat-lbl">Client level</div></div>
+        </div>
+      </div>
+      <div class="about-right-col">
+        <h2 class="about-heading">TECHNICAL<br>PRECISION.<br><span>CREATIVE</span><br>INSTINCT.</h2>
+        <div class="about-body">
+          <p>David is an IT professional with over 30 years of hands-on experience — no jargon, no runaround, just someone who gets things sorted. He's spent his career working directly with CEOs and senior figures at companies including BMI Group, Creed, and Novacroft, and understands that people at that level need things done properly, quickly, and with minimal fuss.</p>
+          <p>With more than 20 years on the Mac platform, David has a deep knowledge of Apple ecosystems alongside Windows environments. He bridges the gap between complex IT and the people who just need it to work — and he always goes further than the bare minimum.</p>
+          <p>Outside of client work, David produces music independently using Logic Pro, has two releases on iTunes, and runs Autofacts-Bespoke — an automotive YouTube channel. His interests span music production, brand design, and web design with a difference. He's not your typical IT bloke. But he is exactly that, too.</p>
+        </div>
       </div>
     </div>
-    <div class="overlay-grid">
-      <div class="overlay-svc"><div class="overlay-svc-n">01</div><div class="overlay-svc-title">Web Design &amp; Development</div><div class="overlay-svc-desc">Purposeful websites built with modern techniques — from concept through to launch, designed to work and built to last.</div></div>
-      <div class="overlay-svc"><div class="overlay-svc-n">02</div><div class="overlay-svc-title">Graphic Design</div><div class="overlay-svc-desc">Visual communication with clarity and intention. Print, digital, and everything in between — crafted with a designer's eye.</div></div>
-      <div class="overlay-svc"><div class="overlay-svc-n">03</div><div class="overlay-svc-title">Branding &amp; Identity</div><div class="overlay-svc-desc">Brand systems that hold together across every touchpoint. Logo design, visual language, and the story behind it.</div></div>
-      <div class="overlay-svc"><div class="overlay-svc-n">04</div><div class="overlay-svc-title">IT Support &amp; Maintenance</div><div class="overlay-svc-desc">Dependable IT support underpinned by decades of hands-on experience — from everyday troubleshooting to infrastructure oversight.</div></div>
-      <div class="overlay-svc"><div class="overlay-svc-n">05</div><div class="overlay-svc-title">IT Consultancy</div><div class="overlay-svc-desc">Strategic guidance bridging technical complexity and real-world decision-making for individuals and businesses.</div></div>
-      <div class="overlay-svc"><div class="overlay-svc-n">06</div><div class="overlay-svc-title">Social Media &amp; Digital Marketing</div><div class="overlay-svc-desc">Considered digital presence — content strategy, platform management, and campaigns that connect with the right audience.</div></div>
-      <div class="overlay-svc"><div class="overlay-svc-n">07</div><div class="overlay-svc-title">Audio Production</div><div class="overlay-svc-desc">Original music production and recording using hardware synthesisers, drum machines and keys. Two releases on iTunes.</div></div>
-      <div class="overlay-svc"><div class="overlay-svc-n">08</div><div class="overlay-svc-title">Home Audio Consultancy</div><div class="overlay-svc-desc">Expert guidance on building or refining your home studio or listening setup — equipment, acoustics, and workflow.</div></div>
-    </div>
   </div>
 </section>
 
 <div class="divider"></div>
 
-<!-- IMAGE ROTATION SECTION -->
-<section class="img-rotation-section">
-  <div class="img-layer active" style="background-image: url('https://raw.githubusercontent.com/aherndavid/citiit/main/assets/covent-garden-01.JPG')"></div>
-  <div class="img-layer" style="background-image: url('https://raw.githubusercontent.com/aherndavid/citiit/main/assets/phone-boxes.png')"></div>
-  <div class="section-overlay-content">
-    <div class="overlay-header">
-      <div class="overlay-num">08</div>
-      <div>
-        <div class="overlay-eyebrow">What I offer</div>
-        <div class="overlay-title">SERVICES<br><span>AVAILABLE</span></div>
+<!-- ⑤ COVENT GARDEN + BRICK WALL (rotating) — PORTFOLIO -->
+<section class="fullscreen-section" id="portfolio">
+  <div class="img-layer active" style="background-image:url('https://raw.githubusercontent.com/aherndavid/citiit/main/assets/covent-garden-01.JPG');" data-group="portfolio"></div>
+  <div class="img-layer" style="background-image:url('https://raw.githubusercontent.com/aherndavid/citiit/main/assets/brick-wall.png');" data-group="portfolio"></div>
+  <div class="section-overlay-content" style="justify-content:center;">
+    <div style="position:relative; z-index:2; width:100%;">
+      <div class="port-header">
+        <div class="port-title">SELECTED WORK</div>
+        <a href="https://dpaul.studio" class="port-link" target="_blank">dpaul.studio &#x2192;</a>
       </div>
-    </div>
-    <div class="overlay-grid">
-      <div class="overlay-svc"><div class="overlay-svc-n">01</div><div class="overlay-svc-title">Web Design &amp; Development</div><div class="overlay-svc-desc">Purposeful websites built with modern techniques — from concept through to launch, designed to work and built to last.</div></div>
-      <div class="overlay-svc"><div class="overlay-svc-n">02</div><div class="overlay-svc-title">Graphic Design</div><div class="overlay-svc-desc">Visual communication with clarity and intention. Print, digital, and everything in between — crafted with a designer's eye.</div></div>
-      <div class="overlay-svc"><div class="overlay-svc-n">03</div><div class="overlay-svc-title">Branding &amp; Identity</div><div class="overlay-svc-desc">Brand systems that hold together across every touchpoint. Logo design, visual language, and the story behind it.</div></div>
-      <div class="overlay-svc"><div class="overlay-svc-n">04</div><div class="overlay-svc-title">IT Support &amp; Maintenance</div><div class="overlay-svc-desc">Dependable IT support underpinned by decades of hands-on experience — from everyday troubleshooting to infrastructure oversight.</div></div>
-      <div class="overlay-svc"><div class="overlay-svc-n">05</div><div class="overlay-svc-title">IT Consultancy</div><div class="overlay-svc-desc">Strategic guidance bridging technical complexity and real-world decision-making for individuals and businesses.</div></div>
-      <div class="overlay-svc"><div class="overlay-svc-n">06</div><div class="overlay-svc-title">Social Media &amp; Digital Marketing</div><div class="overlay-svc-desc">Considered digital presence — content strategy, platform management, and campaigns that connect with the right audience.</div></div>
-      <div class="overlay-svc"><div class="overlay-svc-n">07</div><div class="overlay-svc-title">Audio Production</div><div class="overlay-svc-desc">Original music production and recording using hardware synthesisers, drum machines and keys. Two releases on iTunes.</div></div>
-      <div class="overlay-svc"><div class="overlay-svc-n">08</div><div class="overlay-svc-title">Home Audio Consultancy</div><div class="overlay-svc-desc">Expert guidance on building or refining your home studio or listening setup — equipment, acoustics, and workflow.</div></div>
-    </div>
-  </div>
-</section>
-
-<div class="divider"></div>
-
-<!-- ROOFTOP VIDEO / ABOUT -->
-<section class="rooftop-section" id="about">
-  <video autoplay muted loop playsinline class="rooftop-video">
-    <source src="https://raw.githubusercontent.com/aherndavid/citiit/main/assets/rooftop.mp4" type="video/mp4">
-  </video>
-  <div class="about-left">
-    <div class="about-watermark">ABOUT</div>
-    <div class="about-stats">
-      <div><div class="stat-num">30+</div><div class="stat-lbl">Years in IT</div></div>
-      <div><div class="stat-num">2</div><div class="stat-lbl">iTunes releases</div></div>
-      <div><div class="stat-num">VIP</div><div class="stat-lbl">Client level</div></div>
-    </div>
-  </div>
-  <div class="about-right">
-    <h2 class="about-heading">TECHNICAL<br>PRECISION.<br><span>CREATIVE</span><br>INSTINCT.</h2>
-    <div class="about-body">
-      <p>David is an IT professional with over 30 years of hands-on experience — no jargon, no runaround, just someone who gets things sorted. He's spent his career working directly with CEOs and senior figures at companies including BMI Group, Creed, and Novacroft, and understands that people at that level need things done properly, quickly, and with minimal fuss.</p>
-      <p>With more than 20 years on the Mac platform, David has a deep knowledge of Apple ecosystems alongside Windows environments. He bridges the gap between complex IT and the people who just need it to work — and he always goes further than the bare minimum.</p>
-      <p>Outside of client work, David produces music independently using Logic Pro, has two releases on iTunes, and runs Autofacts-Bespoke — an automotive YouTube channel. His interests span music production, brand design, and web design with a difference. He's not your typical IT bloke. But he is exactly that, too.</p>
-    </div>
-  </div>
-</section>
-
-<div class="divider"></div>
-
-<!-- BRICK WALL -->
-<section class="brick-wall">
-  <div class="brick-wall-bg"></div>
-</section>
-
-<div class="divider"></div>
-
-<!-- SERVICES with tube-02 video background -->
-<section class="services" id="services">
-  <video autoplay muted loop playsinline class="services-video">
-    <source src="https://raw.githubusercontent.com/aherndavid/citiit/main/assets/tube-02.mp4" type="video/mp4">
-  </video>
-  <div class="services-header">
-    <div class="services-num">08</div>
-    <div>
-      <div class="services-eyebrow">What I offer</div>
-      <div class="services-title">SERVICES<br><span>AVAILABLE</span></div>
-    </div>
-  </div>
-  <div class="services-grid">
-    <div class="svc">
-      <div class="svc-n">01</div>
-      <div class="svc-title">Web Design &amp; Development</div>
-      <div class="svc-desc">Purposeful websites built with modern techniques — from concept through to launch, designed to work and built to last.</div>
-    </div>
-    <div class="svc">
-      <div class="svc-n">02</div>
-      <div class="svc-title">Graphic Design</div>
-      <div class="svc-desc">Visual communication with clarity and intention. Print, digital, and everything in between — crafted with a designer's eye.</div>
-    </div>
-    <div class="svc">
-      <div class="svc-n">03</div>
-      <div class="svc-title">Branding &amp; Identity</div>
-      <div class="svc-desc">Brand systems that hold together across every touchpoint. Logo design, visual language, and the story behind it.</div>
-    </div>
-    <div class="svc">
-      <div class="svc-n">04</div>
-      <div class="svc-title">IT Support &amp; Maintenance</div>
-      <div class="svc-desc">Dependable IT support underpinned by decades of hands-on experience — from everyday troubleshooting to infrastructure oversight.</div>
-    </div>
-    <div class="svc">
-      <div class="svc-n">05</div>
-      <div class="svc-title">IT Consultancy</div>
-      <div class="svc-desc">Strategic guidance bridging technical complexity and real-world decision-making for individuals and businesses.</div>
-    </div>
-    <div class="svc">
-      <div class="svc-n">06</div>
-      <div class="svc-title">Social Media &amp; Digital Marketing</div>
-      <div class="svc-desc">Considered digital presence — content strategy, platform management, and campaigns that connect with the right audience.</div>
-    </div>
-    <div class="svc">
-      <div class="svc-n">07</div>
-      <div class="svc-title">Audio Production</div>
-      <div class="svc-desc">Original music production and recording using hardware synthesisers, drum machines and keys. Two releases on iTunes.</div>
-    </div>
-    <div class="svc">
-      <div class="svc-n">08</div>
-      <div class="svc-title">Home Audio Consultancy</div>
-      <div class="svc-desc">Expert guidance on building or refining your home studio or listening setup — equipment, acoustics, and workflow.</div>
-    </div>
-  </div>
-</section>
-
-<div class="divider"></div>
-
-<!-- PORTFOLIO -->
-<section class="portfolio" id="portfolio">
-  <div class="port-header">
-    <div class="port-title">SELECTED WORK</div>
-    <a href="https://dpaul.studio" class="port-link" target="_blank">dpaul.studio &#x2192;</a>
-  </div>
-  <div class="port-grid">
-    <div class="port-card">
-      <div class="port-tag">Design Portfolio</div>
-      <div class="port-name">dpaul.studio</div>
-      <div class="port-desc">Branding, graphic design, and creative direction across a range of clients and industries — all in one place.</div>
-      <a href="https://dpaul.studio" class="port-btn" target="_blank">View site &#x2192;</a>
-    </div>
-    <div class="port-card">
-      <div class="port-tag">Audio Production</div>
-      <div class="port-name">Music &amp; Sound</div>
-      <div class="port-desc">Two original productions on iTunes. Extended catalogue on SoundCloud — electronic music built with hardware synths, drum machines and keys.</div>
-      <a href="#contact" class="port-btn">Get in touch &#x2192;</a>
-    </div>
-    <div class="port-card">
-      <div class="port-tag">Web &amp; IT</div>
-      <div class="port-name">Client Projects</div>
-      <div class="port-desc">Web builds and IT consultancy for businesses and high-profile individuals across London and beyond. Case studies available on request.</div>
-      <a href="#contact" class="port-btn">Request case studies &#x2192;</a>
+      <div class="port-grid">
+        <div class="port-card">
+          <div class="port-tag">Design Portfolio</div>
+          <div class="port-name">dpaul.studio</div>
+          <div class="port-desc">Branding, graphic design, and creative direction across a range of clients and industries — all in one place.</div>
+          <a href="https://dpaul.studio" class="port-btn" target="_blank">View site &#x2192;</a>
+        </div>
+        <div class="port-card">
+          <div class="port-tag">Audio Production</div>
+          <div class="port-name">Music &amp; Sound</div>
+          <div class="port-desc">Two original productions on iTunes. Extended catalogue on SoundCloud — electronic music built with hardware synths, drum machines and keys.</div>
+          <a href="#contact" class="port-btn">Get in touch &#x2192;</a>
+        </div>
+        <div class="port-card">
+          <div class="port-tag">Web &amp; IT</div>
+          <div class="port-name">Client Projects</div>
+          <div class="port-desc">Web builds and IT consultancy for businesses and high-profile individuals across London and beyond. Case studies available on request.</div>
+          <a href="#contact" class="port-btn">Request case studies &#x2192;</a>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -943,7 +398,6 @@
     </div>
   </div>
   <div class="st-body">
-    <!-- TEST PANEL -->
     <div class="st-panel">
       <div class="st-gauge-wrap">
         <div class="st-gauge">
@@ -956,82 +410,42 @@
         <div class="st-speed-num" id="speedNum">0</div>
         <div class="st-speed-unit" id="speedUnit">Mbps — Download</div>
       </div>
-
       <button class="st-run-btn" id="runBtn" onclick="runSpeedTest()">&#9654; Run Speed Test</button>
-
       <div class="st-metrics">
-        <div class="st-metric">
-          <div class="st-metric-lbl">Download</div>
-          <div class="st-metric-val" id="dlVal">—</div>
-          <div class="st-metric-unit">Mbps</div>
-        </div>
-        <div class="st-metric">
-          <div class="st-metric-lbl">Upload</div>
-          <div class="st-metric-val" id="ulVal">—</div>
-          <div class="st-metric-unit">Mbps</div>
-        </div>
-        <div class="st-metric">
-          <div class="st-metric-lbl">Ping</div>
-          <div class="st-metric-val" id="pingVal">—</div>
-          <div class="st-metric-unit">ms</div>
-        </div>
-        <div class="st-metric">
-          <div class="st-metric-lbl">Jitter</div>
-          <div class="st-metric-val" id="jitterVal">—</div>
-          <div class="st-metric-unit">ms</div>
-        </div>
+        <div class="st-metric"><div class="st-metric-lbl">Download</div><div class="st-metric-val" id="dlVal">—</div><div class="st-metric-unit">Mbps</div></div>
+        <div class="st-metric"><div class="st-metric-lbl">Upload</div><div class="st-metric-val" id="ulVal">—</div><div class="st-metric-unit">Mbps</div></div>
+        <div class="st-metric"><div class="st-metric-lbl">Ping</div><div class="st-metric-val" id="pingVal">—</div><div class="st-metric-unit">ms</div></div>
+        <div class="st-metric"><div class="st-metric-lbl">Jitter</div><div class="st-metric-val" id="jitterVal">—</div><div class="st-metric-unit">ms</div></div>
       </div>
       <div class="st-status" id="stStatus">Press run to begin your speed test</div>
     </div>
-
-    <!-- INFO PANEL -->
     <div class="st-info-panel">
       <div class="st-info-card">
         <div class="st-info-title">What does your speed mean?</div>
-        <div class="st-info-desc">
-          Use the bars below to see how your connection compares for common tasks.
-        </div>
+        <div class="st-info-desc">Use the bars below to see how your connection compares for common tasks.</div>
         <div class="st-bar-wrap">
-          <div style="display:flex;justify-content:space-between;margin-bottom:4px;">
-            <span style="font-family:var(--mono);font-size:10px;color:rgba(240,235,224,0.4);letter-spacing:0.06em;">Video calls (HD)</span>
-            <span style="font-family:var(--mono);font-size:10px;color:rgba(240,235,224,0.4);">5 Mbps</span>
-          </div>
+          <div style="display:flex;justify-content:space-between;margin-bottom:4px;"><span style="font-family:var(--mono);font-size:10px;color:rgba(240,235,224,0.4);letter-spacing:0.06em;">Video calls (HD)</span><span style="font-family:var(--mono);font-size:10px;color:rgba(240,235,224,0.4);">5 Mbps</span></div>
           <div class="st-bar-bg"><div class="st-bar-fill" id="bar1"></div></div>
         </div>
         <div class="st-bar-wrap" style="margin-top:0.75rem;">
-          <div style="display:flex;justify-content:space-between;margin-bottom:4px;">
-            <span style="font-family:var(--mono);font-size:10px;color:rgba(240,235,224,0.4);letter-spacing:0.06em;">4K streaming</span>
-            <span style="font-family:var(--mono);font-size:10px;color:rgba(240,235,224,0.4);">25 Mbps</span>
-          </div>
+          <div style="display:flex;justify-content:space-between;margin-bottom:4px;"><span style="font-family:var(--mono);font-size:10px;color:rgba(240,235,224,0.4);letter-spacing:0.06em;">4K streaming</span><span style="font-family:var(--mono);font-size:10px;color:rgba(240,235,224,0.4);">25 Mbps</span></div>
           <div class="st-bar-bg"><div class="st-bar-fill" id="bar2"></div></div>
         </div>
         <div class="st-bar-wrap" style="margin-top:0.75rem;">
-          <div style="display:flex;justify-content:space-between;margin-bottom:4px;">
-            <span style="font-family:var(--mono);font-size:10px;color:rgba(240,235,224,0.4);letter-spacing:0.06em;">Fast broadband</span>
-            <span style="font-family:var(--mono);font-size:10px;color:rgba(240,235,224,0.4);">100 Mbps</span>
-          </div>
+          <div style="display:flex;justify-content:space-between;margin-bottom:4px;"><span style="font-family:var(--mono);font-size:10px;color:rgba(240,235,224,0.4);letter-spacing:0.06em;">Fast broadband</span><span style="font-family:var(--mono);font-size:10px;color:rgba(240,235,224,0.4);">100 Mbps</span></div>
           <div class="st-bar-bg"><div class="st-bar-fill" id="bar3"></div></div>
         </div>
         <div class="st-bar-wrap" style="margin-top:0.75rem;">
-          <div style="display:flex;justify-content:space-between;margin-bottom:4px;">
-            <span style="font-family:var(--mono);font-size:10px;color:rgba(240,235,224,0.4);letter-spacing:0.06em;">Full fibre / Gigabit</span>
-            <span style="font-family:var(--mono);font-size:10px;color:rgba(240,235,224,0.4);">1000 Mbps</span>
-          </div>
+          <div style="display:flex;justify-content:space-between;margin-bottom:4px;"><span style="font-family:var(--mono);font-size:10px;color:rgba(240,235,224,0.4);letter-spacing:0.06em;">Full fibre / Gigabit</span><span style="font-family:var(--mono);font-size:10px;color:rgba(240,235,224,0.4);">1000 Mbps</span></div>
           <div class="st-bar-bg"><div class="st-bar-fill" id="bar4"></div></div>
         </div>
       </div>
-
       <div class="st-info-card">
         <div class="st-info-title">Slow speeds? We can help.</div>
-        <div class="st-info-desc">
-          Poor broadband performance is often fixable. CitiIT offers home and business network diagnostics — from router placement and interference issues to ISP negotiations and full infrastructure upgrades.
-        </div>
+        <div class="st-info-desc">Poor broadband performance is often fixable. CitiIT offers home and business network diagnostics — from router placement and interference issues to ISP negotiations and full infrastructure upgrades.</div>
         <a href="#contact" class="port-btn" style="margin-top:1.25rem;display:inline-block;">Get IT support &#x2192;</a>
       </div>
-
-      <div class="st-tip">
-        &#x26A0; Results are an estimate based on your connection at the time of the test. For best accuracy run the test with other devices idle and connected via ethernet where possible.
-      </div>
+      <div class="st-tip">&#x26A0; Results are an estimate based on your connection at the time of the test. For best accuracy run the test with other devices idle and connected via ethernet where possible.</div>
     </div>
   </div>
 </section>
@@ -1046,35 +460,17 @@
       <div class="contact-heading">LET'S<br>WORK<br><span>TOGETHER</span></div>
     </div>
     <div class="contact-info">
-      <div class="ci-row">
-        <div class="ci-lbl">Website</div>
-        <div class="ci-val"><a href="https://citiit.uk" target="_blank">citiit.uk</a></div>
-      </div>
-      <div class="ci-row">
-        <div class="ci-lbl">Portfolio</div>
-        <div class="ci-val"><a href="https://dpaul.studio" target="_blank">dpaul.studio</a></div>
-      </div>
-      <div class="ci-row">
-        <div class="ci-lbl">Location</div>
-        <div class="ci-val">London, United Kingdom</div>
-      </div>
-      <div class="ci-row">
-        <div class="ci-lbl">Company</div>
-        <div class="ci-val">CitiIT Limited &middot; Co. No. 15811174</div>
-      </div>
+      <div class="ci-row"><div class="ci-lbl">Website</div><div class="ci-val"><a href="https://citiit.uk" target="_blank">citiit.uk</a></div></div>
+      <div class="ci-row"><div class="ci-lbl">Portfolio</div><div class="ci-val"><a href="https://dpaul.studio" target="_blank">dpaul.studio</a></div></div>
+      <div class="ci-row"><div class="ci-lbl">Location</div><div class="ci-val">London, United Kingdom</div></div>
+      <div class="ci-row"><div class="ci-lbl">Company</div><div class="ci-val">CitiIT Limited &middot; Co. No. 15811174</div></div>
     </div>
   </div>
   <div class="contact-right">
     <div class="form-title">SEND A MESSAGE</div>
     <form onsubmit="handleSubmit(event)" novalidate>
-      <div class="fg">
-        <label for="fname">Your name</label>
-        <input type="text" id="fname" placeholder="David Smith" required>
-      </div>
-      <div class="fg">
-        <label for="femail">Email address</label>
-        <input type="email" id="femail" placeholder="hello@example.com" required>
-      </div>
+      <div class="fg"><label for="fname">Your name</label><input type="text" id="fname" placeholder="David Smith" required></div>
+      <div class="fg"><label for="femail">Email address</label><input type="email" id="femail" placeholder="hello@example.com" required></div>
       <div class="fg">
         <label for="fservice">Service interested in</label>
         <select id="fservice">
@@ -1090,10 +486,7 @@
           <option>Something else</option>
         </select>
       </div>
-      <div class="fg">
-        <label for="fmsg">Message</label>
-        <textarea id="fmsg" placeholder="Tell me about your project..."></textarea>
-      </div>
+      <div class="fg"><label for="fmsg">Message</label><textarea id="fmsg" placeholder="Tell me about your project..."></textarea></div>
       <button type="submit" class="form-submit">Send Message</button>
       <p id="confirm">&#x2713; Message sent — I'll be in touch shortly.</p>
     </form>
@@ -1112,113 +505,103 @@
 </footer>
 
 <script>
-  // Image crossfade rotation every 10 seconds
-  const imgLayers = document.querySelectorAll('.img-layer');
-  if (imgLayers.length) {
-    let currentImg = 0;
-    setInterval(() => {
-      imgLayers[currentImg].classList.remove('active');
-      currentImg = (currentImg + 1) % imgLayers.length;
-      imgLayers[currentImg].classList.add('active');
-    }, 10000);
+  // ── Slow all videos ──
+  ['deskVideo','signVideo','tubeVideo'].forEach(function(id) {
+    var v = document.getElementById(id);
+    if (!v) return;
+    v.playbackRate = 0.65;
+    v.addEventListener('loadedmetadata', function() { v.playbackRate = 0.65; });
+  });
+
+  // ── Image rotator (generic) ──
+  function startRotator(selector, interval) {
+    var layers = document.querySelectorAll(selector);
+    if (!layers.length) return;
+    var current = 0;
+    setInterval(function() {
+      layers[current].classList.remove('active');
+      current = (current + 1) % layers.length;
+      layers[current].classList.add('active');
+    }, interval);
   }
 
-  // Video crossfade rotation every 20 seconds
-  const vid1 = document.getElementById('bgVideo1');
-  const vid2 = document.getElementById('bgVideo2');
-  if (vid1 && vid2) {
-    vid2.load();
-    let current = vid1;
-    let next = vid2;
-    setInterval(() => {
-      next.play();
-      current.classList.remove('active');
-      next.classList.add('active');
-      const tmp = current;
-      current = next;
-      next = tmp;
-    }, 20000);
-  }
+  // Services section: phone-boxes / covent-garden (10s)
+  startRotator('#services .img-layer', 10000);
+  // Portfolio section: covent-garden / brick-wall (12s)
+  startRotator('#portfolio .img-layer', 12000);
 
+  // ── Speed test ──
   function runSpeedTest() {
-    const btn = document.getElementById('runBtn');
-    const status = document.getElementById('stStatus');
-    const speedNum = document.getElementById('speedNum');
-    const speedUnit = document.getElementById('speedUnit');
-    const gaugeArc = document.getElementById('gaugeArc');
-    const dlVal = document.getElementById('dlVal');
-    const ulVal = document.getElementById('ulVal');
-    const pingVal = document.getElementById('pingVal');
-    const jitterVal = document.getElementById('jitterVal');
+    var btn = document.getElementById('runBtn');
+    var status = document.getElementById('stStatus');
+    var speedNum = document.getElementById('speedNum');
+    var speedUnit = document.getElementById('speedUnit');
+    var gaugeArc = document.getElementById('gaugeArc');
+    var dlVal = document.getElementById('dlVal');
+    var ulVal = document.getElementById('ulVal');
+    var pingVal = document.getElementById('pingVal');
+    var jitterVal = document.getElementById('jitterVal');
 
     btn.disabled = true;
     dlVal.textContent = '—'; ulVal.textContent = '—';
     pingVal.textContent = '—'; jitterVal.textContent = '—';
     speedNum.textContent = '0';
     gaugeArc.style.strokeDashoffset = '251.2';
-    ['bar1','bar2','bar3','bar4'].forEach(id => document.getElementById(id).style.width = '0%');
+    ['bar1','bar2','bar3','bar4'].forEach(function(id){ document.getElementById(id).style.width = '0%'; });
 
-    const totalArcLen = 251.2;
-
+    var totalArcLen = 251.2;
     function setGauge(mbps, max) {
-      const pct = Math.min(mbps / max, 1);
+      var pct = Math.min(mbps / max, 1);
       gaugeArc.style.strokeDashoffset = totalArcLen - (pct * totalArcLen);
       speedNum.textContent = Math.round(mbps);
     }
-
     function animateTo(from, to, duration, onUpdate, onDone) {
-      const start = performance.now();
+      var start = performance.now();
       function step(now) {
-        const t = Math.min((now - start) / duration, 1);
-        const ease = t < 0.5 ? 2*t*t : -1+(4-2*t)*t;
+        var t = Math.min((now - start) / duration, 1);
+        var ease = t < 0.5 ? 2*t*t : -1+(4-2*t)*t;
         onUpdate(from + (to - from) * ease);
         if (t < 1) requestAnimationFrame(step);
         else { onUpdate(to); if (onDone) onDone(); }
       }
       requestAnimationFrame(step);
     }
-
-    // PING TEST
     status.className = 'st-status running';
     status.textContent = 'Testing ping...';
-    const pingStart = performance.now();
+    var pingStart = performance.now();
     fetch('https://www.cloudflare.com/cdn-cgi/trace', {cache:'no-store'})
-      .then(() => {
-        const ping = Math.round(performance.now() - pingStart);
-        const jitter = Math.round(2 + Math.random() * 8);
+      .then(function() {
+        var ping = Math.round(performance.now() - pingStart);
+        var jitter = Math.round(2 + Math.random() * 8);
         pingVal.textContent = ping;
         jitterVal.textContent = jitter;
-
-        // DOWNLOAD TEST
         status.textContent = 'Testing download speed...';
         speedUnit.textContent = 'Mbps — Download';
         gaugeArc.style.stroke = '#2a6db5';
-        const dlStart = performance.now();
-        const dlSize = 5 * 1024 * 1024;
+        var dlStart = performance.now();
+        var dlSize = 5 * 1024 * 1024;
         fetch('https://speed.cloudflare.com/__down?bytes=' + dlSize, {cache:'no-store'})
-          .then(r => r.blob())
-          .then(() => {
-            const dlTime = (performance.now() - dlStart) / 1000;
-            const dlMbps = Math.round(((dlSize * 8) / dlTime) / 1_000_000 * 10) / 10;
-            animateTo(0, dlMbps, 1200, v => setGauge(v, Math.max(dlMbps * 1.2, 100)), () => {
+          .then(function(r){ return r.blob(); })
+          .then(function() {
+            var dlTime = (performance.now() - dlStart) / 1000;
+            var dlMbps = Math.round(((dlSize * 8) / dlTime) / 1000000 * 10) / 10;
+            animateTo(0, dlMbps, 1200, function(v){ setGauge(v, Math.max(dlMbps * 1.2, 100)); }, function() {
               dlVal.textContent = dlMbps;
               updateBars(dlMbps);
-
-              // UPLOAD TEST
               status.textContent = 'Testing upload speed...';
               speedUnit.textContent = 'Mbps — Upload';
               gaugeArc.style.stroke = '#4caf82';
               speedNum.textContent = '0';
               gaugeArc.style.strokeDashoffset = '251.2';
-              const ulPayload = new Uint8Array(2 * 1024 * 1024);
-              const ulStart = performance.now();
+              var ulPayload = new Uint8Array(2 * 1024 * 1024);
+              var ulStart = performance.now();
               fetch('https://speed.cloudflare.com/__up', {
                 method: 'POST', body: ulPayload, cache: 'no-store',
                 headers: {'Content-Type': 'application/octet-stream'}
-              }).then(() => {
-                const ulTime = (performance.now() - ulStart) / 1000;
-                const ulMbps = Math.round(((ulPayload.length * 8) / ulTime) / 1_000_000 * 10) / 10;
-                animateTo(0, ulMbps, 1200, v => setGauge(v, Math.max(ulMbps * 1.2, 50)), () => {
+              }).then(function() {
+                var ulTime = (performance.now() - ulStart) / 1000;
+                var ulMbps = Math.round(((ulPayload.length * 8) / ulTime) / 1000000 * 10) / 10;
+                animateTo(0, ulMbps, 1200, function(v){ setGauge(v, Math.max(ulMbps * 1.2, 50)); }, function() {
                   ulVal.textContent = ulMbps;
                   speedUnit.textContent = 'Mbps — Upload';
                   status.className = 'st-status done';
@@ -1226,7 +609,7 @@
                   btn.disabled = false;
                   btn.textContent = '↺ Run Again';
                 });
-              }).catch(() => {
+              }).catch(function() {
                 ulVal.textContent = 'N/A';
                 status.className = 'st-status done';
                 status.textContent = '✓ Download complete (upload blocked by browser)';
@@ -1235,7 +618,7 @@
             });
           });
       })
-      .catch(() => {
+      .catch(function() {
         status.className = 'st-status';
         status.textContent = 'Could not reach test server — check your connection';
         btn.disabled = false;
@@ -1243,10 +626,10 @@
   }
 
   function updateBars(mbps) {
-    const thresholds = [5, 25, 100, 1000];
-    const ids = ['bar1','bar2','bar3','bar4'];
-    thresholds.forEach((t, i) => {
-      const pct = Math.min((mbps / t) * 100, 100);
+    var thresholds = [5, 25, 100, 1000];
+    var ids = ['bar1','bar2','bar3','bar4'];
+    thresholds.forEach(function(t, i) {
+      var pct = Math.min((mbps / t) * 100, 100);
       document.getElementById(ids[i]).style.width = pct + '%';
       document.getElementById(ids[i]).style.background = pct >= 100 ? '#4caf82' : '#2a6db5';
     });
@@ -1259,21 +642,15 @@
   }
 
   function toggleNav() {
-    const links = document.getElementById('navLinks');
-    const burger = document.getElementById('burger');
-    links.classList.toggle('open');
-    burger.classList.toggle('open');
+    document.getElementById('navLinks').classList.toggle('open');
+    document.getElementById('burger').classList.toggle('open');
   }
-
   function closeNav() {
     document.getElementById('navLinks').classList.remove('open');
     document.getElementById('burger').classList.remove('open');
   }
-
-  // Close nav on outside click
   document.addEventListener('click', function(e) {
-    const nav = document.querySelector('nav');
-    if (!nav.contains(e.target)) closeNav();
+    if (!document.querySelector('nav').contains(e.target)) closeNav();
   });
 </script>
 

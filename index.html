@@ -652,10 +652,7 @@
     .about-right { padding: 3rem 2rem; }
 
     /* Rooftop section mobile */
-    .rooftop-section {
-      grid-template-columns: 1fr;
-      display: flex; flex-direction: column;
-    }
+    .rooftop-section { grid-template-columns: 1fr; display: flex; flex-direction: column; }
     .rooftop-section .about-left {
       flex-direction: row; padding: 2.5rem 2rem;
       border-right: none; border-bottom: 1px solid rgba(255,255,255,0.07);
@@ -667,21 +664,31 @@
     .rooftop-section .about-heading { font-size: clamp(32px, 8vw, 48px); }
     .rooftop-section .about-body p { font-size: 15px; }
 
-    .services-grid { grid-template-columns: repeat(2, 1fr); }
+    /* Overlay grid — 2 columns on tablet */
+    .overlay-grid { grid-template-columns: repeat(2, 1fr) !important; }
+    .section-overlay-content { padding: 4rem 1.5rem; }
+    .overlay-num { font-size: 64px; }
 
+    .services-grid { grid-template-columns: repeat(2, 1fr); }
     .port-grid { grid-template-columns: 1fr 1fr; }
     .port-grid .port-card:last-child { grid-column: 1 / -1; }
-
     .contact { grid-template-columns: 1fr; }
     .contact-left { min-height: auto; padding: 3rem 2rem; }
     .contact-right { padding: 3rem 2rem; }
-
     .nav-links { display: none; position: absolute; top: 60px; left: 0; right: 0; background: var(--black); flex-direction: column; padding: 1.5rem 2.5rem; gap: 1.25rem; border-top: 1px solid rgba(255,255,255,0.08); }
     .nav-links.open { display: flex; }
     .burger { display: flex; }
   }
 
   @media (max-width: 600px) {
+    /* Force single column on small phones */
+    .overlay-grid { grid-template-columns: 1fr !important; }
+    .overlay-header { grid-template-columns: 1fr; }
+    .overlay-num { display: none; }
+    .overlay-svc { padding: 1.25rem 1rem; }
+    .overlay-svc-title { font-size: 18px; }
+    .overlay-svc-desc { font-size: 13px; line-height: 1.6; }
+
     .services-grid { grid-template-columns: 1fr; }
     .port-grid { grid-template-columns: 1fr; }
     .port-grid .port-card:last-child { grid-column: auto; }

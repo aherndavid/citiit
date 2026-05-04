@@ -137,6 +137,28 @@
   .hero-right { display: none; }
   .geo-stripe, .geo-circle, .geo-rect, .hero-logo-text { display: none; }
 
+  /* ── IMAGE ROTATION SECTION ── */
+  .img-rotation-section {
+    min-height: 100vh;
+    position: relative; overflow: hidden;
+  }
+  .img-layer {
+    position: absolute; inset: 0;
+    background-size: cover;
+    background-position: center center;
+    filter: grayscale(100%);
+    opacity: 0;
+    transition: opacity 1.5s ease;
+  }
+  .img-layer.active { opacity: 1; }
+  .img-rotation-section::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: rgba(10,10,10,0.4);
+    pointer-events: none;
+    z-index: 1;
+  }
+
   /* ── BRICK WALL SECTION ── */
   .brick-wall {
     min-height: 100vh;
@@ -636,6 +658,14 @@
 
 <div class="divider"></div>
 
+<!-- IMAGE ROTATION SECTION -->
+<section class="img-rotation-section">
+  <div class="img-layer active" style="background-image: url('https://raw.githubusercontent.com/aherndavid/citiit/main/assets/covent-garden-01.JPG')"></div>
+  <div class="img-layer" style="background-image: url('https://raw.githubusercontent.com/aherndavid/citiit/main/assets/phone-boxes.png')"></div>
+</section>
+
+<div class="divider"></div>
+
 <!-- BRICK WALL / ABOUT -->
 <section class="brick-wall" id="about">
   <div class="brick-wall-bg"></div>
@@ -925,6 +955,17 @@
 </footer>
 
 <script>
+  // Image crossfade rotation every 10 seconds
+  const imgLayers = document.querySelectorAll('.img-layer');
+  if (imgLayers.length) {
+    let currentImg = 0;
+    setInterval(() => {
+      imgLayers[currentImg].classList.remove('active');
+      currentImg = (currentImg + 1) % imgLayers.length;
+      imgLayers[currentImg].classList.add('active');
+    }, 10000);
+  }
+
   // Video crossfade rotation every 20 seconds
   const vid1 = document.getElementById('bgVideo1');
   const vid2 = document.getElementById('bgVideo2');

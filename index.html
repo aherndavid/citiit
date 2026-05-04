@@ -137,6 +137,53 @@
   .hero-right { display: none; }
   .geo-stripe, .geo-circle, .geo-rect, .hero-logo-text { display: none; }
 
+  /* ── OVERLAY CONTENT (video + image sections) ── */
+  .section-overlay-content {
+    position: relative; z-index: 2;
+    padding: 6rem 2.5rem;
+    min-height: 100vh;
+    display: flex; flex-direction: column; justify-content: center;
+  }
+  .overlay-header {
+    display: grid; grid-template-columns: auto 1fr; gap: 2.5rem; align-items: end;
+    margin-bottom: 4rem; padding-bottom: 1.5rem;
+    border-bottom: 1px solid rgba(255,255,255,0.15);
+  }
+  .overlay-num {
+    font-family: var(--bebas); font-size: 110px;
+    color: rgba(255,255,255,0.06); line-height: 1; letter-spacing: -2px;
+  }
+  .overlay-eyebrow {
+    font-family: var(--mono); font-size: 11px; color: rgba(255,255,255,0.45);
+    letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 8px;
+  }
+  .overlay-title {
+    font-family: var(--bebas); font-size: clamp(38px, 4.5vw, 60px);
+    color: var(--cream); letter-spacing: 0.02em; line-height: 1;
+  }
+  .overlay-title span { color: var(--blue); }
+  .overlay-grid {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 0;
+    border-top: 1px solid rgba(255,255,255,0.12);
+    border-left: 1px solid rgba(255,255,255,0.12);
+  }
+  .overlay-svc {
+    padding: 2rem 1.5rem;
+    border-right: 1px solid rgba(255,255,255,0.12);
+    border-bottom: 1px solid rgba(255,255,255,0.12);
+    transition: background 0.25s;
+  }
+  .overlay-svc:hover { background: rgba(42,109,181,0.4); }
+  .overlay-svc-n {
+    font-family: var(--mono); font-size: 10px; letter-spacing: 0.1em;
+    color: rgba(255,255,255,0.35); margin-bottom: 1.25rem;
+  }
+  .overlay-svc-title {
+    font-family: var(--bebas); font-size: 21px; letter-spacing: 0.04em;
+    color: var(--cream); margin-bottom: 0.75rem; line-height: 1.1;
+  }
+  .overlay-svc-desc { font-size: 12px; color: rgba(255,255,255,0.55); line-height: 1.75; }
+
   /* ── IMAGE ROTATION SECTION ── */
   .img-rotation-section {
     min-height: 100vh;
@@ -647,13 +694,32 @@
 <div class="divider"></div>
 
 <!-- VIDEO SECTION -->
-<section class="video-section">
+<section class="video-section" id="services">
   <video id="bgVideo1" autoplay muted loop playsinline class="vid-layer active">
     <source src="https://raw.githubusercontent.com/aherndavid/citiit/main/assets/IMG_0065.MOV" type="video/mp4">
   </video>
   <video id="bgVideo2" muted loop playsinline class="vid-layer">
     <source src="https://raw.githubusercontent.com/aherndavid/citiit/main/assets/tube.mov" type="video/mp4">
   </video>
+  <div class="section-overlay-content">
+    <div class="overlay-header">
+      <div class="overlay-num">08</div>
+      <div>
+        <div class="overlay-eyebrow">What I offer</div>
+        <div class="overlay-title">SERVICES<br><span>AVAILABLE</span></div>
+      </div>
+    </div>
+    <div class="overlay-grid">
+      <div class="overlay-svc"><div class="overlay-svc-n">01</div><div class="overlay-svc-title">Web Design &amp; Development</div><div class="overlay-svc-desc">Purposeful websites built with modern techniques — from concept through to launch, designed to work and built to last.</div></div>
+      <div class="overlay-svc"><div class="overlay-svc-n">02</div><div class="overlay-svc-title">Graphic Design</div><div class="overlay-svc-desc">Visual communication with clarity and intention. Print, digital, and everything in between — crafted with a designer's eye.</div></div>
+      <div class="overlay-svc"><div class="overlay-svc-n">03</div><div class="overlay-svc-title">Branding &amp; Identity</div><div class="overlay-svc-desc">Brand systems that hold together across every touchpoint. Logo design, visual language, and the story behind it.</div></div>
+      <div class="overlay-svc"><div class="overlay-svc-n">04</div><div class="overlay-svc-title">IT Support &amp; Maintenance</div><div class="overlay-svc-desc">Dependable IT support underpinned by decades of hands-on experience — from everyday troubleshooting to infrastructure oversight.</div></div>
+      <div class="overlay-svc"><div class="overlay-svc-n">05</div><div class="overlay-svc-title">IT Consultancy</div><div class="overlay-svc-desc">Strategic guidance bridging technical complexity and real-world decision-making for individuals and businesses.</div></div>
+      <div class="overlay-svc"><div class="overlay-svc-n">06</div><div class="overlay-svc-title">Social Media &amp; Digital Marketing</div><div class="overlay-svc-desc">Considered digital presence — content strategy, platform management, and campaigns that connect with the right audience.</div></div>
+      <div class="overlay-svc"><div class="overlay-svc-n">07</div><div class="overlay-svc-title">Audio Production</div><div class="overlay-svc-desc">Original music production and recording using hardware synthesisers, drum machines and keys. Two releases on iTunes.</div></div>
+      <div class="overlay-svc"><div class="overlay-svc-n">08</div><div class="overlay-svc-title">Home Audio Consultancy</div><div class="overlay-svc-desc">Expert guidance on building or refining your home studio or listening setup — equipment, acoustics, and workflow.</div></div>
+    </div>
+  </div>
 </section>
 
 <div class="divider"></div>
@@ -662,6 +728,25 @@
 <section class="img-rotation-section">
   <div class="img-layer active" style="background-image: url('https://raw.githubusercontent.com/aherndavid/citiit/main/assets/covent-garden-01.JPG')"></div>
   <div class="img-layer" style="background-image: url('https://raw.githubusercontent.com/aherndavid/citiit/main/assets/phone-boxes.png')"></div>
+  <div class="section-overlay-content">
+    <div class="overlay-header">
+      <div class="overlay-num">08</div>
+      <div>
+        <div class="overlay-eyebrow">What I offer</div>
+        <div class="overlay-title">SERVICES<br><span>AVAILABLE</span></div>
+      </div>
+    </div>
+    <div class="overlay-grid">
+      <div class="overlay-svc"><div class="overlay-svc-n">01</div><div class="overlay-svc-title">Web Design &amp; Development</div><div class="overlay-svc-desc">Purposeful websites built with modern techniques — from concept through to launch, designed to work and built to last.</div></div>
+      <div class="overlay-svc"><div class="overlay-svc-n">02</div><div class="overlay-svc-title">Graphic Design</div><div class="overlay-svc-desc">Visual communication with clarity and intention. Print, digital, and everything in between — crafted with a designer's eye.</div></div>
+      <div class="overlay-svc"><div class="overlay-svc-n">03</div><div class="overlay-svc-title">Branding &amp; Identity</div><div class="overlay-svc-desc">Brand systems that hold together across every touchpoint. Logo design, visual language, and the story behind it.</div></div>
+      <div class="overlay-svc"><div class="overlay-svc-n">04</div><div class="overlay-svc-title">IT Support &amp; Maintenance</div><div class="overlay-svc-desc">Dependable IT support underpinned by decades of hands-on experience — from everyday troubleshooting to infrastructure oversight.</div></div>
+      <div class="overlay-svc"><div class="overlay-svc-n">05</div><div class="overlay-svc-title">IT Consultancy</div><div class="overlay-svc-desc">Strategic guidance bridging technical complexity and real-world decision-making for individuals and businesses.</div></div>
+      <div class="overlay-svc"><div class="overlay-svc-n">06</div><div class="overlay-svc-title">Social Media &amp; Digital Marketing</div><div class="overlay-svc-desc">Considered digital presence — content strategy, platform management, and campaigns that connect with the right audience.</div></div>
+      <div class="overlay-svc"><div class="overlay-svc-n">07</div><div class="overlay-svc-title">Audio Production</div><div class="overlay-svc-desc">Original music production and recording using hardware synthesisers, drum machines and keys. Two releases on iTunes.</div></div>
+      <div class="overlay-svc"><div class="overlay-svc-n">08</div><div class="overlay-svc-title">Home Audio Consultancy</div><div class="overlay-svc-desc">Expert guidance on building or refining your home studio or listening setup — equipment, acoustics, and workflow.</div></div>
+    </div>
+  </div>
 </section>
 
 <div class="divider"></div>

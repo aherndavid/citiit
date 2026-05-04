@@ -67,7 +67,7 @@
 
   /* ── HERO (desk video) ── */
   .hero { padding-top: 60px; }
-  .hero-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center top; z-index: 0; }
+  .hero-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: top center; z-index: 0; }
   .hero-watermark {
     position: absolute; inset: 0; z-index: 2;
     display: flex; align-items: center; justify-content: center;
@@ -297,7 +297,6 @@
 <!-- ③ PHONE BOXES + COVENT GARDEN (rotating) — SERVICES -->
 <section class="fullscreen-section" id="services">
   <div class="img-layer active" style="background-image:url('https://raw.githubusercontent.com/aherndavid/citiit/main/assets/phone-boxes.png');" data-group="services"></div>
-  <div class="img-layer" style="background-image:url('https://raw.githubusercontent.com/aherndavid/citiit/main/assets/covent-garden-01.JPG');" data-group="services"></div>
   <div class="img-layer" style="background-image:url('https://raw.githubusercontent.com/aherndavid/citiit/main/assets/taxi.png');" data-group="services"></div>
   <div class="section-overlay-content">
     <div class="overlay-header">
@@ -322,11 +321,12 @@
 
 <div class="divider"></div>
 
-<!-- ④ TUBE VIDEO — ABOUT -->
+<!-- ④ TUBE VIDEO + MACS (rotating) — ABOUT -->
 <section class="fullscreen-section" id="about">
-  <video autoplay muted loop playsinline class="bg-video" id="tubeVideo">
+  <video autoplay muted loop playsinline class="bg-video img-layer active" id="tubeVideo" style="object-fit:cover; object-position:center top;">
     <source src="https://raw.githubusercontent.com/aherndavid/citiit/main/assets/tube.mp4" type="video/mp4">
   </video>
+  <div class="img-layer" style="background-image:url('https://raw.githubusercontent.com/aherndavid/citiit/main/assets/macs.png');" data-group="about"></div>
   <div class="section-overlay-content" style="justify-content:center;">
     <div class="about-overlay-grid">
       <div class="about-left-col">
@@ -513,6 +513,7 @@
     if (!v) return;
     v.playbackRate = 0.65;
     v.addEventListener('loadedmetadata', function() { v.playbackRate = 0.65; });
+    v.addEventListener('play', function() { v.playbackRate = 0.65; });
   });
 
   // ── Image rotator (robust, handles any number of layers) ──
@@ -528,9 +529,11 @@
     }, interval);
   }
 
-  // Services section: phone-boxes → covent-garden → taxi (10s)
+  // Services section: phone-boxes → taxi (10s)
   startRotator(Array.from(document.querySelectorAll('#services .img-layer')), 10000);
-  // Portfolio section: covent-garden → brick-wall (12s)
+  // About section: tube video → macs (15s)
+  startRotator(Array.from(document.querySelectorAll('#about .img-layer')), 15000);
+  // Portfolio section: covent-garden → brick-wall → taxi (12s)
   startRotator(Array.from(document.querySelectorAll('#portfolio .img-layer')), 12000);
 
   // ── Speed test ──

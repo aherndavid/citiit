@@ -91,6 +91,7 @@
 
   /* ── IMAGE GALLERY SECTION (no overlay tint) ── */
   #about.fullscreen-section::after { display: none; }
+  #gallery.fullscreen-section::after { display: none; }
   .img-layer { position: absolute; inset: 0; background-size: cover; background-position: center; opacity: 0; transition: opacity 1.5s ease; z-index: 0; }
   .img-layer.active { opacity: 1; }
 
@@ -334,7 +335,7 @@
 
 <!-- ⑤ COVENT GARDEN + BRICK WALL (rotating) — PORTFOLIO -->
 <section class="fullscreen-section" id="portfolio">
-  <div class="img-layer active" style="background-image:url('https://raw.githubusercontent.com/aherndavid/citiit/main/assets/covent-garden-01.JPG');" data-group="portfolio"></div>
+  <div class="img-layer active" style="background-image:url('https://raw.githubusercontent.com/aherndavid/citiit/main/assets/covent-garden-01.png');" data-group="portfolio"></div>
   <div class="img-layer" style="background-image:url('https://raw.githubusercontent.com/aherndavid/citiit/main/assets/brick-wall.png');" data-group="portfolio"></div>
   <div class="img-layer" style="background-image:url('https://raw.githubusercontent.com/aherndavid/citiit/main/assets/taxi.png');" data-group="portfolio"></div>
   <div class="section-overlay-content" style="justify-content:center;">
@@ -435,6 +436,15 @@
 
 <div class="divider"></div>
 
+<!-- GALLERY — rotating video section, no text -->
+<section class="fullscreen-section" id="gallery">
+  <video autoplay muted playsinline class="bg-video" id="galleryVideo" style="object-fit:cover; object-position:center;">
+    <source src="https://raw.githubusercontent.com/aherndavid/citiit/main/assets/tube-sign.mp4" type="video/mp4">
+  </video>
+</section>
+
+<div class="divider"></div>
+
 <!-- CONTACT -->
 <section class="contact" id="contact">
   <div class="contact-left">
@@ -496,6 +506,24 @@
     v.addEventListener('loadedmetadata', function() { v.playbackRate = 0.65; });
     v.addEventListener('play', function() { v.playbackRate = 0.65; });
   });
+
+  // ── Gallery video succession ──
+  var gallerySources = [
+    'https://raw.githubusercontent.com/aherndavid/citiit/main/assets/tube-sign.mp4',
+    'https://raw.githubusercontent.com/aherndavid/citiit/main/assets/computer-screen.mp4',
+    'https://raw.githubusercontent.com/aherndavid/citiit/main/assets/toolsmp4.mp4',
+    'https://raw.githubusercontent.com/aherndavid/citiit/main/assets/tube.MOV'
+  ];
+  var galleryCurrent = 0;
+  var galleryVideo = document.getElementById('galleryVideo');
+  if (galleryVideo) {
+    galleryVideo.addEventListener('ended', function() {
+      galleryCurrent = (galleryCurrent + 1) % gallerySources.length;
+      galleryVideo.src = gallerySources[galleryCurrent];
+      galleryVideo.load();
+      galleryVideo.play();
+    });
+  }
 
   // ── Drill video succession ──
   var drillSources = [

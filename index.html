@@ -89,7 +89,8 @@
   .bg-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; z-index: 0; }
   .hero .bg-video { top: -80px; height: calc(100% + 80px); object-position: center top; }
 
-  /* ── IMAGE ROTATION LAYERS ── */
+  /* ── IMAGE GALLERY SECTION (no overlay tint) ── */
+  #about.fullscreen-section::after { display: none; }
   .img-layer { position: absolute; inset: 0; background-size: cover; background-position: center; opacity: 0; transition: opacity 1.5s ease; z-index: 0; }
   .img-layer.active { opacity: 1; }
 
@@ -287,7 +288,7 @@
         WHERE<br>TECH<br><span style="color:var(--blue);">MEETS</span><br>CRAFT.
       </div>
       <p style="font-size:15px; color:rgba(240,235,224,0.6); line-height:1.8; font-family:var(--body); font-style:italic;">
-        CitiIT Limited — bridging creative and technical disciplines for individuals and businesses who demand more than the ordinary.
+        Based in Berkshire, available across the UK — CitiIT bridges creative and technical disciplines for businesses who need more than the ordinary. Short or long-term. No fuss. Just results.
       </p>
     </div>
   </div>
@@ -303,51 +304,30 @@
     <div class="overlay-header">
       <div class="overlay-num">08</div>
       <div>
-        <div class="overlay-eyebrow">What I offer</div>
+        <div class="overlay-eyebrow">What CitiIT offers</div>
         <div class="overlay-title">SERVICES<br><span>AVAILABLE</span></div>
       </div>
     </div>
     <div class="overlay-grid">
-      <div class="overlay-svc"><div class="overlay-svc-n">01</div><div class="overlay-svc-title">Web Design &amp; Development</div><div class="overlay-svc-desc">Purposeful websites built with modern techniques — from concept through to launch, designed to work and built to last.</div></div>
-      <div class="overlay-svc"><div class="overlay-svc-n">02</div><div class="overlay-svc-title">Graphic Design</div><div class="overlay-svc-desc">Visual communication with clarity and intention. Print, digital, and everything in between — crafted with a designer's eye.</div></div>
-      <div class="overlay-svc"><div class="overlay-svc-n">03</div><div class="overlay-svc-title">Branding &amp; Identity</div><div class="overlay-svc-desc">Brand systems that hold together across every touchpoint. Logo design, visual language, and the story behind it.</div></div>
-      <div class="overlay-svc"><div class="overlay-svc-n">04</div><div class="overlay-svc-title">IT Support &amp; Maintenance</div><div class="overlay-svc-desc">Dependable IT support underpinned by decades of hands-on experience — from everyday troubleshooting to infrastructure oversight.</div></div>
-      <div class="overlay-svc"><div class="overlay-svc-n">05</div><div class="overlay-svc-title">IT Consultancy</div><div class="overlay-svc-desc">Strategic guidance bridging technical complexity and real-world decision-making for individuals and businesses.</div></div>
-      <div class="overlay-svc"><div class="overlay-svc-n">06</div><div class="overlay-svc-title">Social Media &amp; Digital Marketing</div><div class="overlay-svc-desc">Considered digital presence — content strategy, platform management, and campaigns that connect with the right audience.</div></div>
-      <div class="overlay-svc"><div class="overlay-svc-n">07</div><div class="overlay-svc-title">Audio Production</div><div class="overlay-svc-desc">Original music production and recording using hardware synthesisers, drum machines and keys. Two releases on iTunes.</div></div>
-      <div class="overlay-svc"><div class="overlay-svc-n">08</div><div class="overlay-svc-title">Home Audio Consultancy</div><div class="overlay-svc-desc">Expert guidance on building or refining your home studio or listening setup — equipment, acoustics, and workflow.</div></div>
+      <div class="overlay-svc"><div class="overlay-svc-n">01</div><div class="overlay-svc-title">On-site &amp; Remote IT Support</div><div class="overlay-svc-desc">Day-to-day troubleshooting, device setup, and rapid problem resolution — available short or long-term to keep your business running.</div></div>
+      <div class="overlay-svc"><div class="overlay-svc-n">02</div><div class="overlay-svc-title">Website Design &amp; Build</div><div class="overlay-svc-desc">Helping businesses establish or improve their online presence — from concept through to launch, built to work and designed to last.</div></div>
+      <div class="overlay-svc"><div class="overlay-svc-n">03</div><div class="overlay-svc-title">IT Consultancy &amp; Strategy</div><div class="overlay-svc-desc">Honest advice on infrastructure, tools, and the right way to grow — no jargon, no upselling, just clear strategic guidance.</div></div>
+      <div class="overlay-svc"><div class="overlay-svc-n">04</div><div class="overlay-svc-title">Workflow Automation</div><div class="overlay-svc-desc">Streamlining how your business operates — from cloud tools to AI-assisted processes that save time and reduce friction.</div></div>
+      <div class="overlay-svc"><div class="overlay-svc-n">05</div><div class="overlay-svc-title">Mac &amp; Windows Expertise</div><div class="overlay-svc-desc">20+ years across both platforms, including Apple Business deployments, Microsoft 365, and hybrid environments.</div></div>
+      <div class="overlay-svc"><div class="overlay-svc-n">06</div><div class="overlay-svc-title">Office &amp; Infrastructure Migrations</div><div class="overlay-svc-desc">Full end-to-end moves delivered with zero disruption — hardware, data, users, and everything in between.</div></div>
+      <div class="overlay-svc"><div class="overlay-svc-n">07</div><div class="overlay-svc-title">VIP &amp; Executive Support</div><div class="overlay-svc-desc">Discreet, senior-level IT support for founders and C-suite professionals who need things done properly, first time.</div></div>
+      <div class="overlay-svc"><div class="overlay-svc-n">08</div><div class="overlay-svc-title">Cloud &amp; Workspace Setup</div><div class="overlay-svc-desc">Google Workspace, Microsoft 365, Azure, and hybrid environments — configured, managed, and optimised for your team.</div></div>
     </div>
   </div>
 </section>
 
 <div class="divider"></div>
 
-<!-- ④ TUBE VIDEO + MACS (rotating) — ABOUT -->
+<!-- ④ DRILL VIDEOS — full screen, no text -->
 <section class="fullscreen-section" id="about">
-  <video autoplay muted loop playsinline class="bg-video img-layer active" id="tubeVideo" style="object-fit:cover; object-position:center top;">
-    <source src="https://raw.githubusercontent.com/aherndavid/citiit/main/assets/tube.mp4" type="video/mp4">
+  <video autoplay muted playsinline class="bg-video" id="drillVideo" style="object-fit:cover; object-position:center;">
+    <source src="https://raw.githubusercontent.com/aherndavid/citiit/main/assets/drill-part-one.mp4" type="video/mp4">
   </video>
-  <div class="img-layer" style="background-image:url('https://raw.githubusercontent.com/aherndavid/citiit/main/assets/macs.png');" data-group="about"></div>
-  <div class="section-overlay-content" style="justify-content:center;">
-    <div class="about-overlay-grid">
-      <div class="about-left-col">
-        <div class="about-watermark-vert">ABOUT</div>
-        <div class="about-stats">
-          <div><div class="stat-num">30+</div><div class="stat-lbl">Years in IT</div></div>
-          <div><div class="stat-num">2</div><div class="stat-lbl">iTunes releases</div></div>
-          <div><div class="stat-num">VIP</div><div class="stat-lbl">Client level</div></div>
-        </div>
-      </div>
-      <div class="about-right-col">
-        <h2 class="about-heading">TECHNICAL<br>PRECISION.<br><span>CREATIVE</span><br>INSTINCT.</h2>
-        <div class="about-body">
-          <p>David is an IT professional with over 30 years of hands-on experience — no jargon, no runaround, just someone who gets things sorted. He's spent his career working directly with CEOs and senior figures at companies including BMI Group, Creed, and Novacroft, and understands that people at that level need things done properly, quickly, and with minimal fuss.</p>
-          <p>With more than 20 years on the Mac platform, David has a deep knowledge of Apple ecosystems alongside Windows environments. He bridges the gap between complex IT and the people who just need it to work — and he always goes further than the bare minimum.</p>
-          <p>Outside of client work, David produces music independently using Logic Pro, has two releases on iTunes, and runs Autofacts-Bespoke — an automotive YouTube channel. His interests span music production, brand design, and web design with a difference. He's not your typical IT bloke. But he is exactly that, too.</p>
-        </div>
-      </div>
-    </div>
-  </div>
 </section>
 
 <div class="divider"></div>
@@ -465,7 +445,7 @@
     <div class="contact-info">
       <div class="ci-row"><div class="ci-lbl">Website</div><div class="ci-val"><a href="https://citiit.uk" target="_blank">citiit.uk</a></div></div>
       <div class="ci-row"><div class="ci-lbl">Portfolio</div><div class="ci-val"><a href="https://dpaul.studio" target="_blank">dpaul.studio</a></div></div>
-      <div class="ci-row"><div class="ci-lbl">Location</div><div class="ci-val">London, United Kingdom</div></div>
+      <div class="ci-row"><div class="ci-lbl">Location</div><div class="ci-val">Berkshire, United Kingdom</div></div>
       <div class="ci-row"><div class="ci-lbl">Company</div><div class="ci-val">CitiIT Limited &middot; Co. No. 15811174</div></div>
     </div>
   </div>
@@ -509,13 +489,29 @@
 
 <script>
   // ── Slow all videos ──
-  ['deskVideo','signVideo','tubeVideo'].forEach(function(id) {
+  ['deskVideo','signVideo'].forEach(function(id) {
     var v = document.getElementById(id);
     if (!v) return;
     v.playbackRate = 0.65;
     v.addEventListener('loadedmetadata', function() { v.playbackRate = 0.65; });
     v.addEventListener('play', function() { v.playbackRate = 0.65; });
   });
+
+  // ── Drill video succession ──
+  var drillSources = [
+    'https://raw.githubusercontent.com/aherndavid/citiit/main/assets/drill-part-one.mp4',
+    'https://raw.githubusercontent.com/aherndavid/citiit/main/assets/drill-part-two.mp4'
+  ];
+  var drillCurrent = 0;
+  var drillVideo = document.getElementById('drillVideo');
+  if (drillVideo) {
+    drillVideo.addEventListener('ended', function() {
+      drillCurrent = (drillCurrent + 1) % drillSources.length;
+      drillVideo.src = drillSources[drillCurrent];
+      drillVideo.load();
+      drillVideo.play();
+    });
+  }
 
   // ── Image rotator (robust, handles any number of layers) ──
   function startRotator(layers, interval) {
@@ -532,8 +528,6 @@
 
   // Services section: phone-boxes → taxi (10s)
   startRotator(Array.from(document.querySelectorAll('#services .img-layer')), 10000);
-  // About section: tube video → macs (15s)
-  startRotator(Array.from(document.querySelectorAll('#about .img-layer')), 15000);
   // Portfolio section: covent-garden → brick-wall → taxi (12s)
   startRotator(Array.from(document.querySelectorAll('#portfolio .img-layer')), 12000);
 

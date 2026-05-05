@@ -34,6 +34,19 @@
     -webkit-font-smoothing: antialiased;
   }
 
+  /* ── SIDE BORDERS ── */
+  body::before, body::after {
+    content: '';
+    position: fixed;
+    top: 0; bottom: 0;
+    width: 18px;
+    background: var(--black);
+    z-index: 9999;
+    pointer-events: none;
+  }
+  body::before { left: 0; }
+  body::after { right: 0; }
+
   /* ── NAV ── */
   nav {
     position: fixed; top: 0; left: 0; right: 0; z-index: 200;
@@ -510,7 +523,6 @@
   // ── Gallery video succession ──
   var gallerySources = [
     'https://raw.githubusercontent.com/aherndavid/citiit/main/assets/tube-sign.mp4',
-    'https://raw.githubusercontent.com/aherndavid/citiit/main/assets/computer-screen.mp4',
     'https://raw.githubusercontent.com/aherndavid/citiit/main/assets/toolsmp4.mp4',
     'https://raw.githubusercontent.com/aherndavid/citiit/main/assets/tube.MOV'
   ];

@@ -45,7 +45,7 @@
     pointer-events: none;
   }
   body::before { left: 0; }
-  body::after { right: 0; }
+  body::after { right: right; }
   html::before, html::after {
     content: '';
     position: fixed;
@@ -133,20 +133,7 @@
   .overlay-svc-title { font-family: var(--bebas); font-size: 30px; letter-spacing: 0.04em; color: var(--cream); margin-bottom: 0.75rem; line-height: 1.1; }
   .overlay-svc-desc { font-size: 15px; color: rgba(255,255,255,0.75); line-height: 1.75; }
 
-  /* ── ABOUT OVERLAY (inside tube section) ── */
-  .about-overlay-grid { display: grid; grid-template-columns: 220px 1fr; gap: 0; position: relative; z-index: 2; width: 100%; }
-  .about-left-col { padding: 0 2rem 0 0; border-right: 1px solid rgba(255,255,255,0.12); display: flex; flex-direction: column; justify-content: space-between; min-height: 480px; }
-  .about-watermark-vert { font-family: var(--bebas); font-size: 72px; color: rgba(255,255,255,0.05); line-height: 1; letter-spacing: 0.02em; writing-mode: vertical-rl; transform: rotate(180deg); }
-  .about-stats { display: flex; flex-direction: column; gap: 2.5rem; }
-  .stat-num { font-family: var(--bebas); font-size: 54px; color: var(--blue); line-height: 1; letter-spacing: 0.02em; }
-  .stat-lbl { font-family: var(--mono); font-size: 10px; color: rgba(255,255,255,0.3); letter-spacing: 0.1em; text-transform: uppercase; margin-top: 4px; }
-  .about-right-col { padding: 0 0 0 4rem; display: flex; flex-direction: column; justify-content: center; }
-  .about-heading { font-family: var(--bebas); font-size: clamp(38px, 4.5vw, 60px); color: var(--cream); line-height: 1.05; letter-spacing: 0.02em; margin-bottom: 2rem; }
-  .about-heading span { color: var(--blue); }
-  .about-body p { font-size: 19px; color: rgba(240,235,224,0.68); line-height: 1.85; margin-bottom: 1.25rem; }
-  .about-body p:last-child { margin-bottom: 0; }
-
-  /* ── PORTFOLIO OVERLAY (inside covent/brick section) ── */
+  /* ── PORTFOLIO OVERLAY ── */
   .port-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 3rem; border-bottom: 1px solid rgba(255,255,255,0.15); padding-bottom: 1.5rem; }
   .port-title { font-family: var(--bebas); font-size: clamp(38px, 4.5vw, 60px); color: var(--cream); letter-spacing: 0.02em; }
   .port-link { font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--cream); text-decoration: none; border-bottom: 1px solid rgba(240,235,224,0.35); padding-bottom: 2px; transition: border-color 0.2s; }
@@ -196,22 +183,11 @@
   .foot-info a { color: rgba(255,255,255,0.22); text-decoration: none; transition: color 0.2s; }
   .foot-info a:hover { color: var(--cream); }
 
-  /* ── SPEED TEST BUTTON ── */
-  #speedBtn.running { 
-    color: var(--blue) !important; 
-    cursor: default; 
-    pointer-events: none;
-  }
+  #speedBtn.running { color: var(--blue) !important; cursor: default; pointer-events: none; }
 
   /* ── RESPONSIVE ── */
   @media (max-width: 900px) {
     .hero-content { grid-template-columns: 1fr; padding: 3rem 1.5rem 3rem; }
-    .hero-right-content { padding-bottom: 0; }
-    .about-overlay-grid { grid-template-columns: 1fr; }
-    .about-left-col { flex-direction: row; padding: 0 0 2rem 0; border-right: none; border-bottom: 1px solid rgba(255,255,255,0.1); min-height: auto; align-items: center; flex-wrap: wrap; gap: 2rem; }
-    .about-watermark-vert { writing-mode: horizontal-tb; transform: none; font-size: 40px; }
-    .about-stats { flex-direction: row; gap: 2rem; }
-    .about-right-col { padding: 2rem 0 0 0; }
     .overlay-grid { grid-template-columns: repeat(2, 1fr) !important; }
     .section-overlay-content { padding: 4rem 1.5rem; }
     .overlay-num { font-size: 64px; }
@@ -219,8 +195,6 @@
     .port-grid .port-card:last-child { grid-column: 1 / -1; }
     .contact { grid-template-columns: 1fr; }
     .contact-photo-col { min-height: 320px; }
-    .contact-photo-col { overflow: hidden; position: relative; min-height: 500px; }
-    .contact-photo { width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; }
     .contact-left { min-height: auto; padding: 3rem 2rem; }
     .contact-right { padding: 3rem 2rem; }
     .nav-links { display: none; position: absolute; top: 60px; left: 0; right: 0; background: var(--black); flex-direction: column; padding: 1.5rem 2.5rem; gap: 1.25rem; border-top: 1px solid rgba(255,255,255,0.08); }
@@ -231,11 +205,7 @@
     .overlay-grid { grid-template-columns: 1fr !important; }
     .overlay-header { grid-template-columns: 1fr; }
     .overlay-num { display: none; }
-    .overlay-svc { padding: 1.25rem 1rem; }
-    .overlay-svc-title { font-size: 24px; }
-    .overlay-svc-desc { font-size: 14px; line-height: 1.6; }
     .port-grid { grid-template-columns: 1fr; }
-    .port-grid .port-card:last-child { grid-column: auto; }
     footer { flex-direction: column; text-align: center; }
     .foot-info { text-align: center; }
   }
@@ -268,7 +238,7 @@
     </div>
     <div class="hero-right-content">
       <p class="hero-desc">"Constantly moving with technology, using cutting edge techniques to bridge that gap between Tech and Customer."</p>
-      <img src="https://raw.githubusercontent.com/aherndavid/citiit/main/assets/signature.png" alt="David's signature" class="hero-signature">
+      <img src="https://raw.githubusercontent.com/aherndavid/citiit/main/assets/signature.png" alt="Signature" class="hero-signature">
       <a href="#services" class="hero-cta">Explore Services &#x2192;</a>
     </div>
   </div>
@@ -307,14 +277,14 @@
       </div>
     </div>
     <div class="overlay-grid">
-      <div class="overlay-svc"><div class="overlay-svc-n">01</div><div class="overlay-svc-title">On-site &amp; Remote IT Support</div><div class="overlay-svc-desc">Day-to-day troubleshooting, device setup, and rapid problem resolution — available short or long-term to keep your business running.</div></div>
-      <div class="overlay-svc"><div class="overlay-svc-n">02</div><div class="overlay-svc-title">Website Design &amp; Build</div><div class="overlay-svc-desc">Helping businesses establish or improve their online presence — from concept through to launch, built to work and designed to last.</div></div>
-      <div class="overlay-svc"><div class="overlay-svc-n">03</div><div class="overlay-svc-title">IT Consultancy &amp; Strategy</div><div class="overlay-svc-desc">Honest advice on infrastructure, tools, and the right way to grow — no jargon, no upselling, just clear strategic guidance.</div></div>
-      <div class="overlay-svc"><div class="overlay-svc-n">04</div><div class="overlay-svc-title">Workflow Automation</div><div class="overlay-svc-desc">Streamlining how your business operates — from cloud tools to AI-assisted processes that save time and reduce friction.</div></div>
-      <div class="overlay-svc"><div class="overlay-svc-n">05</div><div class="overlay-svc-title">Mac &amp; Windows Expertise</div><div class="overlay-svc-desc">20+ years across both platforms, including Apple Business deployments, Microsoft 365, and hybrid environments.</div></div>
-      <div class="overlay-svc"><div class="overlay-svc-n">06</div><div class="overlay-svc-title">Office &amp; Infrastructure Migrations</div><div class="overlay-svc-desc">Full end-to-end moves delivered with zero disruption — hardware, data, users, and everything in between.</div></div>
-      <div class="overlay-svc"><div class="overlay-svc-n">07</div><div class="overlay-svc-title">VIP &amp; Executive Support</div><div class="overlay-svc-desc">Discreet, senior-level IT support for founders and C-suite professionals who need things done properly, first time.</div></div>
-      <div class="overlay-svc"><div class="overlay-svc-n">08</div><div class="overlay-svc-title">Cloud &amp; Workspace Setup</div><div class="overlay-svc-desc">Google Workspace, Microsoft 365, Azure, and hybrid environments — configured, managed, and optimised for your team.</div></div>
+      <div class="overlay-svc"><div class="overlay-svc-n">01</div><div class="overlay-svc-title">On-site &amp; Remote IT Support</div><div class="overlay-svc-desc">Day-to-day troubleshooting and rapid problem resolution — available short or long-term.</div></div>
+      <div class="overlay-svc"><div class="overlay-svc-n">02</div><div class="overlay-svc-title">Website Design &amp; Build</div><div class="overlay-svc-desc">Helping businesses establish or improve their online presence — from concept through to launch.</div></div>
+      <div class="overlay-svc"><div class="overlay-svc-n">03</div><div class="overlay-svc-title">IT Consultancy &amp; Strategy</div><div class="overlay-svc-desc">Honest advice on infrastructure and the right way to grow — no jargon, just clear guidance.</div></div>
+      <div class="overlay-svc"><div class="overlay-svc-n">04</div><div class="overlay-svc-title">Workflow Automation</div><div class="overlay-svc-desc">Streamlining operations — from cloud tools to AI-assisted processes that save time.</div></div>
+      <div class="overlay-svc"><div class="overlay-svc-n">05</div><div class="overlay-svc-title">Mac &amp; Windows Expertise</div><div class="overlay-svc-desc">20+ years across both platforms, including Apple Business deployments and M365.</div></div>
+      <div class="overlay-svc"><div class="overlay-svc-n">06</div><div class="overlay-svc-title">Office &amp; Infrastructure Migrations</div><div class="overlay-svc-desc">Full end-to-end moves delivered with zero disruption — hardware and data.</div></div>
+      <div class="overlay-svc"><div class="overlay-svc-n">07</div><div class="overlay-svc-title">VIP &amp; Executive Support</div><div class="overlay-svc-desc">Discreet, senior-level support for founders and C-suite professionals.</div></div>
+      <div class="overlay-svc"><div class="overlay-svc-n">08</div><div class="overlay-svc-title">Cloud &amp; Workspace Setup</div><div class="overlay-svc-desc">Google Workspace and Azure — configured, managed, and optimised for your team.</div></div>
     </div>
   </div>
 </section>
@@ -324,7 +294,6 @@
 <section class="fullscreen-section" id="portfolio">
   <div class="img-layer active" style="background-image:url('https://raw.githubusercontent.com/aherndavid/citiit/main/assets/covent-garden-01.png');" data-group="portfolio"></div>
   <div class="img-layer" style="background-image:url('https://raw.githubusercontent.com/aherndavid/citiit/main/assets/brick-wall.png');" data-group="portfolio"></div>
-  <div class="img-layer" style="background-image:url('https://raw.githubusercontent.com/aherndavid/citiit/main/assets/taxi.png');" data-group="portfolio"></div>
   <div class="section-overlay-content" style="justify-content:center;">
     <div style="position:relative; z-index:2; width:100%;">
       <div class="port-header">
@@ -335,19 +304,19 @@
         <div class="port-card">
           <div class="port-tag">Design Portfolio</div>
           <div class="port-name">dpaul.studio</div>
-          <div class="port-desc">Branding, graphic design, and creative direction across a range of clients and industries — all in one place.</div>
+          <div class="port-desc">Branding, graphic design, and creative direction across a range of industries.</div>
           <a href="https://dpaul.studio" class="port-btn" target="_blank">View site &#x2192;</a>
         </div>
         <div class="port-card">
           <div class="port-tag">Audio Production</div>
           <div class="port-name">Music &amp; Sound</div>
-          <div class="port-desc">Two original productions on iTunes. Extended catalogue on SoundCloud — electronic music built with hardware synths, drum machines and keys.</div>
+          <div class="port-desc">Electronic music built with hardware synths and drum machines. Available on iTunes and SoundCloud.</div>
           <a href="#contact" class="port-btn">Get in touch &#x2192;</a>
         </div>
         <div class="port-card">
           <div class="port-tag">Web &amp; IT</div>
           <div class="port-name">Client Projects</div>
-          <div class="port-desc">Web builds and IT consultancy for businesses and high-profile individuals across London and beyond. Case studies available on request.</div>
+          <div class="port-desc">Web builds and IT consultancy for businesses across London. Case studies available on request.</div>
           <a href="#contact" class="port-btn">Request case studies &#x2192;</a>
         </div>
       </div>
@@ -357,7 +326,7 @@
 
 <section class="contact" id="contact">
   <div class="contact-photo-col">
-    <img src="data:image/png;base64,...(original image data)..." alt="Contact David" class="contact-photo">
+    <img src="data:image/png;base64,..." alt="Contact David" class="contact-photo">
   </div>
   <div class="contact-left">
     <div>
@@ -366,8 +335,8 @@
     </div>
     <div class="contact-info">
       <div class="ci-row">
-        <div class="ci-lbl">Email</div>
-        <div class="ci-val"><a href="mailto:hello@citiit.co.uk">hello@citiit.co.uk</a></div>
+        <div class="ci-lbl">Contact via Email</div>
+        <div class="ci-val"><a href="mailto:david@dpaul.studio">Send an Email</a></div>
       </div>
       <div class="ci-row">
         <div class="ci-lbl">Location</div>
@@ -403,48 +372,24 @@
   <div class="foot-info">
     &copy; 2024 CitiIT Limited. All rights reserved.<br>
     Registered in England and Wales. Company No. 15462551.<br>
-    <a href="mailto:hello@citiit.co.uk">hello@citiit.co.uk</a> | 
-    <a href="#" id="speedBtn" style="transition: color 0.2s;">Check Speed</a>
+    <a href="mailto:david@dpaul.studio">Contact</a> | 
+    <a href="#" id="speedBtn">Check Speed</a>
   </div>
 </footer>
 
 <script>
-  // ── Contact Form (AJAX) ──
   var form = document.getElementById("contactForm");
   if (form) {
     form.addEventListener("submit", function(ev) {
       ev.preventDefault();
-      var data = new FormData(form);
       fetch(form.action, {
         method: form.method,
-        body: data,
+        body: new FormData(form),
         headers: { 'Accept': 'application/json' }
-      }).then(function(response) {
-        if (response.ok) {
-          form.reset();
-          document.getElementById('confirm').style.display = 'block';
-        }
-      });
+      }).then(function(r) { if (r.ok) { form.reset(); document.getElementById('confirm').style.display = 'block'; } });
     });
   }
 
-  // ── Video Gallery Loop ──
-  var galleryVideo = document.getElementById('galleryVideo');
-  if (galleryVideo) {
-    var gallerySources = [
-      "https://raw.githubusercontent.com/aherndavid/citiit/main/assets/covent-garden-01.mp4",
-      "https://raw.githubusercontent.com/aherndavid/citiit/main/assets/covent-garden-02.mp4"
-    ];
-    var galleryCurrent = 0;
-    galleryVideo.addEventListener('ended', function() {
-      galleryCurrent = (galleryCurrent + 1) % gallerySources.length;
-      galleryVideo.src = gallerySources[galleryCurrent];
-      galleryVideo.load();
-      galleryVideo.play();
-    });
-  }
-
-  // ── Image rotator ──
   function startRotator(layers, interval) {
     if (!layers || layers.length < 2) return;
     var current = 0;
@@ -468,15 +413,6 @@
     document.getElementById('burger').classList.remove('open');
   }
 
-  document.addEventListener('scroll', function() {
-    if (window.scrollY > 50) {
-      document.querySelector('nav').style.boxShadow = '0 10px 30px rgba(0,0,0,0.5)';
-    } else {
-      document.querySelector('nav').style.boxShadow = 'none';
-    }
-  });
-
-  // ── Speed Test Logic ──
   document.addEventListener('DOMContentLoaded', function() {
     const speedBtn = document.getElementById('speedBtn');
     if (speedBtn) {
@@ -497,8 +433,7 @@
             speedBtn.classList.remove('running');
             return;
           }
-          const remaining = Math.ceil((duration - elapsed) / 1000);
-          speedBtn.innerText = 'Testing (' + remaining + 's)...';
+          speedBtn.innerText = 'Testing (' + Math.ceil((duration - elapsed) / 1000) + 's)...';
           try {
             const response = await fetch(testUrl + '?t=' + now, { cache: 'no-store' });
             const reader = response.body.getReader();
@@ -509,7 +444,7 @@
               if (Date.now() - startTime >= duration) break;
             }
           } catch (err) {
-            speedBtn.innerText = 'Speed Test Unavailable';
+            speedBtn.innerText = 'Unavailable';
             speedBtn.classList.remove('running');
             return;
           }

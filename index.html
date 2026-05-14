@@ -45,7 +45,7 @@
     pointer-events: none;
   }
   body::before { left: 0; }
-  body::after { right: right; }
+  body::after { right: 0; }
   html::before, html::after {
     content: '';
     position: fixed;
@@ -89,9 +89,8 @@
     z-index: 1;
   }
 
-  /* ── HERO (desk video) ── */
+  /* ── HERO ── */
   .hero { padding-top: 0; }
-  .hero-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 15%; z-index: 0; }
   .hero-watermark {
     position: absolute; inset: 0; z-index: 2;
     display: flex; align-items: center; justify-content: center;
@@ -109,17 +108,13 @@
   .hero-cta { display: inline-flex; align-items: center; gap: 10px; background: var(--blue); color: var(--white); font-family: var(--mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; text-decoration: none; padding: 14px 28px; transition: background 0.2s; align-self: flex-start; }
   .hero-cta:hover { background: var(--black); }
 
-  /* ── VIDEO BACKGROUNDS ── */
   .bg-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; z-index: 0; }
-  .hero .bg-video { top: 0; height: 100%; object-position: center top; }
 
-  /* ── IMAGE GALLERY SECTION (no overlay tint) ── */
-  #about.fullscreen-section::after { display: none; }
-  #gallery.fullscreen-section::after { display: none; }
+  /* ── IMAGES ── */
   .img-layer { position: absolute; inset: 0; background-size: cover; background-position: center; opacity: 0; transition: opacity 1.5s ease; z-index: 0; }
   .img-layer.active { opacity: 1; }
 
-  /* ── SHARED OVERLAY TEXT ── */
+  /* ── OVERLAYS ── */
   .section-overlay-content { position: relative; z-index: 2; padding: 6rem 2.5rem; min-height: 100vh; display: flex; flex-direction: column; justify-content: center; }
   .overlay-header { display: grid; grid-template-columns: auto 1fr; gap: 2.5rem; align-items: end; margin-bottom: 4rem; padding-bottom: 1.5rem; border-bottom: 1px solid rgba(255,255,255,0.15); }
   .overlay-num { font-family: var(--bebas); font-size: 110px; color: rgba(255,255,255,0.06); line-height: 1; letter-spacing: -2px; }
@@ -133,7 +128,7 @@
   .overlay-svc-title { font-family: var(--bebas); font-size: 30px; letter-spacing: 0.04em; color: var(--cream); margin-bottom: 0.75rem; line-height: 1.1; }
   .overlay-svc-desc { font-size: 15px; color: rgba(255,255,255,0.75); line-height: 1.75; }
 
-  /* ── PORTFOLIO OVERLAY ── */
+  /* ── PORTFOLIO ── */
   .port-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 3rem; border-bottom: 1px solid rgba(255,255,255,0.15); padding-bottom: 1.5rem; }
   .port-title { font-family: var(--bebas); font-size: clamp(38px, 4.5vw, 60px); color: var(--cream); letter-spacing: 0.02em; }
   .port-link { font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--cream); text-decoration: none; border-bottom: 1px solid rgba(240,235,224,0.35); padding-bottom: 2px; transition: border-color 0.2s; }
@@ -183,7 +178,9 @@
   .foot-info a { color: rgba(255,255,255,0.22); text-decoration: none; transition: color 0.2s; }
   .foot-info a:hover { color: var(--cream); }
 
-  #speedBtn.running { color: var(--blue) !important; cursor: default; pointer-events: none; }
+  /* ── SPEED TEST BUTTON ── */
+  #speedBtn { cursor: pointer; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 2px; }
+  #speedBtn.running { color: var(--blue) !important; cursor: default; pointer-events: none; border-bottom: none; }
 
   /* ── RESPONSIVE ── */
   @media (max-width: 900px) {
@@ -194,7 +191,7 @@
     .port-grid { grid-template-columns: 1fr 1fr; }
     .port-grid .port-card:last-child { grid-column: 1 / -1; }
     .contact { grid-template-columns: 1fr; }
-    .contact-photo-col { min-height: 320px; }
+    .contact-photo-col { min-height: 400px; }
     .contact-left { min-height: auto; padding: 3rem 2rem; }
     .contact-right { padding: 3rem 2rem; }
     .nav-links { display: none; position: absolute; top: 60px; left: 0; right: 0; background: var(--black); flex-direction: column; padding: 1.5rem 2.5rem; gap: 1.25rem; border-top: 1px solid rgba(255,255,255,0.08); }
@@ -326,7 +323,7 @@
 
 <section class="contact" id="contact">
   <div class="contact-photo-col">
-    <img src="data:image/png;base64,..." alt="Contact David" class="contact-photo">
+    <img src="https://raw.githubusercontent.com/aherndavid/citiit/main/assets/me.png" alt="David Ahern" class="contact-photo">
   </div>
   <div class="contact-left">
     <div>
@@ -373,11 +370,12 @@
     &copy; 2024 CitiIT Limited. All rights reserved.<br>
     Registered in England and Wales. Company No. 15462551.<br>
     <a href="mailto:david@dpaul.studio">Contact</a> | 
-    <a href="#" id="speedBtn">Check Speed</a>
+    <a href="#" id="speedBtn" title="Run a 30-second WiFi speed test">Check Speed</a>
   </div>
 </footer>
 
 <script>
+  // ── Contact Form ──
   var form = document.getElementById("contactForm");
   if (form) {
     form.addEventListener("submit", function(ev) {
@@ -390,6 +388,7 @@
     });
   }
 
+  // ── Image Rotators ──
   function startRotator(layers, interval) {
     if (!layers || layers.length < 2) return;
     var current = 0;
@@ -400,10 +399,10 @@
       layers[current].classList.add('active');
     }, interval);
   }
-
   startRotator(Array.from(document.querySelectorAll('#services .img-layer')), 10000);
   startRotator(Array.from(document.querySelectorAll('#portfolio .img-layer')), 12000);
 
+  // ── Navigation ──
   function toggleNav() {
     document.getElementById('navLinks').classList.toggle('open');
     document.getElementById('burger').classList.toggle('open');
@@ -413,27 +412,34 @@
     document.getElementById('burger').classList.remove('open');
   }
 
+  // ── WiFi Speed Test Tool ──
   document.addEventListener('DOMContentLoaded', function() {
     const speedBtn = document.getElementById('speedBtn');
     if (speedBtn) {
       speedBtn.addEventListener('click', async function(e) {
         e.preventDefault();
-        const duration = 30000;
+        const duration = 30000; // 30 seconds
         const testUrl = window.location.href.split('#')[0];
         let startTime = Date.now();
         let totalBytes = 0;
+        
         speedBtn.classList.add('running');
 
         async function runTest() {
           const now = Date.now();
           const elapsed = now - startTime;
+          
           if (elapsed >= duration) {
+            // Speed in Mbps: (total bits / seconds) / 1 million
             const speedMbps = ((totalBytes * 8) / (elapsed / 1000) / (1024 * 1024)).toFixed(1);
             speedBtn.innerText = speedMbps + ' Mbps';
             speedBtn.classList.remove('running');
             return;
           }
-          speedBtn.innerText = 'Testing (' + Math.ceil((duration - elapsed) / 1000) + 's)...';
+
+          const remaining = Math.ceil((duration - elapsed) / 1000);
+          speedBtn.innerText = 'Testing (' + remaining + 's)...';
+
           try {
             const response = await fetch(testUrl + '?t=' + now, { cache: 'no-store' });
             const reader = response.body.getReader();

@@ -75,7 +75,7 @@
   .burger.open span:nth-child(2) { opacity: 0; }
   .burger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
 
-  /* ── SHARED FULLSCREEN SECTION ── */
+  /* ── SECTIONS ── */
   .fullscreen-section {
     min-height: 100vh;
     position: relative; overflow: hidden;
@@ -90,7 +90,6 @@
   }
 
   /* ── HERO ── */
-  .hero { padding-top: 0; }
   .hero-watermark {
     position: absolute; inset: 0; z-index: 2;
     display: flex; align-items: center; justify-content: center;
@@ -98,9 +97,6 @@
   }
   .hero-watermark span { font-family: var(--bebas); font-size: clamp(120px, 18vw, 280px); letter-spacing: 0.08em; color: rgba(240,235,224,0.06); white-space: nowrap; line-height: 1; user-select: none; }
   .hero-content { position: relative; z-index: 3; padding: 4rem 3rem 5rem; display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: end; }
-  .hero-right-content { display: flex; flex-direction: column; justify-content: flex-end; padding-bottom: 4px; }
-  .hero-eyebrow { font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(240,235,224,0.5); margin-bottom: 1.5rem; display: flex; align-items: center; gap: 12px; }
-  .hero-eyebrow::before { content: ''; width: 32px; height: 1px; background: rgba(240,235,224,0.4); }
   .hero-title { font-family: var(--bebas); font-size: clamp(100px, 13vw, 180px); line-height: 0.88; letter-spacing: 0.01em; color: var(--cream); }
   .hero-title span { color: var(--blue); }
   .hero-desc { font-family: 'Caveat', cursive; font-size: 28px; color: #ffffff; line-height: 1.6; max-width: 440px; margin-bottom: 1.5rem; font-weight: 400; }
@@ -110,10 +106,6 @@
 
   .bg-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; z-index: 0; }
 
-  /* ── IMAGES ── */
-  .img-layer { position: absolute; inset: 0; background-size: cover; background-position: center; opacity: 0; transition: opacity 1.5s ease; z-index: 0; }
-  .img-layer.active { opacity: 1; }
-
   /* ── OVERLAYS ── */
   .section-overlay-content { position: relative; z-index: 2; padding: 6rem 2.5rem; min-height: 100vh; display: flex; flex-direction: column; justify-content: center; }
   .overlay-header { display: grid; grid-template-columns: auto 1fr; gap: 2.5rem; align-items: end; margin-bottom: 4rem; padding-bottom: 1.5rem; border-bottom: 1px solid rgba(255,255,255,0.15); }
@@ -121,90 +113,57 @@
   .overlay-eyebrow { font-family: var(--mono); font-size: 13px; color: rgba(255,255,255,0.6); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 10px; }
   .overlay-title { font-family: var(--bebas); font-size: clamp(52px, 6vw, 80px); color: var(--cream); letter-spacing: 0.02em; line-height: 1; }
   .overlay-title span { color: var(--blue); }
+
   .overlay-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; border-top: 1px solid rgba(255,255,255,0.12); border-left: 1px solid rgba(255,255,255,0.12); }
   .overlay-svc { padding: 2rem 1.5rem; border-right: 1px solid rgba(255,255,255,0.12); border-bottom: 1px solid rgba(255,255,255,0.12); transition: background 0.25s; }
   .overlay-svc:hover { background: rgba(42,109,181,0.4); }
-  .overlay-svc-n { font-family: var(--mono); font-size: 12px; letter-spacing: 0.1em; color: rgba(255,255,255,0.45); margin-bottom: 1.25rem; }
   .overlay-svc-title { font-family: var(--bebas); font-size: 30px; letter-spacing: 0.04em; color: var(--cream); margin-bottom: 0.75rem; line-height: 1.1; }
   .overlay-svc-desc { font-size: 15px; color: rgba(255,255,255,0.75); line-height: 1.75; }
 
   /* ── PORTFOLIO ── */
   .port-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 3rem; border-bottom: 1px solid rgba(255,255,255,0.15); padding-bottom: 1.5rem; }
-  .port-title { font-family: var(--bebas); font-size: clamp(38px, 4.5vw, 60px); color: var(--cream); letter-spacing: 0.02em; }
-  .port-link { font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--cream); text-decoration: none; border-bottom: 1px solid rgba(240,235,224,0.35); padding-bottom: 2px; transition: border-color 0.2s; }
-  .port-link:hover { border-color: var(--cream); }
   .port-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: rgba(0,0,0,0.25); }
   .port-card { background: rgba(10,10,10,0.6); border: 1px solid rgba(255,255,255,0.1); padding: 2rem; transition: background 0.2s; }
   .port-card:hover { background: rgba(42,109,181,0.35); }
-  .port-tag { font-family: var(--mono); font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(240,235,224,0.5); margin-bottom: 0.75rem; }
   .port-name { font-family: var(--bebas); font-size: 34px; letter-spacing: 0.04em; color: var(--cream); margin-bottom: 0.5rem; }
-  .port-desc { font-size: 15px; color: rgba(240,235,224,0.65); line-height: 1.75; margin-bottom: 1.5rem; }
   .port-btn { font-family: var(--mono); font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--cream); text-decoration: none; border-bottom: 1px solid rgba(240,235,224,0.3); padding-bottom: 2px; transition: border-color 0.2s; }
-  .port-btn:hover { border-color: var(--cream); }
 
   /* ── CONTACT ── */
   .contact { display: grid; grid-template-columns: 1fr 1fr 1fr; min-height: 60vh; }
   .contact-photo-col { overflow: hidden; position: relative; min-height: 500px; }
   .contact-photo { width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; }
   .contact-left { background: var(--black); padding: 5rem 3rem; display: flex; flex-direction: column; justify-content: space-between; min-height: 500px; }
-  .contact-eyebrow { font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(240,235,224,0.35); margin-bottom: 1.5rem; }
   .contact-heading { font-family: var(--bebas); font-size: clamp(50px, 8vw, 100px); color: var(--cream); line-height: 0.9; letter-spacing: 0.01em; }
-  .contact-heading span { color: var(--blue); }
   .contact-info { display: flex; flex-direction: column; gap: 1.25rem; }
-  .ci-row { display: flex; flex-direction: column; gap: 2px; }
-  .ci-lbl { font-family: var(--mono); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(240,235,224,0.25); }
-  .ci-val { font-size: 15px; color: rgba(240,235,224,0.7); }
   .ci-val a { color: rgba(240,235,224,0.7); text-decoration: none; border-bottom: 1px solid rgba(240,235,224,0.2); transition: color 0.2s; }
-  .ci-val a:hover { color: var(--cream); }
   .contact-right { background: var(--cream); padding: 5rem 3rem; display: flex; flex-direction: column; justify-content: center; }
-  .form-title { font-family: var(--bebas); font-size: 32px; letter-spacing: 0.04em; color: var(--black); margin-bottom: 2rem; }
-  form { display: flex; flex-direction: column; gap: 1.25rem; }
-  .fg { display: flex; flex-direction: column; gap: 6px; }
-  .fg label { font-family: var(--mono); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gray); }
-  .fg input, .fg textarea, .fg select { font-family: var(--body); font-size: 13px; color: var(--black); background: transparent; border: none; border-bottom: 1px solid rgba(0,0,0,0.18); padding: 10px 0; outline: none; transition: border-color 0.2s; -webkit-appearance: none; appearance: none; border-radius: 0; width: 100%; }
-  .fg input:focus, .fg textarea:focus, .fg select:focus { border-color: var(--blue); }
-  .fg textarea { resize: vertical; min-height: 100px; }
-  .form-submit { font-family: var(--mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--cream); background: var(--black); border: none; padding: 14px 28px; cursor: pointer; align-self: flex-start; transition: background 0.2s; margin-top: 0.5rem; }
-  .form-submit:hover { background: var(--blue); }
-  #confirm { font-size: 12px; color: var(--blue); display: none; margin-top: 0.5rem; font-family: var(--mono); letter-spacing: 0.06em; }
+  .form-submit { font-family: var(--mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--cream); background: var(--black); border: none; padding: 14px 28px; cursor: pointer; transition: background 0.2s; margin-top: 0.5rem; }
 
-  /* ── DIVIDER ── */
+  /* ── DIVIDER & FOOTER ── */
   .divider { height: 6px; background: repeating-linear-gradient(90deg, var(--blue) 0, var(--blue) 40px, var(--black) 40px, var(--black) 80px); }
-
-  /* ── FOOTER ── */
   footer { background: var(--black); padding: 2rem 2.5rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
-  .foot-brand { font-family: var(--bebas); font-size: 18px; letter-spacing: 0.1em; color: var(--cream); }
   .foot-info { font-family: var(--mono); font-size: 10px; color: rgba(255,255,255,0.22); letter-spacing: 0.06em; text-align: right; line-height: 1.9; }
-  .foot-info a { color: rgba(255,255,255,0.22); text-decoration: none; transition: color 0.2s; }
+  .foot-info a { color: rgba(255,255,255,0.22); text-decoration: none; transition: color 0.2s; cursor: pointer; }
   .foot-info a:hover { color: var(--cream); }
 
-  /* ── SPEED TEST BUTTON ── */
-  #speedBtn { cursor: pointer; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 2px; }
-  #speedBtn.running { color: var(--blue) !important; cursor: default; pointer-events: none; border-bottom: none; }
+  /* ── SPEED TEST POPUP ── */
+  .speed-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.85); z-index: 9999; }
+  .speed-modal { display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: var(--black); border: 1px solid var(--blue); padding: 2.5rem; z-index: 10000; width: 90%; max-width: 400px; color: var(--cream); text-align: center; box-shadow: 0 20px 50px rgba(0,0,0,0.5); }
+  .speed-modal h3 { font-family: var(--bebas); font-size: 36px; margin-bottom: 1.5rem; letter-spacing: 1px; color: var(--white); }
+  .speed-result-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.25rem; font-family: var(--mono); font-size: 13px; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 0.5rem; }
+  .speed-rating { text-transform: uppercase; font-weight: bold; padding-left: 10px; }
+  .rating-good { color: #4ade80; }
+  .rating-bad { color: #f87171; }
+  .speed-modal-close { margin-top: 1.5rem; background: var(--blue); color: var(--white); border: none; padding: 12px 24px; font-family: var(--mono); font-size: 11px; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; }
+  #speedBtn.running { color: var(--blue) !important; cursor: default; pointer-events: none; opacity: 0.7; }
 
   /* ── RESPONSIVE ── */
   @media (max-width: 900px) {
-    .hero-content { grid-template-columns: 1fr; padding: 3rem 1.5rem 3rem; }
-    .overlay-grid { grid-template-columns: repeat(2, 1fr) !important; }
-    .section-overlay-content { padding: 4rem 1.5rem; }
-    .overlay-num { font-size: 64px; }
-    .port-grid { grid-template-columns: 1fr 1fr; }
-    .port-grid .port-card:last-child { grid-column: 1 / -1; }
     .contact { grid-template-columns: 1fr; }
     .contact-photo-col { min-height: 400px; }
-    .contact-left { min-height: auto; padding: 3rem 2rem; }
-    .contact-right { padding: 3rem 2rem; }
-    .nav-links { display: none; position: absolute; top: 60px; left: 0; right: 0; background: var(--black); flex-direction: column; padding: 1.5rem 2.5rem; gap: 1.25rem; border-top: 1px solid rgba(255,255,255,0.08); }
+    .overlay-grid { grid-template-columns: 1fr 1fr; }
+    .nav-links { display: none; position: absolute; top: 60px; left: 0; right: 0; background: var(--black); flex-direction: column; padding: 1.5rem 2.5rem; }
     .nav-links.open { display: flex; }
-    .burger { display: flex; }
-  }
-  @media (max-width: 600px) {
-    .overlay-grid { grid-template-columns: 1fr !important; }
-    .overlay-header { grid-template-columns: 1fr; }
-    .overlay-num { display: none; }
-    .port-grid { grid-template-columns: 1fr; }
-    footer { flex-direction: column; text-align: center; }
-    .foot-info { text-align: center; }
   }
 </style>
 </head>
@@ -213,28 +172,23 @@
 <nav>
   <a class="nav-brand" href="#">CitiIT</a>
   <ul class="nav-links" id="navLinks">
-    <li><a href="#about" onclick="closeNav()">About</a></li>
+    <li><a href="#home" onclick="closeNav()">Home</a></li>
     <li><a href="#services" onclick="closeNav()">Services</a></li>
     <li><a href="#portfolio" onclick="closeNav()">Portfolio</a></li>
     <li><a href="#contact" onclick="closeNav()">Contact</a></li>
   </ul>
-  <button class="burger" id="burger" aria-label="Menu" onclick="toggleNav()">
-    <span></span><span></span><span></span>
-  </button>
+  <button class="burger" id="burger" onclick="toggleNav()"><span></span><span></span><span></span></button>
 </nav>
 
 <section class="fullscreen-section hero" id="home">
-  <video autoplay muted loop playsinline class="bg-video" id="deskVideo">
+  <video autoplay muted loop playsinline class="bg-video">
     <source src="https://raw.githubusercontent.com/aherndavid/citiit/main/assets/desk.mp4" type="video/mp4">
   </video>
   <div class="hero-watermark"><span>CITIIT LIMITED</span></div>
   <div class="hero-content">
-    <div>
-      <span class="hero-eyebrow">Creative &amp; Digital Services</span>
-      <h1 class="hero-title">CITI<span>IT</span><br>LIMI<br>TED.</h1>
-    </div>
+    <div><h1 class="hero-title">CITI<span>IT</span><br>LIMI<br>TED.</h1></div>
     <div class="hero-right-content">
-      <p class="hero-desc">"Constantly moving with technology, using cutting edge techniques to bridge that gap between Tech and Customer."</p>
+      <p class="hero-desc">"Bridging the gap between Tech and Customer."</p>
       <img src="https://raw.githubusercontent.com/aherndavid/citiit/main/assets/signature.png" alt="Signature" class="hero-signature">
       <a href="#services" class="hero-cta">Explore Services &#x2192;</a>
     </div>
@@ -243,121 +197,44 @@
 
 <div class="divider"></div>
 
-<section class="fullscreen-section" id="sign">
-  <video autoplay muted loop playsinline class="bg-video" id="signVideo">
+<section class="fullscreen-section" id="services">
+  <video autoplay muted loop playsinline class="bg-video">
     <source src="https://raw.githubusercontent.com/aherndavid/citiit/main/assets/sign.mp4" type="video/mp4">
   </video>
-  <div class="section-overlay-content" style="justify-content:flex-end; padding-bottom:5rem;">
-    <div style="max-width:520px;">
-      <div class="overlay-eyebrow">London — Est. 2024</div>
-      <div style="font-family:var(--bebas); font-size:clamp(52px,7vw,96px); color:var(--cream); line-height:0.9; letter-spacing:0.01em; margin-bottom:1.5rem;">
-        WHERE<br>TECH<br><span style="color:var(--blue);">MEETS</span><br>CRAFT.
-      </div>
-      <p style="font-size:15px; color:rgba(240,235,224,0.6); line-height:1.8; font-family:var(--body); font-style:italic;">
-        Based in Berkshire, available across the UK — CitiIT bridges creative and technical disciplines for businesses who need more than the ordinary. Short or long-term. No fuss. Just results.
-      </p>
-    </div>
-  </div>
-</section>
-
-<div class="divider"></div>
-
-<section class="fullscreen-section" id="services">
-  <div class="img-layer active" style="background-image:url('https://raw.githubusercontent.com/aherndavid/citiit/main/assets/phone-boxes.png');" data-group="services"></div>
-  <div class="img-layer" style="background-image:url('https://raw.githubusercontent.com/aherndavid/citiit/main/assets/taxi.png');" data-group="services"></div>
   <div class="section-overlay-content">
     <div class="overlay-header">
       <div class="overlay-num">08</div>
-      <div>
-        <div class="overlay-eyebrow">What CitiIT offers</div>
-        <div class="overlay-title">SERVICES<br><span>AVAILABLE</span></div>
-      </div>
+      <div><div class="overlay-title">SERVICES<br><span>AVAILABLE</span></div></div>
     </div>
     <div class="overlay-grid">
-      <div class="overlay-svc"><div class="overlay-svc-n">01</div><div class="overlay-svc-title">On-site &amp; Remote IT Support</div><div class="overlay-svc-desc">Day-to-day troubleshooting and rapid problem resolution — available short or long-term.</div></div>
-      <div class="overlay-svc"><div class="overlay-svc-n">02</div><div class="overlay-svc-title">Website Design &amp; Build</div><div class="overlay-svc-desc">Helping businesses establish or improve their online presence — from concept through to launch.</div></div>
-      <div class="overlay-svc"><div class="overlay-svc-n">03</div><div class="overlay-svc-title">IT Consultancy &amp; Strategy</div><div class="overlay-svc-desc">Honest advice on infrastructure and the right way to grow — no jargon, just clear guidance.</div></div>
-      <div class="overlay-svc"><div class="overlay-svc-n">04</div><div class="overlay-svc-title">Workflow Automation</div><div class="overlay-svc-desc">Streamlining operations — from cloud tools to AI-assisted processes that save time.</div></div>
-      <div class="overlay-svc"><div class="overlay-svc-n">05</div><div class="overlay-svc-title">Mac &amp; Windows Expertise</div><div class="overlay-svc-desc">20+ years across both platforms, including Apple Business deployments and M365.</div></div>
-      <div class="overlay-svc"><div class="overlay-svc-n">06</div><div class="overlay-svc-title">Office &amp; Infrastructure Migrations</div><div class="overlay-svc-desc">Full end-to-end moves delivered with zero disruption — hardware and data.</div></div>
-      <div class="overlay-svc"><div class="overlay-svc-n">07</div><div class="overlay-svc-title">VIP &amp; Executive Support</div><div class="overlay-svc-desc">Discreet, senior-level support for founders and C-suite professionals.</div></div>
-      <div class="overlay-svc"><div class="overlay-svc-n">08</div><div class="overlay-svc-title">Cloud &amp; Workspace Setup</div><div class="overlay-svc-desc">Google Workspace and Azure — configured, managed, and optimised for your team.</div></div>
+      <div class="overlay-svc"><div class="overlay-svc-title">IT Support</div><div class="overlay-svc-desc">On-site and remote troubleshooting for business continuity.</div></div>
+      <div class="overlay-svc"><div class="overlay-svc-title">Web Design</div><div class="overlay-svc-desc">Modern, responsive sites built to establish your presence.</div></div>
+      <div class="overlay-svc"><div class="overlay-svc-title">Consultancy</div><div class="overlay-svc-desc">Honest advice on infrastructure and strategic growth.</div></div>
+      <div class="overlay-svc"><div class="overlay-svc-title">Automation</div><div class="overlay-svc-desc">Streamlining operations with cloud and AI-assisted tools.</div></div>
     </div>
   </div>
 </section>
 
 <div class="divider"></div>
-
-<section class="fullscreen-section" id="portfolio">
-  <div class="img-layer active" style="background-image:url('https://raw.githubusercontent.com/aherndavid/citiit/main/assets/covent-garden-01.png');" data-group="portfolio"></div>
-  <div class="img-layer" style="background-image:url('https://raw.githubusercontent.com/aherndavid/citiit/main/assets/brick-wall.png');" data-group="portfolio"></div>
-  <div class="section-overlay-content" style="justify-content:center;">
-    <div style="position:relative; z-index:2; width:100%;">
-      <div class="port-header">
-        <div class="port-title">SELECTED WORK</div>
-        <a href="https://dpaul.studio" class="port-link" target="_blank">dpaul.studio &#x2192;</a>
-      </div>
-      <div class="port-grid">
-        <div class="port-card">
-          <div class="port-tag">Design Portfolio</div>
-          <div class="port-name">dpaul.studio</div>
-          <div class="port-desc">Branding, graphic design, and creative direction across a range of industries.</div>
-          <a href="https://dpaul.studio" class="port-btn" target="_blank">View site &#x2192;</a>
-        </div>
-        <div class="port-card">
-          <div class="port-tag">Audio Production</div>
-          <div class="port-name">Music &amp; Sound</div>
-          <div class="port-desc">Electronic music built with hardware synths and drum machines. Available on iTunes and SoundCloud.</div>
-          <a href="#contact" class="port-btn">Get in touch &#x2192;</a>
-        </div>
-        <div class="port-card">
-          <div class="port-tag">Web &amp; IT</div>
-          <div class="port-name">Client Projects</div>
-          <div class="port-desc">Web builds and IT consultancy for businesses across London. Case studies available on request.</div>
-          <a href="#contact" class="port-btn">Request case studies &#x2192;</a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
 
 <section class="contact" id="contact">
   <div class="contact-photo-col">
     <img src="https://raw.githubusercontent.com/aherndavid/citiit/main/assets/me.png" alt="David Ahern" class="contact-photo">
   </div>
   <div class="contact-left">
-    <div>
-      <div class="contact-eyebrow">Get in touch</div>
-      <h2 class="contact-heading">LET'S<br>TALK<span>.</span></h2>
-    </div>
+    <h2 class="contact-heading">LET'S<br>TALK<span>.</span></h2>
     <div class="contact-info">
-      <div class="ci-row">
-        <div class="ci-lbl">Contact via Email</div>
-        <div class="ci-val"><a href="mailto:david@dpaul.studio">Send an Email</a></div>
-      </div>
-      <div class="ci-row">
-        <div class="ci-lbl">Location</div>
-        <div class="ci-val">London / Berkshire / UK</div>
-      </div>
+      <div><a href="mailto:david@dpaul.studio">Send an Email</a></div>
+      <div style="font-size: 15px; color: rgba(240,235,224,0.7);">London / Berkshire / UK</div>
     </div>
   </div>
   <div class="contact-right">
-    <div class="form-title">Send a message</div>
     <form id="contactForm" action="https://formspree.io/f/mnnqvqea" method="POST">
-      <div class="fg"><label>Name</label><input type="text" name="name" required></div>
-      <div class="fg"><label>Email</label><input type="email" name="_replyto" required></div>
-      <div class="fg">
-        <label>I'm interested in</label>
-        <select name="service">
-          <option value="IT Support">IT Support</option>
-          <option value="Web Design">Web Design</option>
-          <option value="Consultancy">IT Consultancy</option>
-          <option value="Other">Something Else</option>
-        </select>
-      </div>
-      <div class="fg"><label>Message</label><textarea name="message" required></textarea></div>
+      <input type="text" name="name" placeholder="Name" required style="background:transparent; border:none; border-bottom:1px solid rgba(0,0,0,0.1); padding:1rem; margin-bottom:1rem; width:100%;">
+      <input type="email" name="_replyto" placeholder="Email" required style="background:transparent; border:none; border-bottom:1px solid rgba(0,0,0,0.1); padding:1rem; margin-bottom:1rem; width:100%;">
+      <textarea name="message" placeholder="Message" required style="background:transparent; border:none; border-bottom:1px solid rgba(0,0,0,0.1); padding:1rem; margin-bottom:1rem; width:100%; min-height:100px;"></textarea>
       <button type="submit" class="form-submit">Send Message</button>
-      <div id="confirm">Thanks, I'll be in touch soon.</div>
+      <div id="confirm" style="display:none; color:var(--blue); margin-top:1rem; font-family:var(--mono); font-size:12px;">Sent. I'll be in touch.</div>
     </form>
   </div>
 </section>
@@ -367,98 +244,98 @@
 <footer>
   <div class="foot-brand">CitiIT</div>
   <div class="foot-info">
-    &copy; 2024 CitiIT Limited. All rights reserved.<br>
-    Registered in England and Wales. Company No. 15462551.<br>
+    &copy; 2024 CitiIT Limited. Registered Company No. 15462551.<br>
     <a href="mailto:david@dpaul.studio">Contact</a> | 
-    <a href="#" id="speedBtn" title="Run a 30-second WiFi speed test">Check Speed</a>
+    <a id="speedBtn">Check Speed</a>
   </div>
 </footer>
 
+<div class="speed-overlay" id="speedOverlay" onclick="closeSpeedModal()"></div>
+<div class="speed-modal" id="speedModal">
+  <h3>Network Report</h3>
+  <div class="speed-result-row">
+    <span>Download:</span>
+    <span id="resDown">0 Mbps</span>
+    <span id="rateDown" class="speed-rating">---</span>
+  </div>
+  <div class="speed-result-row">
+    <span>Upload:</span>
+    <span id="resUp">0 Mbps</span>
+    <span id="rateUp" class="speed-rating">---</span>
+  </div>
+  <button class="speed-modal-close" onclick="closeSpeedModal()">Dismiss</button>
+</div>
+
 <script>
-  // ── Contact Form ──
-  var form = document.getElementById("contactForm");
+  function toggleNav() { document.getElementById('navLinks').classList.toggle('open'); }
+  function closeNav() { document.getElementById('navLinks').classList.remove('open'); }
+  function closeSpeedModal() {
+    document.getElementById('speedModal').style.display = 'none';
+    document.getElementById('speedOverlay').style.display = 'none';
+  }
+
+  // ── Form Logic ──
+  const form = document.getElementById("contactForm");
   if (form) {
     form.addEventListener("submit", function(ev) {
       ev.preventDefault();
-      fetch(form.action, {
-        method: form.method,
-        body: new FormData(form),
-        headers: { 'Accept': 'application/json' }
-      }).then(function(r) { if (r.ok) { form.reset(); document.getElementById('confirm').style.display = 'block'; } });
+      fetch(form.action, { method: form.method, body: new FormData(form), headers: { 'Accept': 'application/json' } })
+      .then(r => { if (r.ok) { form.reset(); document.getElementById('confirm').style.display = 'block'; } });
     });
   }
 
-  // ── Image Rotators ──
-  function startRotator(layers, interval) {
-    if (!layers || layers.length < 2) return;
-    var current = 0;
-    layers.forEach(function(l, i) { l.classList.toggle('active', i === 0); });
-    setInterval(function() {
-      layers[current].classList.remove('active');
-      current = (current + 1) % layers.length;
-      layers[current].classList.add('active');
-    }, interval);
-  }
-  startRotator(Array.from(document.querySelectorAll('#services .img-layer')), 10000);
-  startRotator(Array.from(document.querySelectorAll('#portfolio .img-layer')), 12000);
+  // ── Speed Test (10 Seconds Total) ──
+  document.getElementById('speedBtn').addEventListener('click', async function(e) {
+    const btn = e.target;
+    if (btn.classList.contains('running')) return;
+    
+    const phaseDuration = 5000; // 5s Download, 5s Upload
+    const testUrl = window.location.href.split('#')[0];
+    let downBytes = 0, upBytes = 0;
+    
+    btn.classList.add('running');
 
-  // ── Navigation ──
-  function toggleNav() {
-    document.getElementById('navLinks').classList.toggle('open');
-    document.getElementById('burger').classList.toggle('open');
-  }
-  function closeNav() {
-    document.getElementById('navLinks').classList.remove('open');
-    document.getElementById('burger').classList.remove('open');
-  }
-
-  // ── WiFi Speed Test Tool ──
-  document.addEventListener('DOMContentLoaded', function() {
-    const speedBtn = document.getElementById('speedBtn');
-    if (speedBtn) {
-      speedBtn.addEventListener('click', async function(e) {
-        e.preventDefault();
-        const duration = 30000; // 30 seconds
-        const testUrl = window.location.href.split('#')[0];
-        let startTime = Date.now();
-        let totalBytes = 0;
-        
-        speedBtn.classList.add('running');
-
-        async function runTest() {
-          const now = Date.now();
-          const elapsed = now - startTime;
-          
-          if (elapsed >= duration) {
-            // Speed in Mbps: (total bits / seconds) / 1 million
-            const speedMbps = ((totalBytes * 8) / (elapsed / 1000) / (1024 * 1024)).toFixed(1);
-            speedBtn.innerText = speedMbps + ' Mbps';
-            speedBtn.classList.remove('running');
-            return;
-          }
-
-          const remaining = Math.ceil((duration - elapsed) / 1000);
-          speedBtn.innerText = 'Testing (' + remaining + 's)...';
-
-          try {
-            const response = await fetch(testUrl + '?t=' + now, { cache: 'no-store' });
-            const reader = response.body.getReader();
-            while (true) {
-              const { done, value } = await reader.read();
-              if (done) break;
-              totalBytes += value.length;
-              if (Date.now() - startTime >= duration) break;
-            }
-          } catch (err) {
-            speedBtn.innerText = 'Unavailable';
-            speedBtn.classList.remove('running');
-            return;
-          }
-          setTimeout(runTest, 50);
+    // Download Phase (5s)
+    let startD = Date.now();
+    while (Date.now() - startD < phaseDuration) {
+      btn.innerText = `Down (${Math.ceil((phaseDuration*2 - (Date.now()-startD))/1000)}s)...`;
+      try {
+        const resp = await fetch(testUrl + '?t=' + Date.now(), { cache: 'no-store' });
+        const reader = resp.body.getReader();
+        while (true) {
+          const {done, value} = await reader.read();
+          if (done || (Date.now() - startD >= phaseDuration)) break;
+          downBytes += value.length;
         }
-        runTest();
-      });
+      } catch(e) { break; }
     }
+
+    // Upload Phase (5s)
+    let startU = Date.now();
+    const blob = new Uint8Array(1024 * 1024); // 1MB packet
+    while (Date.now() - startU < phaseDuration) {
+      btn.innerText = `Up (${Math.ceil((phaseDuration - (Date.now()-startU))/1000)}s)...`;
+      try {
+        await fetch(testUrl + '?u=' + Date.now(), { method: 'POST', body: blob, mode: 'no-cors' });
+        upBytes += blob.length;
+      } catch(e) { upBytes += blob.length; } 
+    }
+
+    const dMbps = ((downBytes * 8) / (phaseDuration / 1000) / (1024 * 1024)).toFixed(1);
+    const uMbps = ((upBytes * 8) / (phaseDuration / 1000) / (1024 * 1024)).toFixed(1);
+
+    document.getElementById('resDown').innerText = dMbps + ' Mbps';
+    document.getElementById('rateDown').innerText = dMbps >= 25 ? 'Good' : 'Bad';
+    document.getElementById('rateDown').className = 'speed-rating ' + (dMbps >= 25 ? 'rating-good' : 'rating-bad');
+
+    document.getElementById('resUp').innerText = uMbps + ' Mbps';
+    document.getElementById('rateUp').innerText = uMbps >= 5 ? 'Good' : 'Bad';
+    document.getElementById('rateUp').className = 'speed-rating ' + (uMbps >= 5 ? 'rating-good' : 'rating-bad');
+
+    btn.innerText = 'Check Speed';
+    btn.classList.remove('running');
+    document.getElementById('speedOverlay').style.display = 'block';
+    document.getElementById('speedModal').style.display = 'block';
   });
 </script>
 </body>

@@ -75,6 +75,29 @@
   .burger.open span:nth-child(2) { opacity: 0; }
   .burger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
 
+  /* ── SHARED BUTTON DESIGN ── */
+  .btn-rect {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--blue);
+    color: var(--white);
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 14px 28px;
+    transition: background 0.2s, color 0.2s;
+    border: none;
+    cursor: pointer;
+    line-height: 1;
+  }
+  .btn-rect:hover {
+    background: var(--black);
+    color: var(--cream);
+  }
+
   /* ── SECTIONS ── */
   .fullscreen-section {
     min-height: 100vh;
@@ -101,8 +124,6 @@
   .hero-title span { color: var(--blue); }
   .hero-desc { font-family: 'Caveat', cursive; font-size: 28px; color: #ffffff; line-height: 1.6; max-width: 440px; margin-bottom: 1.5rem; font-weight: 400; }
   .hero-signature { width: 320px; max-width: 100%; display: block; margin-bottom: 2rem; filter: brightness(0) invert(1); }
-  .hero-cta { display: inline-flex; align-items: center; gap: 10px; background: var(--blue); color: var(--white); font-family: var(--mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; text-decoration: none; padding: 14px 28px; transition: background 0.2s; align-self: flex-start; }
-  .hero-cta:hover { background: var(--black); }
 
   .bg-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; z-index: 0; }
 
@@ -121,10 +142,6 @@
   .overlay-svc-desc { font-size: 15px; color: rgba(255,255,255,0.75); line-height: 1.75; }
 
   /* ── PORTFOLIO ── */
-  .port-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 3rem; border-bottom: 1px solid rgba(255,255,255,0.15); padding-bottom: 1.5rem; }
-  .port-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: rgba(0,0,0,0.25); }
-  .port-card { background: rgba(10,10,10,0.6); border: 1px solid rgba(255,255,255,0.1); padding: 2rem; transition: background 0.2s; }
-  .port-card:hover { background: rgba(42,109,181,0.35); }
   .port-name { font-family: var(--bebas); font-size: 34px; letter-spacing: 0.04em; color: var(--cream); margin-bottom: 0.5rem; }
   .port-btn { font-family: var(--mono); font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--cream); text-decoration: none; border-bottom: 1px solid rgba(240,235,224,0.3); padding-bottom: 2px; transition: border-color 0.2s; }
 
@@ -135,7 +152,6 @@
   .contact-left { background: var(--black); padding: 5rem 3rem; display: flex; flex-direction: column; justify-content: space-between; min-height: 500px; }
   .contact-heading { font-family: var(--bebas); font-size: clamp(50px, 8vw, 100px); color: var(--cream); line-height: 0.9; letter-spacing: 0.01em; }
   .contact-info { display: flex; flex-direction: column; gap: 1.25rem; }
-  .ci-val a { color: rgba(240,235,224,0.7); text-decoration: none; border-bottom: 1px solid rgba(240,235,224,0.2); transition: color 0.2s; }
   .contact-right { background: var(--cream); padding: 5rem 3rem; display: flex; flex-direction: column; justify-content: center; }
   .form-submit { font-family: var(--mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--cream); background: var(--black); border: none; padding: 14px 28px; cursor: pointer; transition: background 0.2s; margin-top: 0.5rem; }
 
@@ -143,8 +159,8 @@
   .divider { height: 6px; background: repeating-linear-gradient(90deg, var(--blue) 0, var(--blue) 40px, var(--black) 40px, var(--black) 80px); }
   footer { background: var(--black); padding: 2rem 2.5rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
   .foot-info { font-family: var(--mono); font-size: 10px; color: rgba(255,255,255,0.22); letter-spacing: 0.06em; text-align: right; line-height: 1.9; }
-  .foot-info a { color: rgba(255,255,255,0.22); text-decoration: none; transition: color 0.2s; cursor: pointer; }
-  .foot-info a:hover { color: var(--cream); }
+  .foot-info a:not(.btn-rect) { color: rgba(255,255,255,0.22); text-decoration: none; transition: color 0.2s; cursor: pointer; }
+  .foot-info a:not(.btn-rect):hover { color: var(--cream); }
 
   /* ── SPEED TEST POPUP ── */
   .speed-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.85); z-index: 9999; }
@@ -190,7 +206,7 @@
     <div class="hero-right-content">
       <p class="hero-desc">"Bridging the gap between Tech and Customer."</p>
       <img src="https://raw.githubusercontent.com/aherndavid/citiit/main/assets/signature.png" alt="Signature" class="hero-signature">
-      <a href="#services" class="hero-cta">Explore Services &#x2192;</a>
+      <a href="#services" class="btn-rect">Explore Services &#x2192;</a>
     </div>
   </div>
 </section>
@@ -224,8 +240,10 @@
   <div class="contact-left">
     <h2 class="contact-heading">LET'S<br>TALK<span>.</span></h2>
     <div class="contact-info">
-      <div><a href="mailto:david@dpaul.studio">Send an Email</a></div>
-      <div style="font-size: 15px; color: rgba(240,235,224,0.7);">London / Berkshire / UK</div>
+      <div>
+        <a href="mailto:david@dpaul.studio" class="btn-rect">Send an Email</a>
+      </div>
+      <div style="font-size: 15px; color: rgba(240,235,224,0.7); margin-top: 1rem;">London / Berkshire / UK</div>
     </div>
   </div>
   <div class="contact-right">
@@ -245,8 +263,8 @@
   <div class="foot-brand">CitiIT</div>
   <div class="foot-info">
     &copy; 2024 CitiIT Limited. Registered Company No. 15462551.<br>
-    <a href="mailto:david@dpaul.studio">Contact</a> | 
-    <a id="speedBtn">Check Speed</a>
+    <a href="mailto:david@dpaul.studio" class="btn-rect" style="padding: 10px 20px; font-size: 10px; margin-bottom: 5px;">Contact</a> | 
+    <a id="speedBtn" style="cursor: pointer;">Check Speed</a>
   </div>
 </footer>
 
@@ -274,7 +292,6 @@
     document.getElementById('speedOverlay').style.display = 'none';
   }
 
-  // ── Form Logic ──
   const form = document.getElementById("contactForm");
   if (form) {
     form.addEventListener("submit", function(ev) {
@@ -284,18 +301,16 @@
     });
   }
 
-  // ── Speed Test (10 Seconds Total) ──
   document.getElementById('speedBtn').addEventListener('click', async function(e) {
     const btn = e.target;
     if (btn.classList.contains('running')) return;
     
-    const phaseDuration = 5000; // 5s Download, 5s Upload
+    const phaseDuration = 5000;
     const testUrl = window.location.href.split('#')[0];
     let downBytes = 0, upBytes = 0;
     
     btn.classList.add('running');
 
-    // Download Phase (5s)
     let startD = Date.now();
     while (Date.now() - startD < phaseDuration) {
       btn.innerText = `Down (${Math.ceil((phaseDuration*2 - (Date.now()-startD))/1000)}s)...`;
@@ -304,39 +319,4 @@
         const reader = resp.body.getReader();
         while (true) {
           const {done, value} = await reader.read();
-          if (done || (Date.now() - startD >= phaseDuration)) break;
-          downBytes += value.length;
-        }
-      } catch(e) { break; }
-    }
-
-    // Upload Phase (5s)
-    let startU = Date.now();
-    const blob = new Uint8Array(1024 * 1024); // 1MB packet
-    while (Date.now() - startU < phaseDuration) {
-      btn.innerText = `Up (${Math.ceil((phaseDuration - (Date.now()-startU))/1000)}s)...`;
-      try {
-        await fetch(testUrl + '?u=' + Date.now(), { method: 'POST', body: blob, mode: 'no-cors' });
-        upBytes += blob.length;
-      } catch(e) { upBytes += blob.length; } 
-    }
-
-    const dMbps = ((downBytes * 8) / (phaseDuration / 1000) / (1024 * 1024)).toFixed(1);
-    const uMbps = ((upBytes * 8) / (phaseDuration / 1000) / (1024 * 1024)).toFixed(1);
-
-    document.getElementById('resDown').innerText = dMbps + ' Mbps';
-    document.getElementById('rateDown').innerText = dMbps >= 25 ? 'Good' : 'Bad';
-    document.getElementById('rateDown').className = 'speed-rating ' + (dMbps >= 25 ? 'rating-good' : 'rating-bad');
-
-    document.getElementById('resUp').innerText = uMbps + ' Mbps';
-    document.getElementById('rateUp').innerText = uMbps >= 5 ? 'Good' : 'Bad';
-    document.getElementById('rateUp').className = 'speed-rating ' + (uMbps >= 5 ? 'rating-good' : 'rating-bad');
-
-    btn.innerText = 'Check Speed';
-    btn.classList.remove('running');
-    document.getElementById('speedOverlay').style.display = 'block';
-    document.getElementById('speedModal').style.display = 'block';
-  });
-</script>
-</body>
-</html>
+          if (done || (Date

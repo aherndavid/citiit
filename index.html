@@ -154,10 +154,12 @@
   .contact-info { display: flex; flex-direction: column; gap: 1.25rem; }
   .contact-right { background: var(--cream); padding: 5rem 3rem; display: flex; flex-direction: column; justify-content: center; }
   .form-submit { font-family: var(--mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--cream); background: var(--black); border: none; padding: 14px 28px; cursor: pointer; transition: background 0.2s; margin-top: 0.5rem; }
+  .form-submit:hover { background: var(--blue); }
 
   /* ── DIVIDER & FOOTER ── */
   .divider { height: 6px; background: repeating-linear-gradient(90deg, var(--blue) 0, var(--blue) 40px, var(--black) 40px, var(--black) 80px); }
   footer { background: var(--black); padding: 2rem 2.5rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+  .foot-brand { font-family: var(--bebas); font-size: 22px; letter-spacing: 0.1em; color: var(--cream); }
   .foot-info { font-family: var(--mono); font-size: 10px; color: rgba(255,255,255,0.22); letter-spacing: 0.06em; text-align: right; line-height: 1.9; }
   .foot-info a:not(.btn-rect) { color: rgba(255,255,255,0.22); text-decoration: none; transition: color 0.2s; cursor: pointer; }
   .foot-info a:not(.btn-rect):hover { color: var(--cream); }
@@ -180,6 +182,8 @@
     .overlay-grid { grid-template-columns: 1fr 1fr; }
     .nav-links { display: none; position: absolute; top: 60px; left: 0; right: 0; background: var(--black); flex-direction: column; padding: 1.5rem 2.5rem; }
     .nav-links.open { display: flex; }
+    .hero-content { grid-template-columns: 1fr; }
+    .burger { display: flex; }
   }
 </style>
 </head>
@@ -273,50 +277,126 @@
   <h3>Network Report</h3>
   <div class="speed-result-row">
     <span>Download:</span>
-    <span id="resDown">0 Mbps</span>
+    <span id="resDown">— Mbps</span>
     <span id="rateDown" class="speed-rating">---</span>
   </div>
   <div class="speed-result-row">
     <span>Upload:</span>
-    <span id="resUp">0 Mbps</span>
+    <span id="resUp">— Mbps</span>
     <span id="rateUp" class="speed-rating">---</span>
   </div>
   <button class="speed-modal-close" onclick="closeSpeedModal()">Dismiss</button>
 </div>
 
 <script>
-  function toggleNav() { document.getElementById('navLinks').classList.toggle('open'); }
-  function closeNav() { document.getElementById('navLinks').classList.remove('open'); }
+  function toggleNav() {
+    document.getElementById('navLinks').classList.toggle('open');
+    document.getElementById('burger').classList.toggle('open');
+  }
+  function closeNav() {
+    document.getElementById('navLinks').classList.remove('open');
+    document.getElementById('burger').classList.remove('open');
+  }
   function closeSpeedModal() {
     document.getElementById('speedModal').style.display = 'none';
     document.getElementById('speedOverlay').style.display = 'none';
   }
 
+  // Contact form
   const form = document.getElementById("contactForm");
   if (form) {
     form.addEventListener("submit", function(ev) {
       ev.preventDefault();
-      fetch(form.action, { method: form.method, body: new FormData(form), headers: { 'Accept': 'application/json' } })
-      .then(r => { if (r.ok) { form.reset(); document.getElementById('confirm').style.display = 'block'; } });
+      fetch(form.action, {
+        method: form.method,
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
+      }).then(r => {
+        if (r.ok) {
+          form.reset();
+          document.getElementById('confirm').style.display = 'block';
+        }
+      });
     });
   }
 
-  document.getElementById('speedBtn').addEventListener('click', async function(e) {
-    const btn = e.target;
+  // Speed test
+  document.getElementById('speedBtn').addEventListener('click', async function () {
+    const btn = document.getElementById('speedBtn');
     if (btn.classList.contains('running')) return;
-    
-    const phaseDuration = 5000;
-    const testUrl = window.location.href.split('#')[0];
-    let downBytes = 0, upBytes = 0;
-    
-    btn.classList.add('running');
 
-    let startD = Date.now();
-    while (Date.now() - startD < phaseDuration) {
-      btn.innerText = `Down (${Math.ceil((phaseDuration*2 - (Date.now()-startD))/1000)}s)...`;
-      try {
-        const resp = await fetch(testUrl + '?t=' + Date.now(), { cache: 'no-store' });
-        const reader = resp.body.getReader();
-        while (true) {
-          const {done, value} = await reader.read();
-          if (done || (Date
+    btn.classList.add('running');
+    btn.innerText = 'Testing...';
+
+    const resDown  = document.getElementById('resDown');
+    const resUp    = document.getElementById('resUp');
+    const rateDown = document.getElementById('rateDown');
+    const rateUp   = document.getElementById('rateUp');
+
+    resDown.innerText  = '— Mbps';
+    resUp.innerText    = '— Mbps';
+    rateDown.innerText = '---';
+    rateUp.innerText   = '---';
+    rateDown.className = 'speed-rating';
+    rateUp.className   = 'speed-rating';
+
+    function rating(el, mbps, goodThresh, okThresh) {
+      el.innerText = mbps >= goodThresh ? 'Good' : mbps >= okThresh ? 'OK' : 'Slow';
+      el.classList.add(mbps >= okThresh ? 'rating-good' : 'rating-bad');
+    }
+
+    // ── DOWNLOAD PHASE ──
+    // Fetch a ~10MB file from Cloudflare's speed test CDN — CORS-friendly, no auth needed
+    btn.innerText = 'Downloading...';
+    let downMbps = 0;
+    try {
+      const dlUrl = 'https://speed.cloudflare.com/__down?bytes=10000000&t=' + Date.now();
+      const t0 = performance.now();
+      const resp = await fetch(dlUrl, { cache: 'no-store' });
+      const reader = resp.body.getReader();
+      let downBytes = 0;
+      while (true) {
+        const { done, value } = await reader.read();
+        if (done) break;
+        downBytes += value.length;
+      }
+      const elapsed = (performance.now() - t0) / 1000;
+      downMbps = ((downBytes * 8) / 1_000_000 / elapsed);
+      resDown.innerText = downMbps.toFixed(1) + ' Mbps';
+      rating(rateDown, downMbps, 25, 10);
+    } catch (e) {
+      resDown.innerText = 'Error';
+      rateDown.innerText = '---';
+    }
+
+    // ── UPLOAD PHASE ──
+    btn.innerText = 'Uploading...';
+    let upMbps = 0;
+    try {
+      const upSize = 2 * 1024 * 1024; // 2 MB
+      const payload = new Uint8Array(upSize);
+      crypto.getRandomValues(payload);
+      const t1 = performance.now();
+      await fetch('https://speed.cloudflare.com/__up', {
+        method: 'POST',
+        body: payload,
+        cache: 'no-store'
+      });
+      const elapsed = (performance.now() - t1) / 1000;
+      upMbps = ((upSize * 8) / 1_000_000 / elapsed);
+      resUp.innerText = upMbps.toFixed(1) + ' Mbps';
+      rating(rateUp, upMbps, 10, 5);
+    } catch (e) {
+      resUp.innerText = 'Error';
+      rateUp.innerText = '---';
+    }
+
+    // ── SHOW RESULTS ──
+    btn.classList.remove('running');
+    btn.innerText = 'Check Speed';
+    document.getElementById('speedOverlay').style.display = 'block';
+    document.getElementById('speedModal').style.display = 'block';
+  });
+</script>
+</body>
+</html>

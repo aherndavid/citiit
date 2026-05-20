@@ -237,6 +237,31 @@
 
 <div class="divider"></div>
 
+<!-- ── PORTFOLIO ── -->
+<section class="fullscreen-section" id="portfolio">
+  <video autoplay muted loop playsinline class="bg-video">
+    <source src="https://raw.githubusercontent.com/aherndavid/citiit/main/assets/desk.mp4" type="video/mp4">
+  </video>
+  <div class="section-overlay-content">
+    <div class="overlay-header">
+      <div class="overlay-num">✦</div>
+      <div>
+        <div class="overlay-eyebrow">Work &amp; Projects</div>
+        <div class="overlay-title">PORT<br><span>FOLIO</span></div>
+      </div>
+    </div>
+    <div style="display:flex; flex-direction:column; gap:2rem; max-width:700px;">
+      <div>
+        <div class="port-name">Design &amp; Digital Studio</div>
+        <p style="color:rgba(255,255,255,0.7); font-size:15px; line-height:1.75; margin-bottom:1.25rem;">Brand identities, web experiences, and creative direction — explore the full portfolio at dpaul.studio.</p>
+        <a href="https://www.dpaul.studio" target="_blank" rel="noopener" class="btn-rect">View Portfolio &#x2192;</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
 <section class="contact" id="contact">
   <div class="contact-photo-col">
     <img src="https://raw.githubusercontent.com/aherndavid/citiit/main/assets/me.png" alt="David Ahern" class="contact-photo">
@@ -307,15 +332,30 @@
   if (form) {
     form.addEventListener("submit", function(ev) {
       ev.preventDefault();
+      const btn = form.querySelector('.form-submit');
+      btn.textContent = 'Sending…';
+      btn.disabled = true;
+      const data = {
+        name:    form.querySelector('[name="name"]').value,
+        email:   form.querySelector('[name="_replyto"]').value,
+        message: form.querySelector('[name="message"]').value
+      };
       fetch(form.action, {
-        method: form.method,
-        body: new FormData(form),
-        headers: { 'Accept': 'application/json' }
-      }).then(r => {
-        if (r.ok) {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(data)
+      }).then(r => r.json()).then(res => {
+        if (res.ok || res.next) {
           form.reset();
           document.getElementById('confirm').style.display = 'block';
+          btn.textContent = 'Sent ✓';
+        } else {
+          btn.textContent = 'Try Again';
+          btn.disabled = false;
         }
+      }).catch(() => {
+        btn.textContent = 'Error — Try Again';
+        btn.disabled = false;
       });
     });
   }
